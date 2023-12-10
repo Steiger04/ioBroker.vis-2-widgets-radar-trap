@@ -1,8 +1,22 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "0.0.0",
-    "news": {},
+    "version": "1.0.0",
+    "news": {
+      "1.0.0": {
+        "en": "Initial commit",
+        "de": "Ursprüngliche Verpflichtung",
+        "ru": "Первоначальный коммит",
+        "pt": "Compromisso inicial",
+        "nl": "Initiatief",
+        "fr": "Engagement initial",
+        "it": "Impegno iniziale",
+        "es": "Composición inicial",
+        "pl": "Śledczy",
+        "uk": "Початкова комісія",
+        "zh-cn": "初始承诺"
+      }
+    },
     "titleLang": {
       "en": "Vis-Widget radar-trap",
       "de": "Vis-Widget radar-trap",

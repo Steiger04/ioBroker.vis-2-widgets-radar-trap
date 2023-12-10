@@ -1,0 +1,82 @@
+{
+  "common": {
+    "name": "vis-2-widgets-radar-trap",
+    "version": "0.0.0",
+    "news": {},
+    "titleLang": {
+      "en": "Vis-Widget radar-trap",
+      "de": "Vis-Widget radar-trap",
+      "ru": "Vis-Widget radar-trap",
+      "pt": "Vis-Widget radar-trap",
+      "nl": "Vis-Widget radar-trap",
+      "fr": "Vis-Widget radar-trap",
+      "it": "Vis-Widget radar-trap",
+      "es": "Vis-Widget radar-trap",
+      "pl": "Vis-Widget radar-trap",
+      "zh-cn": "Vis-Widget radar-trap",
+      "uk": "Радар-пастка Vis-Widget"
+    },
+    "desc": {
+      "en": "Vis-Widget radar-trap",
+      "de": "Vis-Widget radar-trap",
+      "ru": "Vis-Widget radar-trap",
+      "pt": "Vis-Widget radar-trap",
+      "nl": "Vis-Widget radar-trap",
+      "fr": "Vis-Widget radar-trap",
+      "it": "Vis-Widget radar-trap",
+      "es": "Vis-Widget radar-trap",
+      "pl": "Vis-Widget radar-trap",
+      "zh-cn": "Vis-Widget radar-trap",
+      "uk": "Радар-пастка Vis-Widget"
+    },
+    "authors": [
+      "Steiger04 <steiger04@posteo.de>"
+    ],
+    "keywords": [
+      "vis-2-widgets-radar-trap"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "vis-2-widgets-radar-trap.png",
+    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/master/admin/vis-2-widgets-radar-trap.png",
+    "enabled": true,
+    "readme": "https://github.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "once",
+    "adminUI": {
+      "config": "none"
+    },
+    "nogit": true,
+    "singleton": true,
+    "onlyWWW": true,
+    "type": "visualization-widgets",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "visWidgets": {
+      "ignoreInVersions": [
+        1
+      ],
+      "vis2RadarTrapWidgets": {
+        "i18n": "component",
+        "name": "vis2RadarTrapWidgets",
+        "url": "vis-2-widgets-radar-trap/customWidgets.js",
+        "components": [
+          "RadarTrapAreaWidget",
+          "RadarTrapRouteWidget",
+          "RadarTrapInfoWidget"
+        ]
+      }
+    },
+    "restartAdapters": [
+      "vis-2"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.17"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
+}

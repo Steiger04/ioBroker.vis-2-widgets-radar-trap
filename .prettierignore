@@ -1,0 +1,6 @@
+.*/
+admin/.watch
+**/build/
+**/package.json
+**/package-lock.json
+README.md

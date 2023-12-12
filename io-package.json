@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "news": {
+      "1.0.1": {
+        "en": "gulpfile changed",
+        "de": "gulpfile geändert",
+        "ru": "gulpfile изменен",
+        "pt": "gulpfile alterado",
+        "nl": "gulpfile veranderde",
+        "fr": "gulpfile a changé",
+        "it": "gulpfile cambiato",
+        "es": "el archivo del gulp cambió",
+        "pl": "gulpfile zmieniał się",
+        "uk": "javascript licenses api веб-сайт",
+        "zh-cn": "古帕尔的变化"
+      },
       "1.0.0": {
         "en": "Initial commit",
         "de": "Ursprüngliche Verpflichtung",

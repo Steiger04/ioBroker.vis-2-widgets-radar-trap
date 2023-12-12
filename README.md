@@ -29,8 +29,10 @@
 	### __WORK IN PROGRESS__
 -->
 ### 1.0.0 (2023-12-10)
-
 - (steiger04) Initial commit
+
+### __WORK IN PROGRESS__
+- (steiger04) gulpfile changed
 
 ## License
 

@@ -1,7 +1,7 @@
-module.exports = require("@iobroker/vis-2-widgets-react-dev/craco.config.js");
+const craco = require("@iobroker/vis-2-widgets-react-dev/craco.config.js");
 
 module.exports = {
-    ...module.exports,
+    ...craco,
     ...{
         reactScriptsVersion: "react-scripts",
         webpack: {

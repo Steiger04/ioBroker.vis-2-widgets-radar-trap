@@ -25,12 +25,22 @@ gulp.task('widget-3-copy', () => Promise.all([
     gulp.src([`${SRC}build/*.js`]).pipe(gulp.dest(`widgets/${adapterName}`)),
     gulp.src([`${SRC}build/img/*`]).pipe(gulp.dest(`widgets/${adapterName}/img`)),
     gulp.src([`${SRC}build/*.map`]).pipe(gulp.dest(`widgets/${adapterName}`)),
-    gulp.src([
+    gulp.src([        
         `${SRC}build/static/**/*`,
-        // ...gulpHelper.ignoreFiles(SRC),
+        ...gulpHelper.ignoreFiles(SRC),        
+        // ...gulpHelper.ignoreSvgFiles(SRC),
     ]).pipe(gulp.dest(`widgets/${adapterName}/static`)),
     gulp.src([
         ...gulpHelper.copyFiles(SRC),
+        ...[
+                `${SRC}build/static/js/*mui_icons*.*`,          
+                `${SRC}build/static/js/*mui_material_FormControl*.*`,
+                `${SRC}build/static/js/*mui_material_Avatar*.*`,
+                `${SRC}build/static/js/*mui_material_styles_styled*.*`,
+                `${SRC}build/static/js/*feathersjs*.*`,
+                `${SRC}build/static/js/*mapbox-gl*.*`
+           ],
+           ...[`!${SRC}build/static/js/*.map`, `!${SRC}build/static/js/*.txt`],
     ]).pipe(gulp.dest(`widgets/${adapterName}/static/js`)),
     gulp.src([`${SRC}src/i18n/*.json`]).pipe(gulp.dest(`widgets/${adapterName}/i18n`)),
     new Promise(resolve =>

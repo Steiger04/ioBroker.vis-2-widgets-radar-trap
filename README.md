@@ -2,21 +2,24 @@
 
 # Vis 2 radar-trap widgets
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.vis-2-widgets-radar-trap.svg)](https://www.npmjs.com/package/vis-2-widgets-radar-trap)
+![Number of Installations](http://iobroker.live/badges/vis-2-widgets-radar-trap-installed.svg) ![Number of Installations](http://iobroker.live/badges/vis-2-widgets-radar-trap-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.vis-2-widgets-radar-trap.svg)](https://www.npmjs.com/package/iobroker.vis-2-widgets-radar-trap)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.vis-2-widgets-radar-trap.svg)](https://www.npmjs.com/package/iobroker.vis-2-widgets-radar-trap)
-
-[![installed](http://iobroker.live/badges/vis-2-widgets-radar-trap-installed.svg)](http://iobroker.live/badges/vis-2-widgets-radar-trap-installed.svg)
-
-[![Test and Release](https://github.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/actions/workflows/test-and-release.yml)
 
 [![NPM](https://nodei.co/npm/iobroker.vis-2-widgets-radar-trap.png?downloads=true)](https://nodei.co/npm/iobroker.vis-2-widgets-radar-trap/)
 
-<h2 align="center">Vis 2 widgets for adapter radar-trap</h2>
+<h2 align="center">radar-trap widgets for ioBroker.vis 2.0</h2>
 
-## Documentation
-[German radar-trap Wiki](https://github.com/Steiger04/ioBroker.radar-trap/wiki/radar-trap-Adapter-(deutsch))
+## Widgets
+### Info
+<img src="img/info-widget.png" height="600">
 
-[English radar-trap Wiki](https://github.com/Steiger04/ioBroker.radar-trap/wiki/radar-trap-Adapter-(english))
+### Area
+<img src="img/area-widget.png" width="500">
+
+### Route
+<img src="img/route-widget.png" width="500">
+
+
 
 ---
 

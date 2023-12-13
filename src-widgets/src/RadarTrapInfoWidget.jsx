@@ -222,6 +222,7 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
         const contentHeader = this.state.rxData.description && this.state.radarTrapEnabled ?
             <Typography
                 variant="h6"
+                component="h3"
                 sx={{ fontWeight:"bold", pb: 1 }}
             >
                 {this.state.rxData.description}
@@ -234,7 +235,7 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
             content,
             // null,
             contentHeader,
-            { height: "100%", padding: 10, boxSizing: "border-box" },
+            { height:"100%", padding: 10, boxSizing: "border-box" },
         );
     }
 }

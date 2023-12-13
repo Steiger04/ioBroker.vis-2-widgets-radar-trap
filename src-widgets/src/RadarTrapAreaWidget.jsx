@@ -236,9 +236,9 @@ class RadarTrapAreaWidget extends RadarTrapGeneric {
         //                        then this.state.rxData.type will have state value of `javascript.0.width` + 'px
     }
 
-    componentWillUnmount() {
+    /* componentWillUnmount() {
         super.componentWillUnmount();
-    }
+    } */
 
     componentDidMount() {
         super.componentDidMount();

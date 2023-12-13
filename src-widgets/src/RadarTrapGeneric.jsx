@@ -27,6 +27,8 @@ class RadarTrapGeneric extends Generic {
     }
 
     componentWillUnmount() {
+        super.componentWillUnmount();
+
         this.props.context.socket.unsubscribeObject(this.instanceId, (id, obj) => console.log(id, obj));
     }
 

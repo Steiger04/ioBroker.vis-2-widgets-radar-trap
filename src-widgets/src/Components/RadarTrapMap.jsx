@@ -55,7 +55,7 @@ const RadarTrapMap = ({
         },
     } = useRadarTrapSource(routeOrAreaId, feathersClient);
 
-    useAnimationFrame(editMode, mapRef, mapImageStatus, data.animateClosedCongestedRoad);
+    useAnimationFrame(editMode, mapRef, mapImageStatus, data.closedCongestedRoad, data.animateClosedCongestedRoad);
 
     const mouseEnterHandler = useCallback(() => setCursor("pointer"), []);
     const mouseLeaveHandler = useCallback(() => setCursor(""), []);

@@ -267,13 +267,14 @@ const RadarTrapInfoList = ({
         <Box sx={{
             overflow: "auto",
             bgcolor: style["background-color"],
-            // position: "relative",
             height: "100%",
             width: "100%",
+            position: "relative",
         }}
         >
             <Box
                 sx={{
+                    position: "absolute",
                     "& ul": { padding: 0 },
                 }}
             >

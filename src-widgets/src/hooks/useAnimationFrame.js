@@ -17,8 +17,8 @@ const dashArraySequence = [
     [0, 3.5, 3, 0.5],
 ];
 
-const useAnimationFrame = (editMode, map, mapImageStatus, animateClosedCongestedRoad) => {
-    if (editMode) return;
+const useAnimationFrame = (editMode, map, mapImageStatus, closedCongestedRoad, animateClosedCongestedRoad) => {
+    // if (editMode || !animateClosedCongestedRoad || !map.current)  return;
 
     const frame = useRef(0);
     const mounted = useRef(false);
@@ -56,14 +56,14 @@ const useAnimationFrame = (editMode, map, mapImageStatus, animateClosedCongested
     }, []);
 
     useEffect(() => {
-        if (mounted.current === true && mapImageStatus === "success" && animateClosedCongestedRoad === true) {
+        if (!editMode && mounted.current === true && mapImageStatus === "success" && closedCongestedRoad && animateClosedCongestedRoad) {
             frame.current = requestAnimationFrame(timestamp => animate(timestamp, 0));
         } else {
             cancelAnimationFrame(frame.current);
         }
 
         return () => cancelAnimationFrame(frame.current);
-    }, [mounted.current, mapImageStatus, animateClosedCongestedRoad, animate]);
+    }, [editMode, mapImageStatus, closedCongestedRoad, animateClosedCongestedRoad, animate]);
 };
 
 export { useAnimationFrame };

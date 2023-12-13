@@ -28,7 +28,7 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 1.0.2 (2023-12-13)
 - (steiger04) README changed
 
 ### 1.0.1 (2023-12-12)

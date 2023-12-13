@@ -1,109 +1,110 @@
 {
-  "common": {
-    "name": "vis-2-widgets-radar-trap",
-    "version": "1.0.1",
-    "news": {
-      "1.0.1": {
-        "en": "gulpfile changed",
-        "de": "gulpfile geändert",
-        "ru": "gulpfile изменен",
-        "pt": "gulpfile alterado",
-        "nl": "gulpfile veranderde",
-        "fr": "gulpfile a changé",
-        "it": "gulpfile cambiato",
-        "es": "el archivo del gulp cambió",
-        "pl": "gulpfile zmieniał się",
-        "uk": "javascript licenses api веб-сайт",
-        "zh-cn": "古帕尔的变化"
-      },
-      "1.0.0": {
-        "en": "Initial commit",
-        "de": "Ursprüngliche Verpflichtung",
-        "ru": "Первоначальный коммит",
-        "pt": "Compromisso inicial",
-        "nl": "Initiatief",
-        "fr": "Engagement initial",
-        "it": "Impegno iniziale",
-        "es": "Composición inicial",
-        "pl": "Śledczy",
-        "uk": "Початкова комісія",
-        "zh-cn": "初始承诺"
-      }
-    },
-    "titleLang": {
-      "en": "Vis-Widget radar-trap",
-      "de": "Vis-Widget radar-trap",
-      "ru": "Vis-Widget radar-trap",
-      "pt": "Vis-Widget radar-trap",
-      "nl": "Vis-Widget radar-trap",
-      "fr": "Vis-Widget radar-trap",
-      "it": "Vis-Widget radar-trap",
-      "es": "Vis-Widget radar-trap",
-      "pl": "Vis-Widget radar-trap",
-      "zh-cn": "Vis-Widget radar-trap",
-      "uk": "Радар-пастка Vis-Widget"
-    },
-    "desc": {
-      "en": "Vis-Widget radar-trap",
-      "de": "Vis-Widget radar-trap",
-      "ru": "Vis-Widget radar-trap",
-      "pt": "Vis-Widget radar-trap",
-      "nl": "Vis-Widget radar-trap",
-      "fr": "Vis-Widget radar-trap",
-      "it": "Vis-Widget radar-trap",
-      "es": "Vis-Widget radar-trap",
-      "pl": "Vis-Widget radar-trap",
-      "zh-cn": "Vis-Widget radar-trap",
-      "uk": "Радар-пастка Vis-Widget"
-    },
-    "authors": [
-      "Steiger04 <steiger04@posteo.de>"
-    ],
-    "keywords": [
-      "vis-2-widgets-radar-trap"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "icon": "vis-2-widgets-radar-trap.png",
-    "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/master/admin/vis-2-widgets-radar-trap.png",
-    "enabled": true,
-    "readme": "https://github.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "once",
-    "adminUI": {
-      "config": "none"
-    },
-    "nogit": true,
-    "singleton": true,
-    "onlyWWW": true,
-    "type": "visualization-widgets",
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "visWidgets": {
-      "ignoreInVersions": [
-        1
-      ],
-      "vis2RadarTrapWidgets": {
-        "i18n": "component",
-        "name": "vis2RadarTrapWidgets",
-        "url": "vis-2-widgets-radar-trap/customWidgets.js",
-        "components": [
-          "RadarTrapAreaWidget",
-          "RadarTrapRouteWidget",
-          "RadarTrapInfoWidget"
+    "common": {
+        "name": "vis-2-widgets-radar-trap",
+        "version": "1.0.1",
+        "news": {
+            "1.0.1": {
+                "en": "gulpfile changed",
+                "de": "gulpfile geändert",
+                "ru": "gulpfile изменен",
+                "pt": "gulpfile alterado",
+                "nl": "gulpfile veranderde",
+                "fr": "gulpfile a changé",
+                "it": "gulpfile cambiato",
+                "es": "el archivo del gulp cambió",
+                "pl": "gulpfile zmieniał się",
+                "uk": "javascript licenses api веб-сайт",
+                "zh-cn": "古帕尔的变化"
+            },
+            "1.0.0": {
+                "en": "Initial commit",
+                "de": "Ursprüngliche Verpflichtung",
+                "ru": "Первоначальный коммит",
+                "pt": "Compromisso inicial",
+                "nl": "Initiatief",
+                "fr": "Engagement initial",
+                "it": "Impegno iniziale",
+                "es": "Composición inicial",
+                "pl": "Śledczy",
+                "uk": "Початкова комісія",
+                "zh-cn": "初始承诺"
+            }
+        },
+        "titleLang": {
+            "en": "Vis 2 Widgets radar-trap",
+            "de": "Vis 2 Widgets radar-trap",
+            "ru": "Виз 2 Виджеты радар-ловушка",
+            "pt": "Vis 2 Widgets armadilha de radar",
+            "nl": "Vis 2 Widgets radarval",
+            "fr": "Vis 2 Widgets piège radar",
+            "it": "Vis 2 Widgets radar-trappola",
+            "es": "Vis 2 Widgets trampa de radar",
+            "pl": "Vis 2 Widżety pułapka radarowa",
+            "uk": "Радар-пастка Vis 2 Widgets",
+            "zh-cn": "Vis 2 Widgets 雷达陷阱"
+        },
+        "desc": {
+            "en": "Vis 2 Widgets radar-trap",
+            "de": "Vis 2 Widgets radar-trap",
+            "ru": "Виз 2 Виджеты радар-ловушка",
+            "pt": "Vis 2 Widgets armadilha de radar",
+            "nl": "Vis 2 Widgets radarval",
+            "fr": "Vis 2 Widgets piège radar",
+            "it": "Vis 2 Widgets radar-trappola",
+            "es": "Vis 2 Widgets trampa de radar",
+            "pl": "Vis 2 Widżety pułapka radarowa",
+            "uk": "Радар-пастка Vis 2 Widgets",
+            "zh-cn": "Vis 2 Widgets 雷达陷阱"
+        },
+        "authors": [
+            "Steiger04 <steiger04@posteo.de>"
+        ],
+        "keywords": [
+            "vis-2-widgets-radar-trap"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "icon": "vis-2-widgets-radar-trap.png",
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/master/admin/vis-2-widgets-radar-trap.png",
+        "enabled": true,
+        "readme": "https://github.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "once",
+        "nogit": true,
+        "singleton": true,
+        "onlyWWW": true,
+        "noConfig": true,
+        "adminUI": {
+            "config": "none"
+        },        
+        "type": "visualization-widgets",
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "visWidgets": {
+            "ignoreInVersions": [
+                1
+            ],
+            "vis2RadarTrapWidgets": {
+                "i18n": "component",
+                "name": "vis2RadarTrapWidgets",
+                "url": "vis-2-widgets-radar-trap/customWidgets.js",
+                "components": [
+                    "RadarTrapAreaWidget",
+                    "RadarTrapRouteWidget",
+                    "RadarTrapInfoWidget"
+                ]
+            }
+        },
+        "restartAdapters": [
+            "vis-2"
+        ],
+        "dependencies": [
+            {
+                "js-controller": ">=5.0.17"
+            }
         ]
-      }
     },
-    "restartAdapters": [
-      "vis-2"
-    ],
-    "dependencies": [
-      {
-        "js-controller": ">=5.0.17"
-      }
-    ]
-  },
-  "native": {},
-  "objects": [],
-  "instanceObjects": []
+    "native": {},
+    "objects": [],
+    "instanceObjects": []
 }

@@ -6,11 +6,11 @@
   "contributors": [
     "Steiger04 <steiger04@posteo.de>"
   ],
-  "homepage": "https://github.com/ioBroker/ioBroker.vis-2-widgets-radar-trap",
+  "homepage": "https://github.com/Steiger04/ioBroker.vis-2-widgets-radar-trap",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/ioBroker.vis-2-widgets-radar-trap.git"
+    "url": "https://github.com/Steiger04/ioBroker.vis-2-widgets-radar-trap.git"
   },
   "keywords": [
     "ioBroker",

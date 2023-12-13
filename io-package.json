@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "news": {
+      "1.0.4": {
+        "en": "widgets updated",
+        "de": "widgets aktualisiert",
+        "ru": "виджеты обновлены",
+        "pt": "widgets atualizados",
+        "nl": "widgets",
+        "fr": "widgets mis à jour",
+        "it": "widget aggiornati",
+        "es": "widgets actualizados",
+        "pl": "widget",
+        "uk": "віджети оновлені",
+        "zh-cn": "最新目标"
+      },
       "1.0.3": {
         "en": "widgets updated",
         "de": "widgets aktualisiert",

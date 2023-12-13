@@ -78,6 +78,7 @@
             "config": "none"
         },        
         "type": "visualization-widgets",
+        
         "connectionType": "cloud",
         "dataSource": "poll",
         "visWidgets": {

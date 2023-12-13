@@ -235,7 +235,9 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
             content,
             // null,
             contentHeader,
-            { height:"100%", padding: 10, boxSizing: "border-box" },
+            {
+                height:"100%", width: "100%", padding: 10, boxSizing: "border-box",
+            },
         );
     }
 }

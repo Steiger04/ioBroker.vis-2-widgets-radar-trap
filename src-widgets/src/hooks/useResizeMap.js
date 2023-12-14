@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from "react";
-import { useRadarTrapMapBox } from "./useRadarTrapMapBox";
+import { useCallback, useEffect } from 'react';
+import { useRadarTrapMapBox } from './useRadarTrapMapBox';
 
 const useResizeMap = ({
     _id,
@@ -11,9 +11,9 @@ const useResizeMap = ({
     const { status: boxStatus, directionsBox } = useRadarTrapMapBox(_id, feathersClient);
 
     const resizeMap = useCallback(animate => {
-        if (!map.current) return;
+        if (!map?.current) return;
 
-        if (boxStatus === "success") {
+        if (boxStatus === 'success') {
             map.current.resize();
             map.current.fitBounds(
                 [
@@ -23,13 +23,13 @@ const useResizeMap = ({
                 { animate, padding: 10 },
             );
         }
-    }, [boxStatus, directionsBox, map.current]);
+    }, [boxStatus, directionsBox, map]);
 
     useEffect(() => {
-        if (!map.current) return;
+        if (!map?.current) return;
 
         resizeMap(false);
-    }, [height, width, map.current, resizeMap]);
+    }, [height, width, map, resizeMap]);
 
     useEffect(() => {
         let resizeTimer;
@@ -41,10 +41,10 @@ const useResizeMap = ({
             }, 100);
         };
 
-        window.removeEventListener("resize", handleResize);
-        window.addEventListener("resize", handleResize);
+        window.removeEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize);
 
-        return () => window.removeEventListener("resize", handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, [resizeMap]);
 
     return { resizeMap, boxStatus };

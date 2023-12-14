@@ -1,7 +1,7 @@
-import io from "socket.io-client";
-import feathers from "@feathersjs/client";
-import socketio from "@feathersjs/socketio-client";
-import Generic from "./Generic";
+import io from 'socket.io-client';
+import feathers from '@feathersjs/client';
+import socketio from '@feathersjs/socketio-client';
+import Generic from './Generic';
 
 class RadarTrapGeneric extends Generic {
     constructor(props) {
@@ -34,7 +34,7 @@ class RadarTrapGeneric extends Generic {
 
     async settings() {
         return this.props.context.socket
-            .getAdapterInstances("radar-trap")
+            .getAdapterInstances('radar-trap')
             .then(res => {
                 this.setState({
                     settings: res[0].native.settings,

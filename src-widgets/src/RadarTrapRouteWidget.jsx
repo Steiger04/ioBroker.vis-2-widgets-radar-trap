@@ -1,21 +1,21 @@
-import React from "react";
-import { Typography } from "@mui/material";
-import { i18n as I18n } from "@iobroker/adapter-react-v5";
-import RadarTrapGeneric from "./RadarTrapGeneric";
-import { VisRadarMapSelect } from "./Components/VisRadarMapSelect";
-import { Message } from "./Components/Message";
-import { RadarTrapMap } from "./Components/RadarTrapMap";
+import React from 'react';
+import { Typography } from '@mui/material';
+import { i18n as I18n } from '@iobroker/adapter-react-v5';
+import RadarTrapGeneric from './RadarTrapGeneric';
+import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
+import { Message } from './Components/Message';
+import { RadarTrapMap } from './Components/RadarTrapMap';
 
 const mapStyles = [
-    "satellite-v9",
-    "satellite-streets-v11",
-    "streets-v11",
-    "streets-v12",
-    "light-v10",
-    "dark-v10",
-    "outdoors-v11",
-    "traffic-day-v2",
-    "traffic-night-v2",
+    'satellite-v9',
+    'satellite-streets-v11',
+    'streets-v11',
+    'streets-v12',
+    'light-v10',
+    'dark-v10',
+    'outdoors-v11',
+    'traffic-day-v2',
+    'traffic-night-v2',
 ];
 
 class RadarTrapRouteWidget extends RadarTrapGeneric {
@@ -30,31 +30,31 @@ class RadarTrapRouteWidget extends RadarTrapGeneric {
 
     static getWidgetInfo() {
         return {
-            id: "tplRadarTrapRouteWidget",
-            visSet: "vis-2-widgets-radar-trap",
+            id: 'tplRadarTrapRouteWidget',
+            visSet: 'vis-2-widgets-radar-trap',
             // visSetLabel: "set_label", // Widget set translated label (should be defined only in one widget of set)
-            visSetColor: "#4169E1", // Color of widget set. it is enough to set color only in one widget of set
-            visName: "route", // Name of widget
-            visWidgetLabel: "route",
+            visSetColor: '#4169E1', // Color of widget set. it is enough to set color only in one widget of set
+            visName: 'route', // Name of widget
+            visWidgetLabel: 'route',
             visAttrs: [
                 {
-                    name: "common", // group name
+                    name: 'common', // group name
                     fields: [
                         {
-                            name: "description",
-                            default: "",
+                            name: 'description',
+                            default: '',
                             hidden: true,
                         },
                         {
-                            name: "noCard",
-                            label: "without_card",
-                            type: "checkbox",
+                            name: 'noCard',
+                            label: 'without_card',
+                            type: 'checkbox',
                         },
                         {
-                            name: "routeId",
-                            label: "route_id",
-                            default: "",
-                            type: "custom",  // important
+                            name: 'routeId',
+                            label: 'route_id',
+                            default: '',
+                            type: 'custom',  // important
                             component: (     // important
                                 field,       // field properties: {name, label, type, set, singleName, component,...}
                                 data,        // widget data
@@ -71,127 +71,127 @@ class RadarTrapRouteWidget extends RadarTrapGeneric {
                             />),
                         },
                         {
-                            name: "styleSelect",
-                            label: "style_select",
-                            type: "select",
-                            default: "streets-v12",
+                            name: 'styleSelect',
+                            label: 'style_select',
+                            type: 'select',
+                            default: 'streets-v12',
                             options: mapStyles,
                         },
                         {
-                            name: "routeColor",
-                            label: "route_color",
-                            type: "color",
-                            default: "#9c27b0",
+                            name: 'routeColor',
+                            label: 'route_color',
+                            type: 'color',
+                            default: '#9c27b0',
                         },
                         {
-                            name: "routeWidth",
-                            label: "route_width",
-                            type: "slider",
+                            name: 'routeWidth',
+                            label: 'route_width',
+                            type: 'slider',
                             default: 5,
                             min: 1,
                             max: 20,
                             step: 0.5,
                         },
                         {
-                            name: "showCluster",
-                            label: "show_cluster",
-                            type: "checkbox",
+                            name: 'showCluster',
+                            label: 'show_cluster',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "clusterColor",
-                            label: "cluster_color",
-                            type: "color",
-                            default: "#d502f9",
+                            name: 'clusterColor',
+                            label: 'cluster_color',
+                            type: 'color',
+                            default: '#d502f9',
                         },
                         {
-                            name: "symbolColor",
-                            label: "symbol_color",
-                            type: "color",
-                            default: "#263238",
+                            name: 'symbolColor',
+                            label: 'symbol_color',
+                            type: 'color',
+                            default: '#263238',
                         },
                         {
-                            name: "fitButton",
-                            label: "fit_button",
-                            type: "checkbox",
+                            name: 'fitButton',
+                            label: 'fit_button',
+                            type: 'checkbox',
                             default: true,
                         },
                     ],
                 },
                 {
-                    name: "traps",
-                    label: "group_traps",
+                    name: 'traps',
+                    label: 'group_traps',
                     fields: [
                         {
-                            name: "fixedTrap",
-                            label: "fixed_trap",
-                            type: "checkbox",
+                            name: 'fixedTrap',
+                            label: 'fixed_trap',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "speedTrap",
-                            label: "speed_trap",
-                            type: "checkbox",
+                            name: 'speedTrap',
+                            label: 'speed_trap',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "mobileTrap",
-                            label: "mobile_trap",
-                            type: "checkbox",
+                            name: 'mobileTrap',
+                            label: 'mobile_trap',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "trafficJam",
-                            label: "traffic_jam",
-                            type: "checkbox",
+                            name: 'trafficJam',
+                            label: 'traffic_jam',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "accident",
-                            label: "accident",
-                            type: "checkbox",
+                            name: 'accident',
+                            label: 'accident',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "roadWork",
-                            label: "road_work",
-                            type: "checkbox",
+                            name: 'roadWork',
+                            label: 'road_work',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "object",
-                            label: "object",
-                            type: "checkbox",
+                            name: 'object',
+                            label: 'object',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "sleekness",
-                            label: "sleekness",
-                            type: "checkbox",
+                            name: 'sleekness',
+                            label: 'sleekness',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "fog",
-                            label: "fog",
-                            type: "checkbox",
+                            name: 'fog',
+                            label: 'fog',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "policeNews",
-                            label: "police_news",
-                            type: "checkbox",
+                            name: 'policeNews',
+                            label: 'police_news',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "closedCongestedRoad",
-                            label: "closed_congested_road",
-                            type: "checkbox",
+                            name: 'closedCongestedRoad',
+                            label: 'closed_congested_road',
+                            type: 'checkbox',
                             default: true,
                         },
                         {
-                            name: "animateClosedCongestedRoad",
-                            label: "animate_closed_congested_road",
-                            type: "checkbox",
+                            name: 'animateClosedCongestedRoad',
+                            label: 'animate_closed_congested_road',
+                            type: 'checkbox',
                             default: false,
                         },
                     ],
@@ -199,11 +199,11 @@ class RadarTrapRouteWidget extends RadarTrapGeneric {
                 // check here all possible types https://github.com/ioBroker/ioBroker.vis/blob/react/src/src/Attributes/Widget/SCHEMA.md
             ],
             visDefaultStyle: {
-                width: "100%",
+                width: '100%',
                 height: 200,
-                position: "relative",
+                position: 'relative',
             },
-            visPrev: "widgets/vis-2-widgets-radar-trap/img/prev-route-widget.png",
+            visPrev: 'widgets/vis-2-widgets-radar-trap/img/prev-route-widget.png',
         };
     }
 
@@ -261,12 +261,12 @@ class RadarTrapRouteWidget extends RadarTrapGeneric {
                 width={this.state.rxStyle.width}
                 height={this.state.rxStyle.height}
             />
-        ) : <Message message={`${I18n.t("For the configuration the radar-trap instance must be started")}`} />;
+        ) : <Message message={`${I18n.t('For the configuration the radar-trap instance must be started')}`} />;
 
         const contentHeader = this.state.rxData.description && this.state.radarTrapEnabled ?
             <Typography
                 variant="h6"
-                sx={{ fontWeight:"bold", pb: 1 }}
+                sx={{ fontWeight:'bold', pb: 1 }}
             >
                 {this.state.rxData.description}
             </Typography> :
@@ -278,7 +278,7 @@ class RadarTrapRouteWidget extends RadarTrapGeneric {
             content,
             // null,
             contentHeader,
-            { height: "100%", padding: 10, boxSizing: "border-box" },
+            { height: '100%', padding: 10, boxSizing: 'border-box' },
         );
     }
 }

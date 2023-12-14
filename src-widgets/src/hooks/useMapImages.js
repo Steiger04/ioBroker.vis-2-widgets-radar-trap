@@ -1,26 +1,26 @@
 import {
     useCallback, useEffect, useState, useRef,
-} from "react";
+} from 'react';
 
 const images = [
-    { id: "icon-fixed-trap", png: "widgets/vis-2-widgets-radar-trap/img/icon-fixed-trap.png" },
-    { id: "icon-mobile-trap", png: "widgets/vis-2-widgets-radar-trap/img/icon-mobile-trap.png" },
-    { id: "icon-traffic-jam", png: "widgets/vis-2-widgets-radar-trap/img/icon-traffic-jam.png" },
-    { id: "icon-road-work", png: "widgets/vis-2-widgets-radar-trap/img/icon-road-work.png" },
-    { id: "icon-accident", png: "widgets/vis-2-widgets-radar-trap/img/icon-accident.png" },
-    { id: "icon-object", png: "widgets/vis-2-widgets-radar-trap/img/icon-object.png" },
-    { id: "icon-sleekness", png: "widgets/vis-2-widgets-radar-trap/img/icon-sleekness.png" },
-    { id: "icon-fog", png: "widgets/vis-2-widgets-radar-trap/img/icon-fog.png" },
-    { id: "icon-police-news", png: "widgets/vis-2-widgets-radar-trap/img/icon-police-news.png" },
+    { id: 'icon-fixed-trap', png: 'widgets/vis-2-widgets-radar-trap/img/icon-fixed-trap.png' },
+    { id: 'icon-mobile-trap', png: 'widgets/vis-2-widgets-radar-trap/img/icon-mobile-trap.png' },
+    { id: 'icon-traffic-jam', png: 'widgets/vis-2-widgets-radar-trap/img/icon-traffic-jam.png' },
+    { id: 'icon-road-work', png: 'widgets/vis-2-widgets-radar-trap/img/icon-road-work.png' },
+    { id: 'icon-accident', png: 'widgets/vis-2-widgets-radar-trap/img/icon-accident.png' },
+    { id: 'icon-object', png: 'widgets/vis-2-widgets-radar-trap/img/icon-object.png' },
+    { id: 'icon-sleekness', png: 'widgets/vis-2-widgets-radar-trap/img/icon-sleekness.png' },
+    { id: 'icon-fog', png: 'widgets/vis-2-widgets-radar-trap/img/icon-fog.png' },
+    { id: 'icon-police-news', png: 'widgets/vis-2-widgets-radar-trap/img/icon-police-news.png' },
     {
-        id: "icon-traffic-closure",
-        png: "widgets/vis-2-widgets-radar-trap/img/icon-traffic-closure.png",
+        id: 'icon-traffic-closure',
+        png: 'widgets/vis-2-widgets-radar-trap/img/icon-traffic-closure.png',
     },
 ];
 
 const useMapImages = styleSelect => {
     const mapRef = useRef(null);
-    const [status, setStatus] = useState("idle");
+    const [status, setStatus] = useState('idle');
     const [loadImages, setLoadImages] = useState(null);
 
     const loadMapImages = useCallback(ref => {
@@ -32,7 +32,7 @@ const useMapImages = styleSelect => {
             const _loadImages = () => {
                 // console.log("useMapImages() -> loadImages() wird ausgeführt");
 
-                setStatus("loading");
+                setStatus('loading');
                 for (const image of images) {
                     if (!map.getMap().hasImage(image.id)) {
                         loadedImages.push(
@@ -46,7 +46,7 @@ const useMapImages = styleSelect => {
                                         image.id,
                                         mapImage,
                                         {
-                                            sdf: image.id !== "icon-traffic-closure",
+                                            sdf: image.id !== 'icon-traffic-closure',
                                         },
                                     );
                                     resolve();
@@ -59,7 +59,7 @@ const useMapImages = styleSelect => {
                     }
                 }
 
-                Promise.all(loadedImages).then(() => setStatus("success")).catch(ex => console.log(ex));
+                Promise.all(loadedImages).then(() => setStatus('success')).catch(ex => console.log(ex));
             };
 
             setLoadImages(() => _loadImages);
@@ -67,12 +67,12 @@ const useMapImages = styleSelect => {
     }, []);
 
     useEffect(() => {
-        if (!mapRef.current || !loadImages) return;
+        if (!mapRef?.current || !loadImages) return;
         // console.log("RadarTrapMap: useEffect [data.styleSelect, loadImages, mapRef.current]", styleSelect);
 
-        mapRef.current.getMap().setStyle(`mapbox://styles/mapbox/${styleSelect || "streets-v12"}`, { diff: false });
+        mapRef.current.getMap().setStyle(`mapbox://styles/mapbox/${styleSelect || 'streets-v12'}`, { diff: false });
         loadImages();
-    }, [styleSelect, loadImages, mapRef.current]);
+    }, [styleSelect, loadImages, mapRef]);
 
     useEffect(() => {
         // console.log("useMapImages() -> status", status);

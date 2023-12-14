@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback, useRef } from 'react';
 
 const dashArraySequence = [
     [0, 4, 3],
@@ -33,8 +33,8 @@ const useAnimationFrame = (editMode, map, mapImageStatus, closedCongestedRoad, a
 
         if (newStep !== step) {
             map.current.getMap().setPaintProperty(
-                "line-dashed",
-                "line-dasharray",
+                'line-dashed',
+                'line-dasharray',
                 dashArraySequence[step],
             );
             step = newStep;
@@ -42,7 +42,7 @@ const useAnimationFrame = (editMode, map, mapImageStatus, closedCongestedRoad, a
 
         // eslint-disable-next-line consistent-return
         return step;
-    }, [map.current]);
+    }, [map]);
 
     const animate = useCallback((timestamp, step) => {
         const newStep = animateDashArray(timestamp, step);
@@ -56,7 +56,7 @@ const useAnimationFrame = (editMode, map, mapImageStatus, closedCongestedRoad, a
     }, []);
 
     useEffect(() => {
-        if (!editMode && mounted.current === true && mapImageStatus === "success" && closedCongestedRoad && animateClosedCongestedRoad) {
+        if (!editMode && mounted.current === true && mapImageStatus === 'success' && closedCongestedRoad && animateClosedCongestedRoad) {
             frame.current = requestAnimationFrame(timestamp => animate(timestamp, 0));
         } else {
             cancelAnimationFrame(frame.current);

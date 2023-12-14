@@ -108,7 +108,7 @@
     "enabled": true,
     "readme": "https://github.com/ioBroker/ioBroker.vis-2-widgets-radar-trap/blob/master/README.md",
     "loglevel": "info",
-    "mode": "once",
+    "mode": "none",
     "nogit": true,
     "singleton": true,
     "onlyWWW": true,

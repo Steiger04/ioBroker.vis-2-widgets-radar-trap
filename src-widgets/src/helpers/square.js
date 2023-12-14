@@ -1,5 +1,5 @@
-import destination from "@turf/destination";
-import { polygon } from "@turf/helpers";
+import destination from '@turf/destination';
+import { polygon } from '@turf/helpers';
 
 const square = (center, radius) => {
     const cross = Math.sqrt(2 * radius ** 2);

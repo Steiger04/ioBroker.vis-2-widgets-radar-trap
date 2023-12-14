@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import List from "@mui/material/List";
-import { camelCase } from "lodash";
+import React, { useEffect, useState } from 'react';
+import List from '@mui/material/List';
+import { camelCase } from 'lodash';
 import {
     ListSubheader, ListItem, ListItemButton, Typography,
-} from "@mui/material";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import { i18n as I18n } from "@iobroker/adapter-react-v5";
-import { setJumpId, setCoordinates } from "../helpers/state";
-import { useRadarTrapSource } from "../hooks/useRadarTrapSource";
+} from '@mui/material';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import { i18n as I18n } from '@iobroker/adapter-react-v5';
+import { setJumpId, setCoordinates } from '../helpers/state';
+import { useRadarTrapSource } from '../hooks/useRadarTrapSource';
 
 const RadarTrapInfoList = ({
     feathersClient, routeOrAreaId, data, style,
@@ -24,7 +24,7 @@ const RadarTrapInfoList = ({
     };
 
     useEffect(() => {
-        if (sourceStatus !== "loading") {
+        if (sourceStatus !== 'loading') {
             const trapsFeature = trapsFeatureCollection.features.filter(
                 feature => feature.properties.trapInfo !== null,
             );
@@ -35,16 +35,16 @@ const RadarTrapInfoList = ({
                     return groups;
                 },
                 {
-                    "fixed-trap": [],
-                    "mobile-trap": [],
-                    "speed-trap": [],
-                    "road-work": [],
-                    "traffic-jam": [],
+                    'fixed-trap': [],
+                    'mobile-trap': [],
+                    'speed-trap': [],
+                    'road-work': [],
+                    'traffic-jam': [],
                     sleekness: [],
                     accident: [],
                     fog: [],
                     object: [],
-                    "police-news": [],
+                    'police-news': [],
                 },
             );
 
@@ -55,28 +55,28 @@ const RadarTrapInfoList = ({
     const listItems = Object.entries(trapsFeatureGroup).map(([trapGroupName, trapFeatures], sectionId) => (data[camelCase(trapGroupName)] ?
         <li key={`section-${sectionId}`}>
             { (data.nothingInfo || trapFeatures.length) ?
-                <ul style={{ "list-style-position": "inside" }}>
+                <ul style={{ 'list-style-position': 'inside' }}>
                     <ListSubheader
                         sx={{
                             p: 0,
-                            color: "inherit",
-                            bgcolor: style["background-color"],
+                            color: 'inherit',
+                            bgcolor: style['background-color'],
                         }}
                     >
                         <Box
                             sx={{
                                 px: 1,
-                                display: "flex",
-                                alignItems: "center",
-                                backdropFilter: "brightness(0.4)",
+                                display: 'flex',
+                                alignItems: 'center',
+                                backdropFilter: 'brightness(0.4)',
                             }}
                         >
                             <ListItemAvatar>
                                 <Avatar
                                     sx={{
-                                        "&.MuiAvatar-rounded": { py: 1 },
+                                        '&.MuiAvatar-rounded': { py: 1 },
                                         filter: `opacity(.5) drop-shadow(0 0 0 ${data.symbolColor})`,
-                                        bgcolor: "inherit",
+                                        bgcolor: 'inherit',
                                         width: 32,
                                         height: 32,
                                     }}
@@ -101,21 +101,21 @@ const RadarTrapInfoList = ({
                         >
                             <ListItemButton
                                 onClick={() => handleListItemClick({ routeOrAreaId, coordinates, trapInfo })}
-                                sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
+                                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
                             >
                                 {data.trapHeadline &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body1" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body1' }}
                                         primary={<b>{trapInfo.typeText}</b>}
                                     />}
                                 {trapInfo.vmax &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("vmax") }
+                                                { I18n.t('vmax') }
                                                 :&nbsp;
                                             </b>
                                             <span>
@@ -126,11 +126,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.reason &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
-                                        primary={<Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
+                                        primary={<Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
                                             <b>
-                                                { I18n.t("reason") }
+                                                { I18n.t('reason') }
                                                 :&nbsp;
                                             </b>
                                             <span>{trapInfo.reason}</span>
@@ -138,11 +138,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.length &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("length") }
+                                                { I18n.t('length') }
                                                 :&nbsp;
                                             </b>
                                             <span>
@@ -153,11 +153,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.duration &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("duration") }
+                                                { I18n.t('duration') }
                                                 :&nbsp;
                                             </b>
                                             <span>
@@ -168,11 +168,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.delay &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("delay") }
+                                                { I18n.t('delay') }
                                                 :&nbsp;
                                             </b>
                                             <span>
@@ -183,11 +183,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.createDate &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("createDate") }
+                                                { I18n.t('createDate') }
                                                 :&nbsp;
                                             </b>
                                             <span>{trapInfo.createDate}</span>
@@ -195,11 +195,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.confirmDate &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("confirmDate") }
+                                                { I18n.t('confirmDate') }
                                                 :&nbsp;
                                             </b>
                                             <span>{trapInfo.confirmDate}</span>
@@ -207,11 +207,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.state &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("state") }
+                                                { I18n.t('state') }
                                                 :&nbsp;
                                             </b>
                                             <span>{trapInfo.state}</span>
@@ -219,11 +219,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.street &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("street") }
+                                                { I18n.t('street') }
                                                 :&nbsp;
                                             </b>
                                             <span>{trapInfo.street}</span>
@@ -231,11 +231,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.zipCode && trapInfo.city &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("city") }
+                                                { I18n.t('city') }
                                                 :&nbsp;
                                             </b>
                                             <span>
@@ -247,11 +247,11 @@ const RadarTrapInfoList = ({
                                     />}
                                 {trapInfo.cityDistrict &&
                                     <ListItemText
-                                        sx={{ my: "2px" }}
-                                        primaryTypographyProps={{ variant: "body2" }}
+                                        sx={{ my: '2px' }}
+                                        primaryTypographyProps={{ variant: 'body2' }}
                                         primary={<>
                                             <b>
-                                                { I18n.t("cityDistrict") }
+                                                { I18n.t('cityDistrict') }
                                                 :&nbsp;
                                             </b>
                                             <span>{trapInfo.cityDistrict}</span>
@@ -265,25 +265,25 @@ const RadarTrapInfoList = ({
 
     return (
         <Box sx={{
-            overflow: "auto",
-            bgcolor: style["background-color"],
-            height: "100%",
-            width: "100%",
-            position: "relative",
+            overflow: 'auto',
+            bgcolor: style['background-color'],
+            height: '100%',
+            width: '100%',
+            position: 'relative',
         }}
         >
             <Box
                 sx={{
-                    position: "absolute",
-                    width: "100%",
-                    height: "100%",
-                    "& ul": { padding: 0 },
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    '& ul': { padding: 0 },
                 }}
             >
                 <List
                     sx={{
-                        listStylePosition: "inside",
-                        backdropFilter: "brightness(0.5)",
+                        listStylePosition: 'inside',
+                        backdropFilter: 'brightness(0.5)',
                     }}
                     subheader={<li />}
                 >

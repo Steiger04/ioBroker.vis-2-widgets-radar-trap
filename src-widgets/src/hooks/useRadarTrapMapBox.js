@@ -1,13 +1,13 @@
-import bbox from "@turf/bbox";
-import { featureCollection } from "@turf/helpers";
-import { useCallback, useEffect, useState } from "react";
-import { square } from "../helpers/square";
-import { useRadarTrapSource } from "./useRadarTrapSource";
+import bbox from '@turf/bbox';
+import { featureCollection } from '@turf/helpers';
+import { useCallback, useEffect, useState } from 'react';
+import { square } from '../helpers/square';
+import { useRadarTrapSource } from './useRadarTrapSource';
 
 const cache = new Map();
 
 const useRadarTrapMapBox = (id, feathersClient) => {
-    const [status, setStatus] = useState("idle");
+    const [status, setStatus] = useState('idle');
 
     const [directionsBox, setDirectionsBox] = useState(null);
 
@@ -18,18 +18,18 @@ const useRadarTrapMapBox = (id, feathersClient) => {
     } = useRadarTrapSource(id, feathersClient);
 
     const fetchData = useCallback(async () => {
-        const url = "http://ip-api.com/json?fields=lon,lat";
+        const url = 'http://ip-api.com/json?fields=lon,lat';
 
         let json;
 
-        setStatus("loading");
+        setStatus('loading');
         if (cache.has(url)) {
             json = cache.get(url);
         } else {
             json = await fetch(url)
                 .then(async response => response.json())
                 .catch(ex => {
-                    setStatus("error");
+                    setStatus('error');
                     console.log(
                         `useRadarTrapMapBox() -> fetch(): url=${url} -> Error: ${ex}`,
                     );
@@ -48,52 +48,51 @@ const useRadarTrapMapBox = (id, feathersClient) => {
             Number(box[2].toFixed(5)),
         ]);
 
-        setStatus("success");
+        setStatus('success');
     }, []);
 
-    /* useEffect(() => {
-        console.log("useRadarTrapMapBox() -> areaSourceStatus", areaSourceStatus);
-        console.log("useRadarTrapMapBox() -> routeSourceStatus", routeSourceStatus);
-    }, [areaSourceStatus, routeSourceStatus]); */
-
     useEffect(() => {
-        if (areaSourceStatus === "error" && routeSourceStatus === "error") {
+        if (areaSourceStatus === 'error' && routeSourceStatus === 'error') {
             fetchData().catch(ex => {
-                setStatus("error");
+                setStatus('error');
                 console.log(
                     `useRadarTrapMapBox() -> fetchData() -> Error: ${ex}`,
                 );
             });
         }
-    }, [areaSourceStatus, routeSourceStatus]);
+    }, [areaSourceStatus, routeSourceStatus, fetchData]);
 
     useEffect(() => {
-        if (areaSourceStatus === "success") {
+        if (!areaPolygons) return;
+
+        if (areaSourceStatus === 'success') {
             setDirectionsBox(
                 bbox(featureCollection(Object.values(areaPolygons))),
             );
-            setStatus("success");
+            setStatus('success');
 
             return;
         }
 
-        if (areaSourceStatus === "loading") {
-            setStatus("loading");
+        if (areaSourceStatus === 'loading') {
+            setStatus('loading');
         }
-    }, [areaSourceStatus]);
+    }, [areaSourceStatus, areaPolygons]);
 
     useEffect(() => {
-        if (routeSourceStatus === "success") {
+        if (!directionsFeatureCollection.features.length) return;
+
+        if (routeSourceStatus === 'success') {
             setDirectionsBox(bbox(directionsFeatureCollection));
-            setStatus("success");
+            setStatus('success');
 
             return;
         }
 
-        if (routeSourceStatus === "loading") {
-            setStatus("loading");
+        if (routeSourceStatus === 'loading') {
+            setStatus('loading');
         }
-    }, [routeSourceStatus]);
+    }, [routeSourceStatus, directionsFeatureCollection]);
 
     return { status, directionsBox };
 };

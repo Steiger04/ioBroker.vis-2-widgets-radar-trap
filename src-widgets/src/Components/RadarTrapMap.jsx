@@ -1,21 +1,21 @@
-import React, { useCallback, useEffect, useState } from "react";
-import "mapbox-gl/dist/mapbox-gl.css";
-import Fab from "@mui/material/Fab";
-import ZoomOutMap from "@mui/icons-material/ZoomOutMap";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React, { useCallback, useEffect, useState } from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import Fab from '@mui/material/Fab';
+import ZoomOutMap from '@mui/icons-material/ZoomOutMap';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Map, {
     Source, Layer, ScaleControl, Popup,
-} from "react-map-gl";
-import { featureCollection } from "@turf/helpers";
+} from 'react-map-gl';
+import { featureCollection } from '@turf/helpers';
 // eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
-import mapboxgl from "!mapbox-gl";
-import { TrapInfo } from "./TrapInfo";
-import { useResizeMap } from "../hooks/useResizeMap";
-import { useMapImages } from "../hooks/useMapImages";
-import { useAnimationFrame } from "../hooks/useAnimationFrame";
-import { useRadarTrapSource } from "../hooks/useRadarTrapSource";
-import { getMapStyle } from "../helpers/getMapStyle";
-import { useGlobalState } from "../helpers/state";
+import mapboxgl from '!mapbox-gl';
+import { TrapInfo } from './TrapInfo';
+import { useResizeMap } from '../hooks/useResizeMap';
+import { useMapImages } from '../hooks/useMapImages';
+import { useAnimationFrame } from '../hooks/useAnimationFrame';
+import { useRadarTrapSource } from '../hooks/useRadarTrapSource';
+import { getMapStyle } from '../helpers/getMapStyle';
+import { useGlobalState } from '../helpers/state';
 
 const RadarTrapMap = ({
     type,
@@ -27,11 +27,11 @@ const RadarTrapMap = ({
     width,
     height,
 }) => {
-    const [jumpId] = useGlobalState("jumpId");
-    const [coordinates] = useGlobalState("coordinates");
+    const [jumpId] = useGlobalState('jumpId');
+    const [coordinates] = useGlobalState('coordinates');
     const [trapInfo, setTrapInfo] = useState(false);
-    const [cursor, setCursor] = useState("");
-    const upSmall = useMediaQuery(theme => theme.breakpoints.up("sm"));
+    const [cursor, setCursor] = useState('');
+    const upSmall = useMediaQuery(theme => theme.breakpoints.up('sm'));
 
     const {
         mapRef, loadMapImages, status: mapImageStatus,
@@ -57,8 +57,8 @@ const RadarTrapMap = ({
 
     useAnimationFrame(editMode, mapRef, mapImageStatus, data.closedCongestedRoad, data.animateClosedCongestedRoad);
 
-    const mouseEnterHandler = useCallback(() => setCursor("pointer"), []);
-    const mouseLeaveHandler = useCallback(() => setCursor(""), []);
+    const mouseEnterHandler = useCallback(() => setCursor('pointer'), []);
+    const mouseLeaveHandler = useCallback(() => setCursor(''), []);
 
     const clickHandler = useCallback(event => {
         const feature = event.features && event.features[0];
@@ -72,12 +72,12 @@ const RadarTrapMap = ({
         const mapboxSource = mapRef.current.getSource(sourceId);
 
         switch (feature.layer.id) {
-            case "traffic-closure":
+            case 'traffic-closure':
                 // eslint-disable-next-line no-case-declarations
                 const address = JSON.parse(feature.properties.address);
 
                 setTimeout(() => setTrapInfo({
-                    typeText: "Verkehrssperrung",
+                    typeText: 'Verkehrssperrung',
                     country: address.country,
                     zipCode: address.zip,
                     city: address.city,
@@ -87,7 +87,7 @@ const RadarTrapMap = ({
                 }), 0);
                 break;
 
-            case "traps":
+            case 'traps':
                 setTimeout(() => setTrapInfo({
                     ...JSON.parse(feature.properties.trapInfo),
                     longitude: event.lngLat.lng,
@@ -95,7 +95,7 @@ const RadarTrapMap = ({
                 }), 0);
                 break;
 
-            case "speed-traps":
+            case 'speed-traps':
                 setTimeout(() => setTrapInfo({
                     ...JSON.parse(feature.properties.trapInfo),
                     longitude: event.lngLat.lng,
@@ -103,7 +103,7 @@ const RadarTrapMap = ({
                 }), 0);
                 break;
 
-            case "cluster-traps":
+            case 'cluster-traps':
                 mapboxSource.getClusterExpansionZoom(clusterId, (err, zoom) => {
                     if (err) {
                         return;
@@ -122,7 +122,7 @@ const RadarTrapMap = ({
             default:
                 break;
         }
-    }, [mapRef.current]);
+    }, [mapRef]);
 
     useEffect(() => {
         if (!mapRef.current && !jumpId && !coordinates && !routeOrAreaId) return;
@@ -133,7 +133,7 @@ const RadarTrapMap = ({
                 zoom: 15,
             });
         }
-    }, [mapRef.current, jumpId, coordinates, routeOrAreaId]);
+    }, [mapRef, jumpId, coordinates, routeOrAreaId]);
 
     return (
         settings ?
@@ -145,10 +145,10 @@ const RadarTrapMap = ({
                 attributionControl={false}
                 logoPosition="bottom-right"
                 interactiveLayerIds={[
-                    "cluster-traps",
-                    "traps",
-                    "speed-traps",
-                    "traffic-closure",
+                    'cluster-traps',
+                    'traps',
+                    'speed-traps',
+                    'traffic-closure',
                 ]}
                 cursor={cursor}
                 onClick={clickHandler}
@@ -157,9 +157,9 @@ const RadarTrapMap = ({
             >
                 {data.fitButton && <Fab
                     sx={{
-                        position: "absolute", right: 0, top: 0, opacity: 0.7, m: 1,
+                        position: 'absolute', right: 0, top: 0, opacity: 0.7, m: 1,
                     }}
-                    size={upSmall ? "medium" : "small"}
+                    size={upSmall ? 'medium' : 'small'}
                     color="primary"
                     onClick={() => resizeMap(true)}
                 >
@@ -180,11 +180,11 @@ const RadarTrapMap = ({
 
                 <ScaleControl style={{ p: 4 }} position="bottom-left" />
 
-                {type === "route" && mapImageStatus === "success" && <Source type="geojson" data={directionsFeatureCollection}>
-                    <Layer {...getMapStyle("route", data)} />
+                {type === 'route' && mapImageStatus === 'success' && <Source type="geojson" data={directionsFeatureCollection}>
+                    <Layer {...getMapStyle('route', data)} />
                 </Source>}
 
-                {type === "area" && mapImageStatus === "success" && data?.showPolygon && <Source
+                {type === 'area' && mapImageStatus === 'success' && data?.showPolygon && <Source
                     type="geojson"
                     data={
                         areaPolygons
@@ -193,37 +193,37 @@ const RadarTrapMap = ({
                             : featureCollection([])
                     }
                 >
-                    <Layer {...getMapStyle("areaSurface", data)} />
-                    <Layer {...getMapStyle("areaSurfaceBorder", data)} />
+                    <Layer {...getMapStyle('areaSurface', data)} />
+                    <Layer {...getMapStyle('areaSurfaceBorder', data)} />
                 </Source>}
 
-                {type === "area" && mapImageStatus === "success" && data.closedCongestedRoad && <Source type="geojson" data={polysFeatureCollection}>
-                    <Layer {...getMapStyle("lineBackground", data)} />
-                    <Layer {...getMapStyle("lineDashed", data)} />
-                    <Layer {...getMapStyle("trafficClosure", data)} />
+                {type === 'area' && mapImageStatus === 'success' && data.closedCongestedRoad && <Source type="geojson" data={polysFeatureCollection}>
+                    <Layer {...getMapStyle('lineBackground', data)} />
+                    <Layer {...getMapStyle('lineDashed', data)} />
+                    <Layer {...getMapStyle('trafficClosure', data)} />
                 </Source>}
 
-                {mapImageStatus === "success" && !data.showCluster && <Source
+                {mapImageStatus === 'success' && !data.showCluster && <Source
                     id="traps"
                     type="geojson"
                     data={trapsFeatureCollection}
                 >
-                    <Layer {...getMapStyle("speedTraps", data)} />
-                    <Layer {...getMapStyle("speedTrapsVmax", data)} />
-                    <Layer {...getMapStyle("traps", data)} />
+                    <Layer {...getMapStyle('speedTraps', data)} />
+                    <Layer {...getMapStyle('speedTrapsVmax', data)} />
+                    <Layer {...getMapStyle('traps', data)} />
                 </Source>}
 
-                {mapImageStatus === "success" && data.showCluster && <Source
+                {mapImageStatus === 'success' && data.showCluster && <Source
                     id="traps"
                     type="geojson"
                     data={trapsFeatureCollection}
                     cluster
                 >
-                    <Layer {...getMapStyle("speedTraps", data)} />
-                    <Layer {...getMapStyle("speedTrapsVmax", data)} />
-                    <Layer {...getMapStyle("traps", data)} />
-                    <Layer {...getMapStyle("clusterTraps", data)} />
-                    <Layer {...getMapStyle("clusterTrapsCount", data)} />
+                    <Layer {...getMapStyle('speedTraps', data)} />
+                    <Layer {...getMapStyle('speedTrapsVmax', data)} />
+                    <Layer {...getMapStyle('traps', data)} />
+                    <Layer {...getMapStyle('clusterTraps', data)} />
+                    <Layer {...getMapStyle('clusterTrapsCount', data)} />
                 </Source>}
             </Map> : null
     );

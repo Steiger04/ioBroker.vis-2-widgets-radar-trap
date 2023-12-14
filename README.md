@@ -28,6 +28,9 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
+### __WORK IN PROGRESS__
+- (steiger04) some bugfixes on widgets
+
 ### 1.0.4 (2023-12-13)
 - (steiger04) widgets updated
 

@@ -28,7 +28,7 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 1.0.6 (2023-12-14)
 - (steiger04) io-package changed
 
 ### 1.0.5 (2023-12-14)

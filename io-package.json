@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "news": {
+      "1.0.6": {
+        "en": "io-package changed",
+        "de": "io-paket geändert",
+        "ru": "io-package изменился",
+        "pt": "io-package alterado",
+        "nl": "io-package veranderde",
+        "fr": "io-package changed",
+        "it": "io-pacchetto cambiato",
+        "es": "io-paquete cambiado",
+        "pl": "wersja io",
+        "uk": "io-package змінено",
+        "zh-cn": "碘剂的改变"
+      },
       "1.0.5": {
         "en": "some bugfixes on widgets",
         "de": "einige bugfixes auf widgets",

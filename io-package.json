@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "news": {
+      "1.0.5": {
+        "en": "some bugfixes on widgets",
+        "de": "einige bugfixes auf widgets",
+        "ru": "некоторые багфиксы на виджетах",
+        "pt": "alguns bugfixes em widgets",
+        "nl": "wat insecten op widgets",
+        "fr": "quelques bugfix sur les widgets",
+        "it": "alcuni bugfix su widget",
+        "es": "algunos bugfixes en widgets",
+        "pl": "niektóre błędy na widgetach",
+        "uk": "деякі виправлення помилок на віджетах",
+        "zh-cn": "某些阴残障者"
+      },
       "1.0.4": {
         "en": "widgets updated",
         "de": "widgets aktualisiert",

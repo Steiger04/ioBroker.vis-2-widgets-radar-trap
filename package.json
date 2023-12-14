@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-2-widgets-radar-trap",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ioBroker vis-2 widgets for adapter radar-trap",
   "author": "Steiger04 <steiger04@posteo.de>",
   "contributors": [

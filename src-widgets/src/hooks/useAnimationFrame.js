@@ -24,7 +24,7 @@ const useAnimationFrame = (editMode, map, mapImageStatus, closedCongestedRoad, a
     const mounted = useRef(false);
 
     const animateDashArray = useCallback((timestamp, step) => {
-        if (!map.current) return step;
+        if (!map?.current) return step;
 
         const newStep = parseInt(
             (timestamp / 50) %

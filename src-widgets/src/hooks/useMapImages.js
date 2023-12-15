@@ -23,63 +23,51 @@ const useMapImages = styleSelect => {
     const [status, setStatus] = useState('idle');
     const [loadImages, setLoadImages] = useState(null);
 
-    const loadMapImages = useCallback(ref => {
-        if (ref !== null) {
-            mapRef.current = ref;
-            const map = ref;
+    const loadMapImages = useCallback(map => {
+        mapRef.current = map;
 
-            const loadedImages = [];
-            const _loadImages = () => {
-                // console.log("useMapImages() -> loadImages() wird ausgeführt");
+        const loadedImages = [];
+        const _loadImages = () => {
+            setStatus('loading');
+            for (const image of images) {
+                if (!map.getMap().hasImage(image.id)) {
+                    loadedImages.push(
+                        new Promise((resolve, reject) => {
+                            map.getMap().loadImage(image.png, (error, mapImage) => {
+                                if (error) {
+                                    reject(error);
+                                }
 
-                setStatus('loading');
-                for (const image of images) {
-                    if (!map.getMap().hasImage(image.id)) {
-                        loadedImages.push(
-                            new Promise((resolve, reject) => {
-                                map.getMap().loadImage(image.png, (error, mapImage) => {
-                                    if (error) {
-                                        reject(error);
-                                    }
-
-                                    map.getMap().addImage(
-                                        image.id,
-                                        mapImage,
-                                        {
-                                            sdf: image.id !== 'icon-traffic-closure',
-                                        },
-                                    );
-                                    resolve();
-                                });
-                            }).catch(ex =>
-                                console.log(
-                                    `useMapImages() -> loadImages() -> Error: ${ex}`,
-                                )),
-                        );
-                    }
+                                map.getMap().addImage(
+                                    image.id,
+                                    mapImage,
+                                    {
+                                        sdf: image.id !== 'icon-traffic-closure',
+                                    },
+                                );
+                                resolve();
+                            });
+                        }).catch(ex =>
+                            console.log(
+                                `useMapImages() -> loadImages() -> Error: ${ex}`,
+                            )),
+                    );
                 }
+            }
+            Promise.all(loadedImages).then(() => setStatus('success')).catch(ex => console.log(ex));
+        };
 
-                Promise.all(loadedImages).then(() => setStatus('success')).catch(ex => console.log(ex));
-            };
-
-            setLoadImages(() => _loadImages);
-        }
+        setLoadImages(() => _loadImages);
     }, []);
 
     useEffect(() => {
         if (!mapRef?.current || !loadImages) return;
-        // console.log("RadarTrapMap: useEffect [data.styleSelect, loadImages, mapRef.current]", styleSelect);
-
         mapRef.current.getMap().setStyle(`mapbox://styles/mapbox/${styleSelect || 'streets-v12'}`, { diff: false });
         loadImages();
     }, [styleSelect, loadImages, mapRef]);
 
-    useEffect(() => {
-        // console.log("useMapImages() -> status", status);
-    }, [status]);
-
     return {
-        mapRef, status, loadMapImages, loadImages,
+        mapRef, status, loadMapImages,
     };
 };
 

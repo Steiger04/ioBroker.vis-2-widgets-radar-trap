@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "news": {
+      "1.0.7": {
+        "en": "optimizations",
+        "de": "optimierungen",
+        "ru": "оптимизация",
+        "pt": "otimizações",
+        "nl": "optimisatie",
+        "fr": "optimisations",
+        "it": "ottimizzazioni",
+        "es": "optimizaciones",
+        "pl": "optymalizacja",
+        "uk": "оптимізація",
+        "zh-cn": "优化"
+      },
       "1.0.6": {
         "en": "io-package changed",
         "de": "io-paket geändert",
@@ -80,19 +93,6 @@
         "pl": "gulpfile zmieniał się",
         "uk": "javascript licenses api веб-сайт",
         "zh-cn": "古帕尔的变化"
-      },
-      "1.0.0": {
-        "en": "Initial commit",
-        "de": "Ursprüngliche Verpflichtung",
-        "ru": "Первоначальный коммит",
-        "pt": "Compromisso inicial",
-        "nl": "Initiatief",
-        "fr": "Engagement initial",
-        "it": "Impegno iniziale",
-        "es": "Composición inicial",
-        "pl": "Śledczy",
-        "uk": "Початкова комісія",
-        "zh-cn": "初始承诺"
       }
     },
     "titleLang": {

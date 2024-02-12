@@ -70,5 +70,7 @@
   "length": "length",
   "createDate": "reported",
   "confirmDate": "confirmed",
-  "For the configuration the radar-trap instance must be started": "For the configuration the radar-trap instance must be started."
+  "For the configuration the radar-trap instance must be started": "For the configuration the radar-trap instance must be started.",
+  "only_new_traps": "only new traps",
+  "title": "title"
 }

@@ -70,5 +70,7 @@
     "length": "довжина",
     "createDate": "повідомили",
     "confirmDate": "підтверджено",
-    "For the configuration the radar-trap instance must be started": "Для конфігурації необхідно запустити екземпляр радар-пастки."
+    "For the configuration the radar-trap instance must be started": "Для конфігурації необхідно запустити екземпляр радар-пастки.",
+    "only_new_traps": "тільки нові пастки",
+    "title": "назва"
 }

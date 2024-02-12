@@ -118,7 +118,6 @@ const VisRadarMapSelect = ({
                 onChange={e => {
                     onDataChange({
                         [fieldName]: e.target.value,
-                        description: state.listData.filter(data => data._id === e.target.value)[0]?.description,
                     });
                 }}
             >

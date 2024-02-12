@@ -12,7 +12,7 @@
         "@emotion/styled": "^11.11.0",
         "@feathersjs/client": "^4.5.15",
         "@feathersjs/socketio-client": "^4.5.15",
-        "@iobroker/adapter-react-v5": "^4.7.11",
+        "@iobroker/adapter-react-v5": "^4.9.3",
         "@iobroker/vis-2-widgets-react-dev": "^1.0.5",
         "@mui/icons-material": "5.14.19",
         "@mui/material": "5.14.14",

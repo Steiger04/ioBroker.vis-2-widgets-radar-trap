@@ -71,5 +71,7 @@
     "length": "longitud",
     "createDate": "reportado",
     "confirmDate": "confirmado",
-    "For the configuration the radar-trap instance must be started": "Para la configuración se debe iniciar la instancia de radar-trap."
+    "For the configuration the radar-trap instance must be started": "Para la configuración se debe iniciar la instancia de radar-trap.",
+    "only_new_traps": "solo trampas nuevas",
+    "title": "título"
 }

@@ -4,7 +4,7 @@ import { i18n as I18n } from '@iobroker/adapter-react-v5';
 import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
 import { Message } from './Components/Message';
 import { RadarTrapMap } from './Components/RadarTrapMap';
-import RadarTrapGeneric from './RadarTrapGeneric';
+import Generic from './Generic';
 
 const mapStyles = [
     'satellite-v9',
@@ -18,7 +18,7 @@ const mapStyles = [
     'traffic-night-v2',
 ];
 
-class RadarTrapAreaWidget extends RadarTrapGeneric {
+class RadarTrapAreaWidget extends Generic {
     constructor(props) {
         super(props);
 
@@ -38,14 +38,16 @@ class RadarTrapAreaWidget extends RadarTrapGeneric {
                     name: 'common', // group name
                     fields: [
                         {
-                            name: 'description',
-                            default: '',
-                            hidden: true,
-                        },
-                        {
                             name: 'noCard',
                             label: 'without_card',
                             type: 'checkbox',
+                        },
+                        {
+                            name: 'oid',
+                            label: 'title',
+                            type: 'id',
+                            noInit: true,
+                            filter: { common: { type: 'string' } },
                         },
                         {
                             name: 'areaId',
@@ -282,12 +284,13 @@ class RadarTrapAreaWidget extends RadarTrapGeneric {
             />
         ) : <Message message={`${I18n.t('For the configuration the radar-trap instance must be started')}`} />;
 
-        const contentHeader = this.state.rxData.description && this.state.radarTrapEnabled ?
+        const value = this.getValue();
+        const contentHeader = this.state.radarTrapEnabled && value ?
             <Typography
                 variant="h6"
                 sx={{ boxSizing: 'border-box', fontWeight:'bold', pb: 1 }}
             >
-                {this.state.rxData.description}
+                {value}
             </Typography> :
             null;
 

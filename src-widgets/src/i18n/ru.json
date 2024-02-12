@@ -70,5 +70,7 @@
     "length": "длина",
     "createDate": "сообщил",
     "confirmDate": "подтвержденный",
-    "For the configuration the radar-trap instance must be started": "Для настройки необходимо запустить экземпляр радара-ловушки."
+    "For the configuration the radar-trap instance must be started": "Для настройки необходимо запустить экземпляр радара-ловушки.",
+    "only_new_traps": "только новые ловушки",
+    "title": "заголовок"
 }

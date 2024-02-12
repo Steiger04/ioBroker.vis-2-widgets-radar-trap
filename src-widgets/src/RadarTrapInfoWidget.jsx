@@ -4,16 +4,16 @@ import { i18n as I18n } from '@iobroker/adapter-react-v5';
 import { RadarTrapInfoList } from './Components/RadarTrapInfoList';
 import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
 import { Message } from './Components/Message';
-import RadarTrapGeneric from './RadarTrapGeneric';
+import Generic from './Generic';
 
-class RadarTrapInfoWidget extends RadarTrapGeneric {
+class RadarTrapInfoWidget extends Generic {
     constructor(props) {
         super(props);
 
         this.language = this.props.context.systemConfig.common.language;
-        this.state = {
+        /* this.state = {
             ...this.state, settings: null, feathersClient: null,
-        };
+        }; */
     }
 
     static getWidgetInfo() {
@@ -28,14 +28,16 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
                     name: 'common', // group name
                     fields: [
                         {
-                            name: 'description',
-                            default: '',
-                            hidden: true,
-                        },
-                        {
                             name: 'noCard',
                             label: 'without_card',
                             type: 'checkbox',
+                        },
+                        {
+                            name: 'oid',
+                            label: 'title',
+                            type: 'id',
+                            noInit: true,
+                            filter: { common: { type: 'string' } },
                         },
                         {
                             name: 'routeOrAreaId',
@@ -87,6 +89,12 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
                     name: 'traps',
                     label: 'group_traps',
                     fields: [
+                        {
+                            name: 'onlyNewTraps',
+                            label: 'only_new_traps',
+                            type: 'checkbox',
+                            default: true,
+                        },
                         {
                             name: 'fixedTrap',
                             label: 'fixed_trap',
@@ -167,7 +175,7 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
     }
 
     // eslint-disable-next-line class-methods-use-this
-    propertiesUpdate() {
+    async propertiesUpdate() {
         // Widget has 3 important states
         // 1. this.state.values - contains all state values, that are used in widget (automatically collected from widget info).
         //                        So you can use `this.state.values[this.state.rxData.oid + '.val']` to get value of state with id this.state.rxData.oid
@@ -219,13 +227,14 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
             />
         ) : <Message message={`${I18n.t('For the configuration the radar-trap instance must be started')}`} />;
 
-        const contentHeader = this.state.rxData.description && this.state.radarTrapEnabled ?
+        const value = this.getValue();
+        const contentHeader = this.state.radarTrapEnabled && value ?
             <Typography
                 variant="h6"
                 component="h3"
                 sx={{ fontWeight:'bold', pb: 1 }}
             >
-                {this.state.rxData.description}
+                {value}
             </Typography> :
             null;
 
@@ -233,7 +242,6 @@ class RadarTrapInfoWidget extends RadarTrapGeneric {
 
         return this.wrapContent(
             content,
-            // null,
             contentHeader,
             {
                 height:'100%', width: '100%', padding: 10, boxSizing: 'border-box',

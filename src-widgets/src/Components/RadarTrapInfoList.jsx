@@ -52,64 +52,66 @@ const RadarTrapInfoList = ({
         }
     }, [sourceStatus, trapsFeatureCollection]);
 
-    const listItems = Object.entries(trapsFeatureGroup).map(([trapGroupName, trapFeatures], sectionId) => (data[camelCase(trapGroupName)] ?
-        <li key={`section-${sectionId}`}>
-            { (data.nothingInfo || trapFeatures.length) ?
-                <ul style={{ 'list-style-position': 'inside' }}>
-                    <ListSubheader
-                        sx={{
-                            p: 0,
-                            color: 'inherit',
-                            bgcolor: style['background-color'],
-                        }}
-                    >
-                        <Box
+    const listItems = Object.entries(trapsFeatureGroup).map(([trapGroupName, trapFeatures]) => [trapGroupName,
+        trapFeatures.filter(feature => (!data.onlyNewTraps ? true : (feature.properties.trapInfo.status === 'NEW')))])
+        .map(([trapGroupName, trapFeatures], sectionId) => (data[camelCase(trapGroupName)] ?
+            <li key={`section-${sectionId}`}>
+                { (data.nothingInfo || trapFeatures.length) ?
+                    <ul style={{ 'list-style-position': 'inside' }}>
+                        <ListSubheader
                             sx={{
-                                px: 1,
-                                display: 'flex',
-                                alignItems: 'center',
-                                backdropFilter: 'brightness(0.4)',
+                                p: 0,
+                                color: 'inherit',
+                                bgcolor: style['background-color'],
                             }}
                         >
-                            <ListItemAvatar>
-                                <Avatar
-                                    sx={{
-                                        '&.MuiAvatar-rounded': { py: 1 },
-                                        filter: `opacity(.5) drop-shadow(0 0 0 ${data.symbolColor})`,
-                                        bgcolor: 'inherit',
-                                        width: 32,
-                                        height: 32,
-                                    }}
-                                    variant="rounded"
-                                    src={`widgets/vis-2-widgets-radar-trap/img/icon-${trapGroupName}.png`}
-                                />
-                            </ListItemAvatar>
-                            {data.groupHeadline &&
+                            <Box
+                                sx={{
+                                    px: 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    backdropFilter: 'brightness(0.4)',
+                                }}
+                            >
+                                <ListItemAvatar>
+                                    <Avatar
+                                        sx={{
+                                            '&.MuiAvatar-rounded': { py: 1 },
+                                            filter: `opacity(.5) drop-shadow(0 0 0 ${data.symbolColor})`,
+                                            bgcolor: 'inherit',
+                                            width: 32,
+                                            height: 32,
+                                        }}
+                                        variant="rounded"
+                                        src={`widgets/vis-2-widgets-radar-trap/img/icon-${trapGroupName}.png`}
+                                    />
+                                </ListItemAvatar>
+                                {data.groupHeadline &&
                             <Typography
                                 variant="h6"
                                 sx={{ p: 1 }}
                             >
                                 { I18n.t(`${trapGroupName}`) }
                             </Typography>}
-                        </Box>
-                    </ListSubheader>
-                    {trapFeatures.map(({ geometry: { coordinates }, properties: { trapInfo } }, itemId) => (
-                        <ListItem
-                            dense
-                            divider
-                            key={`item-${sectionId}-${itemId}`}
-                        >
-                            <ListItemButton
-                                onClick={() => handleListItemClick({ routeOrAreaId, coordinates, trapInfo })}
-                                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+                            </Box>
+                        </ListSubheader>
+                        {trapFeatures.map(({ geometry: { coordinates }, properties: { trapInfo } }, itemId) => (
+                            <ListItem
+                                dense
+                                divider
+                                key={`item-${sectionId}-${itemId}`}
                             >
-                                {data.trapHeadline &&
+                                <ListItemButton
+                                    onClick={() => handleListItemClick({ routeOrAreaId, coordinates, trapInfo })}
+                                    sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+                                >
+                                    {data.trapHeadline &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body1' }}
                                         primary={<b>{trapInfo.typeText}</b>}
                                     />}
-                                {trapInfo.vmax &&
+                                    {trapInfo.vmax &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -124,7 +126,7 @@ const RadarTrapInfoList = ({
                                             </span>
                                         </>}
                                     />}
-                                {trapInfo.reason &&
+                                    {trapInfo.reason &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -136,7 +138,7 @@ const RadarTrapInfoList = ({
                                             <span>{trapInfo.reason}</span>
                                         </Box>}
                                     />}
-                                {trapInfo.length &&
+                                    {trapInfo.length &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -151,7 +153,7 @@ const RadarTrapInfoList = ({
                                             </span>
                                         </>}
                                     />}
-                                {trapInfo.duration &&
+                                    {trapInfo.duration &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -166,7 +168,7 @@ const RadarTrapInfoList = ({
                                             </span>
                                         </>}
                                     />}
-                                {trapInfo.delay &&
+                                    {trapInfo.delay &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -181,7 +183,7 @@ const RadarTrapInfoList = ({
                                             </span>
                                         </>}
                                     />}
-                                {trapInfo.createDate &&
+                                    {trapInfo.createDate &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -193,7 +195,7 @@ const RadarTrapInfoList = ({
                                             <span>{trapInfo.createDate}</span>
                                         </>}
                                     />}
-                                {trapInfo.confirmDate &&
+                                    {trapInfo.confirmDate &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -205,7 +207,7 @@ const RadarTrapInfoList = ({
                                             <span>{trapInfo.confirmDate}</span>
                                         </>}
                                     />}
-                                {trapInfo.state &&
+                                    {trapInfo.state &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -217,7 +219,7 @@ const RadarTrapInfoList = ({
                                             <span>{trapInfo.state}</span>
                                         </>}
                                     />}
-                                {trapInfo.street &&
+                                    {trapInfo.street &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -229,7 +231,7 @@ const RadarTrapInfoList = ({
                                             <span>{trapInfo.street}</span>
                                         </>}
                                     />}
-                                {trapInfo.zipCode && trapInfo.city &&
+                                    {trapInfo.zipCode && trapInfo.city &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -245,7 +247,7 @@ const RadarTrapInfoList = ({
                                             </span>
                                         </>}
                                     />}
-                                {trapInfo.cityDistrict &&
+                                    {trapInfo.cityDistrict &&
                                     <ListItemText
                                         sx={{ my: '2px' }}
                                         primaryTypographyProps={{ variant: 'body2' }}
@@ -257,11 +259,11 @@ const RadarTrapInfoList = ({
                                             <span>{trapInfo.cityDistrict}</span>
                                         </>}
                                     />}
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </ul> : null}
-        </li> : null));
+                                </ListItemButton>
+                            </ListItem>
+                        ))}
+                    </ul> : null}
+            </li> : null));
 
     return (
         <Box sx={{

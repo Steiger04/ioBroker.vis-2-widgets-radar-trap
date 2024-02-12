@@ -71,5 +71,7 @@
     "length": "Länge",
     "createDate": "gemeldet",
     "confirmDate": "bestätigt",
-    "For the configuration the radar-trap instance must be started": "Für die Konfiguration muss die radar-trap Instanz gestartet werden."
+    "For the configuration the radar-trap instance must be started": "Für die Konfiguration muss die radar-trap Instanz gestartet werden.",
+    "only_new_traps": "nur neue Hindernisse",
+    "title": "Titel"
 }

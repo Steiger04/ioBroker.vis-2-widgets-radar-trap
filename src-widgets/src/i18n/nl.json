@@ -70,5 +70,7 @@
     "length": "lengte",
     "createDate": "gemeld",
     "confirmDate": "bevestigd",
-    "For the configuration the radar-trap instance must be started": "Voor de configuratie moet de radartrapinstantie worden gestart."
+    "For the configuration the radar-trap instance must be started": "Voor de configuratie moet de radartrapinstantie worden gestart.",
+    "only_new_traps": "alleen nieuwe vallen",
+    "title": "titel"
 }

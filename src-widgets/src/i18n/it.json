@@ -70,5 +70,7 @@
     "length": "lunghezza",
     "createDate": "segnalato",
     "confirmDate": "confermato",
-    "For the configuration the radar-trap instance must be started": "Per la configurazione è necessario avviare l'istanza della trappola radar."
+    "For the configuration the radar-trap instance must be started": "Per la configurazione è necessario avviare l'istanza della trappola radar.",
+    "only_new_traps": "solo nuove trappole",
+    "title": "titolo"
 }

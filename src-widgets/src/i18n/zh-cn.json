@@ -70,5 +70,7 @@
     "length": "长度",
     "createDate": "报道",
     "confirmDate": "确认的",
-    "For the configuration the radar-trap instance must be started": "对于配置，必须启动雷达陷阱实例。"
+    "For the configuration the radar-trap instance must be started": "对于配置，必须启动雷达陷阱实例。",
+    "only_new_traps": "只有新的陷阱",
+    "title": "标题"
 }

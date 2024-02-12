@@ -70,5 +70,7 @@
     "length": "długość",
     "createDate": "zgłoszone",
     "confirmDate": "potwierdzony",
-    "For the configuration the radar-trap instance must be started": "Aby dokonać konfiguracji, należy uruchomić instancję pułapki radarowej."
+    "For the configuration the radar-trap instance must be started": "Aby dokonać konfiguracji, należy uruchomić instancję pułapki radarowej.",
+    "only_new_traps": "tylko nowe pułapki",
+    "title": "tytuł"
 }

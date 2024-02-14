@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "news": {
+      "1.1.1": {
+        "en": "io-package changed",
+        "de": "io-paket geändert",
+        "ru": "io-package изменен",
+        "pt": "io-package alterado",
+        "nl": "jo-pakket gewijzigd",
+        "fr": "io-emballage modifié",
+        "it": "io-pacchetto cambiato",
+        "es": "io-paquete cambiado",
+        "pl": "zmieniony pakiet jo-",
+        "uk": "іо-пакування змінено",
+        "zh-cn": "i-包装改变"
+      },
       "1.1.0": {
         "en": "new features for widgets",
         "de": "neue features für widgets",
@@ -80,19 +93,6 @@
         "pl": "widget",
         "uk": "віджети оновлені",
         "zh-cn": "最新目标"
-      },
-      "1.0.2": {
-        "en": "README changed",
-        "de": "README geändert",
-        "ru": "README изменен",
-        "pt": "REFERÊNCIA",
-        "nl": "Vertaling:",
-        "fr": "README changed",
-        "it": "README cambiato",
-        "es": "README cambió",
-        "pl": "README zmieniło się",
-        "uk": "Змінено",
-        "zh-cn": "中小企业的改变"
       }
     },
     "titleLang": {
@@ -165,7 +165,7 @@
     ],
     "dependencies": [
       {
-        "js-controller": ">=5.0.17"        
+        "js-controller": ">=5.0.17"
       }
     ]
   },

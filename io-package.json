@@ -1,176 +1,176 @@
 {
-    "common": {
-        "name": "vis-2-widgets-radar-trap",
-        "version": "1.0.7",
-        "news": {
-            "1.0.7": {
-                "en": "optimizations",
-                "de": "optimierungen",
-                "ru": "оптимизация",
-                "pt": "otimizações",
-                "nl": "optimisatie",
-                "fr": "optimisations",
-                "it": "ottimizzazioni",
-                "es": "optimizaciones",
-                "pl": "optymalizacja",
-                "uk": "оптимізація",
-                "zh-cn": "优化"
-            },
-            "1.0.6": {
-                "en": "io-package changed",
-                "de": "io-paket geändert",
-                "ru": "io-package изменился",
-                "pt": "io-package alterado",
-                "nl": "io-package veranderde",
-                "fr": "io-package changed",
-                "it": "io-pacchetto cambiato",
-                "es": "io-paquete cambiado",
-                "pl": "wersja io",
-                "uk": "io-package змінено",
-                "zh-cn": "碘剂的改变"
-            },
-            "1.0.5": {
-                "en": "some bugfixes on widgets",
-                "de": "einige bugfixes auf widgets",
-                "ru": "некоторые багфиксы на виджетах",
-                "pt": "alguns bugfixes em widgets",
-                "nl": "wat insecten op widgets",
-                "fr": "quelques bugfix sur les widgets",
-                "it": "alcuni bugfix su widget",
-                "es": "algunos bugfixes en widgets",
-                "pl": "niektóre błędy na widgetach",
-                "uk": "деякі виправлення помилок на віджетах",
-                "zh-cn": "某些阴残障者"
-            },
-            "1.0.4": {
-                "en": "widgets updated",
-                "de": "widgets aktualisiert",
-                "ru": "виджеты обновлены",
-                "pt": "widgets atualizados",
-                "nl": "widgets",
-                "fr": "widgets mis à jour",
-                "it": "widget aggiornati",
-                "es": "widgets actualizados",
-                "pl": "widget",
-                "uk": "віджети оновлені",
-                "zh-cn": "最新目标"
-            },
-            "1.0.3": {
-                "en": "widgets updated",
-                "de": "widgets aktualisiert",
-                "ru": "виджеты обновлены",
-                "pt": "widgets atualizados",
-                "nl": "widgets",
-                "fr": "widgets mis à jour",
-                "it": "widget aggiornati",
-                "es": "widgets actualizados",
-                "pl": "widget",
-                "uk": "віджети оновлені",
-                "zh-cn": "最新目标"
-            },
-            "1.0.2": {
-                "en": "README changed",
-                "de": "README geändert",
-                "ru": "README изменен",
-                "pt": "REFERÊNCIA",
-                "nl": "Vertaling:",
-                "fr": "README changed",
-                "it": "README cambiato",
-                "es": "README cambió",
-                "pl": "README zmieniło się",
-                "uk": "Змінено",
-                "zh-cn": "中小企业的改变"
-            },
-            "1.0.1": {
-                "en": "gulpfile changed",
-                "de": "gulpfile geändert",
-                "ru": "gulpfile изменен",
-                "pt": "gulpfile alterado",
-                "nl": "gulpfile veranderde",
-                "fr": "gulpfile a changé",
-                "it": "gulpfile cambiato",
-                "es": "el archivo del gulp cambió",
-                "pl": "gulpfile zmieniał się",
-                "uk": "javascript licenses api веб-сайт",
-                "zh-cn": "古帕尔的变化"
-            }
-        },
-        "titleLang": {
-            "en": "Vis 2 Widgets radar-trap",
-            "de": "Vis 2 Widgets radar-trap",
-            "ru": "Виз 2 Виджеты радар-ловушка",
-            "pt": "Vis 2 Widgets armadilha de radar",
-            "nl": "Vis 2 Widgets radarval",
-            "fr": "Vis 2 Widgets piège radar",
-            "it": "Vis 2 Widgets radar-trappola",
-            "es": "Vis 2 Widgets trampa de radar",
-            "pl": "Vis 2 Widżety pułapka radarowa",
-            "uk": "Радар-пастка Vis 2 Widgets",
-            "zh-cn": "Vis 2 Widgets 雷达陷阱"
-        },
-        "desc": {
-            "en": "Vis 2 Widgets radar-trap",
-            "de": "Vis 2 Widgets radar-trap",
-            "ru": "Виз 2 Виджеты радар-ловушка",
-            "pt": "Vis 2 Widgets armadilha de radar",
-            "nl": "Vis 2 Widgets radarval",
-            "fr": "Vis 2 Widgets piège radar",
-            "it": "Vis 2 Widgets radar-trappola",
-            "es": "Vis 2 Widgets trampa de radar",
-            "pl": "Vis 2 Widżety pułapka radarowa",
-            "uk": "Радар-пастка Vis 2 Widgets",
-            "zh-cn": "Vis 2 Widgets 雷达陷阱"
-        },
-        "authors": [
-            "Steiger04 <steiger04@posteo.de>"
-        ],
-        "keywords": [
-            "vis-2-widgets-radar-trap"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "icon": "vis-2-widgets-radar-trap.png",
-        "extIcon": "https://raw.githubusercontent.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/main/admin/vis-2-widgets-radar-trap.png",
-        "enabled": true,
-        "readme": "https://github.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "none",
-        "nogit": true,
-        "singleton": true,
-        "onlyWWW": true,
-        "noConfig": true,
-        "adminUI": {
-            "config": "none"
-        },
-        "type": "visualization-widgets",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "visWidgets": {
-            "ignoreInVersions": [
-                1
-            ],
-            "vis2RadarTrapWidgets": {
-                "i18n": "component",
-                "name": "vis2RadarTrapWidgets",
-                "url": "vis-2-widgets-radar-trap/customWidgets.js",
-                "components": [
-                    "RadarTrapAreaWidget",
-                    "RadarTrapRouteWidget",
-                    "RadarTrapInfoWidget"
-                ]
-            }
-        },
-        "restartAdapters": [
-            "vis-2"
-        ],
-        "dependencies": [
-            {
-                "js-controller": ">=5.0.17",
-                "radar-trap": ">=1.3.1"
-            }
-        ]
+  "common": {
+    "name": "vis-2-widgets-radar-trap",
+    "version": "1.1.0",
+    "news": {
+      "1.1.0": {
+        "en": "new features for widgets",
+        "de": "neue features für widgets",
+        "ru": "новые функции для виджетов",
+        "pt": "novos recursos para widgets",
+        "nl": "nieuwe functies voor widgets",
+        "fr": "nouvelles fonctionnalités pour les widgets",
+        "it": "nuove funzionalità per widget",
+        "es": "nuevas características para widgets",
+        "pl": "nowe funkcje dla widżetów",
+        "uk": "нові можливості для віджетів",
+        "zh-cn": "部件的新特性"
+      },
+      "1.0.7": {
+        "en": "optimizations",
+        "de": "optimierungen",
+        "ru": "оптимизация",
+        "pt": "otimizações",
+        "nl": "optimisatie",
+        "fr": "optimisations",
+        "it": "ottimizzazioni",
+        "es": "optimizaciones",
+        "pl": "optymalizacja",
+        "uk": "оптимізація",
+        "zh-cn": "优化"
+      },
+      "1.0.6": {
+        "en": "io-package changed",
+        "de": "io-paket geändert",
+        "ru": "io-package изменился",
+        "pt": "io-package alterado",
+        "nl": "io-package veranderde",
+        "fr": "io-package changed",
+        "it": "io-pacchetto cambiato",
+        "es": "io-paquete cambiado",
+        "pl": "wersja io",
+        "uk": "io-package змінено",
+        "zh-cn": "碘剂的改变"
+      },
+      "1.0.5": {
+        "en": "some bugfixes on widgets",
+        "de": "einige bugfixes auf widgets",
+        "ru": "некоторые багфиксы на виджетах",
+        "pt": "alguns bugfixes em widgets",
+        "nl": "wat insecten op widgets",
+        "fr": "quelques bugfix sur les widgets",
+        "it": "alcuni bugfix su widget",
+        "es": "algunos bugfixes en widgets",
+        "pl": "niektóre błędy na widgetach",
+        "uk": "деякі виправлення помилок на віджетах",
+        "zh-cn": "某些阴残障者"
+      },
+      "1.0.4": {
+        "en": "widgets updated",
+        "de": "widgets aktualisiert",
+        "ru": "виджеты обновлены",
+        "pt": "widgets atualizados",
+        "nl": "widgets",
+        "fr": "widgets mis à jour",
+        "it": "widget aggiornati",
+        "es": "widgets actualizados",
+        "pl": "widget",
+        "uk": "віджети оновлені",
+        "zh-cn": "最新目标"
+      },
+      "1.0.3": {
+        "en": "widgets updated",
+        "de": "widgets aktualisiert",
+        "ru": "виджеты обновлены",
+        "pt": "widgets atualizados",
+        "nl": "widgets",
+        "fr": "widgets mis à jour",
+        "it": "widget aggiornati",
+        "es": "widgets actualizados",
+        "pl": "widget",
+        "uk": "віджети оновлені",
+        "zh-cn": "最新目标"
+      },
+      "1.0.2": {
+        "en": "README changed",
+        "de": "README geändert",
+        "ru": "README изменен",
+        "pt": "REFERÊNCIA",
+        "nl": "Vertaling:",
+        "fr": "README changed",
+        "it": "README cambiato",
+        "es": "README cambió",
+        "pl": "README zmieniło się",
+        "uk": "Змінено",
+        "zh-cn": "中小企业的改变"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "titleLang": {
+      "en": "Vis 2 Widgets radar-trap",
+      "de": "Vis 2 Widgets radar-trap",
+      "ru": "Виз 2 Виджеты радар-ловушка",
+      "pt": "Vis 2 Widgets armadilha de radar",
+      "nl": "Vis 2 Widgets radarval",
+      "fr": "Vis 2 Widgets piège radar",
+      "it": "Vis 2 Widgets radar-trappola",
+      "es": "Vis 2 Widgets trampa de radar",
+      "pl": "Vis 2 Widżety pułapka radarowa",
+      "uk": "Радар-пастка Vis 2 Widgets",
+      "zh-cn": "Vis 2 Widgets 雷达陷阱"
+    },
+    "desc": {
+      "en": "Vis 2 Widgets radar-trap",
+      "de": "Vis 2 Widgets radar-trap",
+      "ru": "Виз 2 Виджеты радар-ловушка",
+      "pt": "Vis 2 Widgets armadilha de radar",
+      "nl": "Vis 2 Widgets radarval",
+      "fr": "Vis 2 Widgets piège radar",
+      "it": "Vis 2 Widgets radar-trappola",
+      "es": "Vis 2 Widgets trampa de radar",
+      "pl": "Vis 2 Widżety pułapka radarowa",
+      "uk": "Радар-пастка Vis 2 Widgets",
+      "zh-cn": "Vis 2 Widgets 雷达陷阱"
+    },
+    "authors": [
+      "Steiger04 <steiger04@posteo.de>"
+    ],
+    "keywords": [
+      "vis-2-widgets-radar-trap"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "icon": "vis-2-widgets-radar-trap.png",
+    "extIcon": "https://raw.githubusercontent.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/main/admin/vis-2-widgets-radar-trap.png",
+    "enabled": true,
+    "readme": "https://github.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "none",
+    "nogit": true,
+    "singleton": true,
+    "onlyWWW": true,
+    "noConfig": true,
+    "adminUI": {
+      "config": "none"
+    },
+    "type": "visualization-widgets",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "visWidgets": {
+      "ignoreInVersions": [
+        1
+      ],
+      "vis2RadarTrapWidgets": {
+        "i18n": "component",
+        "name": "vis2RadarTrapWidgets",
+        "url": "vis-2-widgets-radar-trap/customWidgets.js",
+        "components": [
+          "RadarTrapAreaWidget",
+          "RadarTrapRouteWidget",
+          "RadarTrapInfoWidget"
+        ]
+      }
+    },
+    "restartAdapters": [
+      "vis-2"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=5.0.17",
+        "radar-trap": ">=1.3.1"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }

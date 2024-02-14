@@ -3,8 +3,7 @@
   "without_card": "without frame",
   "area_id": "areas",
   "style_select": "style",
-  "show_polygon": "show polygon",
-  "polygon_opacity": "polygon opacity",
+  "show_polygon": "show polygon",  
   "polygon_border": "polygon border",
   "polygon_color": "polygon color",
   "polygon_border_color": "polygon border color",
@@ -72,5 +71,11 @@
   "confirmDate": "confirmed",
   "For the configuration the radar-trap instance must be started": "For the configuration the radar-trap instance must be started.",
   "only_new_traps": "only new traps",
-  "title": "title"
+  "title": "title",
+  "cluster_text_color": "cluster text color",
+  "symbol_new_color": "symbol new color",
+  "speed_trap_stroke_color": "speed trap stroke color",  
+  "speed_trap_stroke_new_color": "speed trap stroke new color",
+  "symbol_text_color": "symbol text color",
+  "symbol_text_new_color": "symbol text new color"
 }

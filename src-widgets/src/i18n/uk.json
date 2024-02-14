@@ -4,7 +4,6 @@
     "area_id": "області",
     "style_select": "стиль",
     "show_polygon": "показати багатокутник",
-    "polygon_opacity": "непрозорість багатокутника",
     "polygon_border": "кордон багатокутника",
     "polygon_color": "колір багатокутника",
     "polygon_border_color": "колір рамки багатокутника",
@@ -72,5 +71,11 @@
     "confirmDate": "підтверджено",
     "For the configuration the radar-trap instance must be started": "Для конфігурації необхідно запустити екземпляр радар-пастки.",
     "only_new_traps": "тільки нові пастки",
-    "title": "назва"
+    "title": "назва",
+    "cluster_text_color": "колір тексту кластера",
+    "symbol_new_color": "новий колір символу",
+    "speed_trap_stroke_color": "колір штриха радар",
+    "speed_trap_stroke_new_color": "швидкісний радар штрих новий колір",
+    "symbol_text_color": "колір тексту символу",
+    "symbol_text_new_color": "новий колір тексту символу"
 }

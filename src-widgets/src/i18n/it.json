@@ -4,7 +4,6 @@
     "area_id": "le zone",
     "style_select": "stile",
     "show_polygon": "mostra poligono",
-    "polygon_opacity": "opacità del poligono",
     "polygon_border": "bordo del poligono",
     "polygon_color": "colore del poligono",
     "polygon_border_color": "colore del bordo del poligono",
@@ -72,5 +71,11 @@
     "confirmDate": "confermato",
     "For the configuration the radar-trap instance must be started": "Per la configurazione è necessario avviare l'istanza della trappola radar.",
     "only_new_traps": "solo nuove trappole",
-    "title": "titolo"
+    "title": "titolo",
+    "cluster_text_color": "colore del testo del cluster",
+    "symbol_new_color": "simbolo nuovo colore",
+    "speed_trap_stroke_color": "colore del tratto dell'autovelox",
+    "speed_trap_stroke_new_color": "tratto di autovelox nuovo colore",
+    "symbol_text_color": "colore del testo del simbolo",
+    "symbol_text_new_color": "testo del simbolo nuovo colore"
 }

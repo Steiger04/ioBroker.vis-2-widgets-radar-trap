@@ -4,7 +4,6 @@
     "area_id": "áreas",
     "style_select": "estilo",
     "show_polygon": "mostrar polígono",
-    "polygon_opacity": "opacidad del polígono",
     "polygon_border": "borde poligonal",
     "polygon_color": "color del polígono",
     "polygon_border_color": "color del borde del polígono",
@@ -73,5 +72,11 @@
     "confirmDate": "confirmado",
     "For the configuration the radar-trap instance must be started": "Para la configuración se debe iniciar la instancia de radar-trap.",
     "only_new_traps": "solo trampas nuevas",
-    "title": "título"
+    "title": "título",
+    "cluster_text_color": "color del texto del grupo",
+    "symbol_new_color": "símbolo nuevo color",
+    "speed_trap_stroke_color": "color de trazo de trampa de velocidad",
+    "speed_trap_stroke_new_color": "trazo de trampa de velocidad nuevo color",
+    "symbol_text_color": "color del texto del símbolo",
+    "symbol_text_new_color": "símbolo texto nuevo color"
 }

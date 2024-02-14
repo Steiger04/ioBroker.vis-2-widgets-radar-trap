@@ -11,7 +11,7 @@ const getMapStyle = (key, data) => {
             paint: {
                 'line-color': data.routeColor || '#9C27B0',
                 'line-width': data.routeWidth,
-                'line-opacity': 0.8,
+                'line-opacity': 1.0,
             },
         },
         speedTraps: {
@@ -20,20 +20,34 @@ const getMapStyle = (key, data) => {
             source: 'traps',
             filter: ['match', ['get', 'type_name'], 'speed-trap', true, false],
             paint: {
-                'circle-opacity': 0.3,
+                'circle-opacity': 1.0,
+                'circle-stroke-width': 6,
+                'circle-stroke-color': ['match',
+                    ['get', 'status'],
+                    'NEW', data.speedTrapStrokeNewColor || 'rgba(232,10,10,0.4)',
+                    'ESTABLISHED', data.speedTrapStrokeColor || 'rgba(13,77,133,0.4)',
+                    data.speedTrapStrokeColor || 'rgba(13,77,133,0.4)'],
                 'circle-color': [
                     'step',
                     ['to-number', ['get', 'vmax']],
-                    '#ff0000',
+                    ['match',
+                        ['get', 'status'],
+                        'NEW', data.symbolNewColor || 'rgba(232,10,10,0.7)',
+                        'ESTABLISHED', data.symbolColor || 'rgba(13,77,133,0.8)',
+                        data.symbolColor || 'rgba(13,77,133,0.8)'],
                     80,
-                    '#00ff00',
+                    ['match',
+                        ['get', 'status'],
+                        'NEW', data.symbolNewColor || 'rgba(232,10,10,0.7)',
+                        'ESTABLISHED', data.symbolColor || 'rgba(13,77,133,0.8)',
+                        data.symbolColor || 'rgba(13,77,133,0.8)'],
                 ],
                 'circle-radius': [
                     'step',
                     ['to-number', ['get', 'vmax']],
-                    15,
+                    20,
                     99,
-                    18,
+                    22,
                 ],
             },
         },
@@ -41,12 +55,25 @@ const getMapStyle = (key, data) => {
             id: 'speed-traps-vmax',
             type: 'symbol',
             source: 'traps',
-            filter: ['match', ['get', 'type_name'], 'speed-trap', true, false],
             layout: {
                 'text-allow-overlap': true,
-                'text-field': '{vmax}',
-                'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-                'text-size': 12,
+                'text-field': [
+                    'format',
+                    ['get', 'vmax'],
+                    {
+                        'text-font': ['literal', ['DIN Offc Pro Medium', 'Arial Unicode MS Bold']],
+                        'text-color': ['match',
+                            ['get', 'status'],
+                            'NEW', data.symbolTextNewColor || 'rgba(123,25,25,0.95)',
+                            'ESTABLISHED', data.symbolTextColor || 'rgba(10,34,55,0.95)',
+                            data.symbolTextColor || 'rgba(10,34,55,0.95)'],
+                    },
+                ],
+                'text-offset': ['match', ['get', 'type_name'],
+                    'fixed-trap', ['literal', [-0.3, -0.6]],
+                    'mobile-trap', ['literal', [-0.3, -0.35]],
+                    ['literal', [0, 0]]],
+                'text-size': 16,
             },
         },
         traps: {
@@ -58,19 +85,15 @@ const getMapStyle = (key, data) => {
                 'icon-image': [
                     'match',
                     ['get', 'type_name'],
-                    ...[
-                        ...(data.fixedTrap ? ['fixed-trap', 'icon-fixed-trap'] : ['']),
-                        ...(data.mobileTrap ? ['mobile-trap', 'icon-mobile-trap'] : ['']),
-                        ...(data.trafficJam ? ['traffic-jam', 'icon-traffic-jam'] : ['']),
-                        ...(data.roadWork ? ['road-work', 'icon-road-work'] : ['']),
-                        ...(data.accident ? ['accident', 'icon-accident'] : ['']),
-                        ...(data.object ? ['object', 'icon-object'] : ['']),
-                        ...(data.sleekness ? ['sleekness', 'icon-sleekness'] : ['']),
-                        ...(data.fog ? ['fog', 'icon-fog'] : ['']),
-                        ...(data.policeNews ? ['police-news', 'icon-police-news'] : ['']),
-                    ].filter(item => item !== ''),
-                    'dummy',
-                    'icon-object',
+                    'fixed-trap', 'icon-fixed-trap',
+                    'mobile-trap', 'icon-mobile-trap',
+                    'traffic-jam', 'icon-traffic-jam',
+                    'road-work', 'icon-road-work',
+                    'accident', 'icon-accident',
+                    'object', 'icon-object',
+                    'sleekness', 'icon-sleekness',
+                    'fog', 'icon-fog',
+                    'police-news', 'icon-police-news',
                     '',
                 ],
                 'icon-size': [
@@ -78,9 +101,7 @@ const getMapStyle = (key, data) => {
                     ['linear'],
                     ['zoom'],
                     0,
-                    0.4,
-                    8,
-                    0.8,
+                    1.0,
                     10,
                     1.2,
                     14,
@@ -88,8 +109,15 @@ const getMapStyle = (key, data) => {
                 ],
             },
             paint: {
-                'icon-color': data.symbolColor || '#000000',
-                'icon-opacity': 0.7,
+                'icon-color': [
+                    'match',
+                    ['get', 'status'],
+                    'NEW', data.symbolNewColor || 'rgba(232,10,10,0.7)',
+                    'ESTABLISHED', data.symbolColor || 'rgba(13,77,133,0.8)',
+                    data.symbolColor || 'rgba(13,77,133,0.8)',
+
+                ],
+                'icon-opacity': 1.0,
             },
         },
         clusterTraps: {
@@ -98,15 +126,15 @@ const getMapStyle = (key, data) => {
             source: 'traps',
             filter: ['has', 'point_count'],
             paint: {
-                'circle-opacity': 0.3,
+                'circle-opacity': 1.0,
                 'circle-color': [
                     'step',
                     ['get', 'point_count'],
-                    data.clusterColor || '#e1bee7',
+                    data.clusterColor || 'rgba(197,14,228,0.4)',
                     100,
-                    data.clusterColor || '#e1bee7',
+                    data.clusterColor || 'rgba(197,14,228,0.4)',
                     750,
-                    data.clusterColor || '#e1bee7',
+                    data.clusterColor || 'rgba(197,14,228,0.4)',
                 ],
                 'circle-radius': [
                     'step',
@@ -126,8 +154,14 @@ const getMapStyle = (key, data) => {
             filter: ['has', 'point_count'],
             layout: {
                 'text-allow-overlap': true,
-                'text-field': '{point_count_abbreviated}',
-                'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                'text-field': [
+                    'format',
+                    ['get', 'point_count_abbreviated'],
+                    {
+                        'text-font': ['literal', ['DIN Offc Pro Medium', 'Arial Unicode MS Bold']],
+                        'text-color': data.clusterTextColor || 'rgba(52,27,57,0.95)',
+                    },
+                ],
                 'text-size': 12,
             },
         },
@@ -146,7 +180,6 @@ const getMapStyle = (key, data) => {
             type: 'line',
             source: 'polys',
             paint: {
-                /* "line-color": "red", */
                 'line-color': ['match', ['get', 'type'], '20', 'red', 'white'],
                 'line-width': 6,
                 'line-dasharray': [0, 4, 3],
@@ -173,7 +206,7 @@ const getMapStyle = (key, data) => {
                 ],
             },
             paint: {
-                'icon-opacity': 0.7,
+                'icon-opacity': 1.0,
             },
         },
         areaSurface: {
@@ -181,8 +214,8 @@ const getMapStyle = (key, data) => {
             type: 'fill',
             source: 'areaPolygons',
             paint: {
-                'fill-color': data.polygonColor || '#4dabf5',
-                'fill-opacity': data.polygonOpacity || 0.1,
+                'fill-color': data.polygonColor || 'rgba(10,138,232,0.15)',
+                'fill-opacity': 1.0,
             },
         },
         areaSurfaceBorder: {
@@ -190,8 +223,8 @@ const getMapStyle = (key, data) => {
             type: 'line',
             source: 'areaPolygons',
             paint: {
-                'line-color': data.polygonBorderColor || '#4dabf5',
-                'line-width': data.polygonBorder || 2,
+                'line-color': data.polygonBorderColor || 'rgba(61,156,226,0.6)',
+                'line-width': data.polygonBorder || 4,
             },
         },
     };

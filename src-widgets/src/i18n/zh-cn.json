@@ -4,7 +4,6 @@
     "area_id": "地区",
     "style_select": "风格",
     "show_polygon": "显示多边形",
-    "polygon_opacity": "多边形不透明度",
     "polygon_border": "多边形边框",
     "polygon_color": "多边形颜色",
     "polygon_border_color": "多边形边框颜色",
@@ -72,5 +71,11 @@
     "confirmDate": "确认的",
     "For the configuration the radar-trap instance must be started": "对于配置，必须启动雷达陷阱实例。",
     "only_new_traps": "只有新的陷阱",
-    "title": "标题"
+    "title": "标题",
+    "cluster_text_color": "簇文本颜色",
+    "symbol_new_color": "符号新颜色",
+    "speed_trap_stroke_color": "速度陷阱描边颜色",
+    "speed_trap_stroke_new_color": "速度陷阱描边新颜色",
+    "symbol_text_color": "符号文字颜色",
+    "symbol_text_new_color": "符号文本新颜色"
 }

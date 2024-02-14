@@ -4,7 +4,6 @@
     "area_id": "domaines",
     "style_select": "style",
     "show_polygon": "afficher le polygone",
-    "polygon_opacity": "opacité du polygone",
     "polygon_border": "bordure de polygone",
     "polygon_color": "couleur du polygone",
     "polygon_border_color": "couleur de la bordure du polygone",
@@ -72,5 +71,11 @@
     "confirmDate": "confirmé",
     "For the configuration the radar-trap instance must be started": "Pour la configuration, l'instance radar-trap doit être démarrée.",
     "only_new_traps": "seulement de nouveaux pièges",
-    "title": "titre"
+    "title": "titre",
+    "cluster_text_color": "couleur du texte du cluster",
+    "symbol_new_color": "symbole nouvelle couleur",
+    "speed_trap_stroke_color": "couleur du trait du speed trap",
+    "speed_trap_stroke_new_color": "course de piège à vitesse nouvelle couleur",
+    "symbol_text_color": "couleur du texte du symbole",
+    "symbol_text_new_color": "texte du symbole nouvelle couleur"
 }

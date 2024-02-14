@@ -7,6 +7,7 @@ import Map, {
     Source, Layer, ScaleControl, Popup,
 } from 'react-map-gl';
 import { featureCollection } from '@turf/helpers';
+import { camelCase } from 'lodash';
 // eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
 import mapboxgl from '!mapbox-gl';
 import { TrapInfo } from './TrapInfo';
@@ -31,6 +32,7 @@ const RadarTrapMap = ({
     const [coordinates] = useGlobalState('coordinates');
     const [trapInfo, setTrapInfo] = useState(false);
     const [cursor, setCursor] = useState('');
+    const [filterdedTrapsFeatureCollection, setFilterdedTrapsFeatureCollection] = useState(featureCollection([]));
     const upSmall = useMediaQuery(theme => theme.breakpoints.up('sm'));
 
     const {
@@ -53,6 +55,7 @@ const RadarTrapMap = ({
             polysFeatureCollection,
             areaPolygons,
         },
+        sourceStatus,
     } = useRadarTrapSource(routeOrAreaId, feathersClient);
 
     useAnimationFrame(editMode, mapRef, mapImageStatus, data.closedCongestedRoad, data.animateClosedCongestedRoad);
@@ -135,6 +138,31 @@ const RadarTrapMap = ({
         }
     }, [mapRef, jumpId, coordinates, routeOrAreaId]);
 
+    useEffect(() => {
+        if (sourceStatus !== 'success') return;
+        console.log('trapsFeatureCollection');
+
+        const _filterdedTrapsFeatureCollection = featureCollection(trapsFeatureCollection.features.filter(trap => {
+            if (trap.properties && data.onlyNewTraps) {
+                if (trap.properties.status === 'NEW' && data[camelCase(trap.properties.type_name)]) {
+                    return true;
+                }
+                return false;
+            }
+
+            if (trap.properties && !data.onlyNewTraps) {
+                if (data[camelCase(trap.properties.type_name)]) {
+                    return true;
+                }
+                return false;
+            }
+
+            return true;
+        }));
+
+        setFilterdedTrapsFeatureCollection(_filterdedTrapsFeatureCollection);
+    }, [trapsFeatureCollection, sourceStatus, data]);
+
     return (
         settings ?
             <Map
@@ -180,11 +208,11 @@ const RadarTrapMap = ({
 
                 <ScaleControl style={{ p: 4 }} position="bottom-left" />
 
-                {type === 'route' && mapImageStatus === 'success' && <Source type="geojson" data={directionsFeatureCollection}>
+                {type === 'route' && mapImageStatus === 'success' && sourceStatus === 'success' && <Source type="geojson" data={directionsFeatureCollection}>
                     <Layer {...getMapStyle('route', data)} />
                 </Source>}
 
-                {type === 'area' && mapImageStatus === 'success' && data?.showPolygon && <Source
+                {type === 'area' && mapImageStatus === 'success' && sourceStatus === 'success' && data?.showPolygon && <Source
                     type="geojson"
                     data={
                         areaPolygons
@@ -197,31 +225,32 @@ const RadarTrapMap = ({
                     <Layer {...getMapStyle('areaSurfaceBorder', data)} />
                 </Source>}
 
-                {type === 'area' && mapImageStatus === 'success' && data.closedCongestedRoad && <Source type="geojson" data={polysFeatureCollection}>
+                {type === 'area' && mapImageStatus === 'success' && sourceStatus === 'success' && data.closedCongestedRoad && <Source type="geojson" data={polysFeatureCollection}>
                     <Layer {...getMapStyle('lineBackground', data)} />
                     <Layer {...getMapStyle('lineDashed', data)} />
                     <Layer {...getMapStyle('trafficClosure', data)} />
                 </Source>}
 
-                {mapImageStatus === 'success' && !data.showCluster && <Source
+                {mapImageStatus === 'success' && sourceStatus === 'success' && !data.showCluster && <Source
                     id="traps"
                     type="geojson"
-                    data={trapsFeatureCollection}
+                    data={filterdedTrapsFeatureCollection}
                 >
+                    <Layer {...getMapStyle('traps', data)} />
                     <Layer {...getMapStyle('speedTraps', data)} />
                     <Layer {...getMapStyle('speedTrapsVmax', data)} />
-                    <Layer {...getMapStyle('traps', data)} />
                 </Source>}
 
-                {mapImageStatus === 'success' && data.showCluster && <Source
+                {mapImageStatus === 'success' && sourceStatus === 'success' && data.showCluster && <Source
                     id="traps"
                     type="geojson"
-                    data={trapsFeatureCollection}
+                    data={filterdedTrapsFeatureCollection}
                     cluster
+                    // filter={data.onlyNewTraps ? ['match', ['get', 'status'], 'NEW', true, false] : true}
                 >
+                    <Layer {...getMapStyle('traps', data)} />
                     <Layer {...getMapStyle('speedTraps', data)} />
                     <Layer {...getMapStyle('speedTrapsVmax', data)} />
-                    <Layer {...getMapStyle('traps', data)} />
                     <Layer {...getMapStyle('clusterTraps', data)} />
                     <Layer {...getMapStyle('clusterTrapsCount', data)} />
                 </Source>}

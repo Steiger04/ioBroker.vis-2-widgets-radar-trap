@@ -165,7 +165,8 @@
         ],
         "dependencies": [
             {
-                "js-controller": ">=5.0.17"
+                "js-controller": ">=5.0.17",
+                "radar-trap": ">=1.3.1"
             }
         ]
     },

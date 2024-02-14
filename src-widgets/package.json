@@ -36,7 +36,7 @@
         "react-dom": "^18.2.0",
         "react-hooks-global-state": "^2.1.0",
         "react-icons": "^4.10.1",
-        "react-map-gl": "^7.1.6",
+        "react-map-gl": "^7.1.7",
         "react-scripts": "^5.0.1",
         "sass": "^1.64.2",
         "socket.io-client": "^2.3.1"

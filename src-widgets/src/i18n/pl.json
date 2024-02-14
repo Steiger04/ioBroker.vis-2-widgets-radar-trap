@@ -4,7 +4,6 @@
     "area_id": "obszary",
     "style_select": "styl",
     "show_polygon": "pokaż wielokąt",
-    "polygon_opacity": "nieprzezroczystość wielokąta",
     "polygon_border": "granica wielokąta",
     "polygon_color": "kolor wielokąta",
     "polygon_border_color": "kolor obramowania wielokąta",
@@ -72,5 +71,11 @@
     "confirmDate": "potwierdzony",
     "For the configuration the radar-trap instance must be started": "Aby dokonać konfiguracji, należy uruchomić instancję pułapki radarowej.",
     "only_new_traps": "tylko nowe pułapki",
-    "title": "tytuł"
+    "title": "tytuł",
+    "cluster_text_color": "kolor tekstu klastra",
+    "symbol_new_color": "nowy kolor symbolu",
+    "speed_trap_stroke_color": "kolor obrysu pułapki prędkości",
+    "speed_trap_stroke_new_color": "nowy kolor skoku pułapki prędkości",
+    "symbol_text_color": "kolor tekstu symbolu",
+    "symbol_text_new_color": "nowy kolor tekstu symbolu"
 }

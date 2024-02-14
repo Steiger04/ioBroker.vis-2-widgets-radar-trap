@@ -4,7 +4,6 @@
     "area_id": "Gebiete",
     "style_select": "Stile",
     "show_polygon": "Polygon anzeigen",
-    "polygon_opacity": "Polygon-Deckkraft",
     "polygon_border": "Polygon-Rand [px]",
     "polygon_color": "Polygon-Farbe",
     "polygon_border_color": "Polygon-Randfarbe",
@@ -73,5 +72,11 @@
     "confirmDate": "bestätigt",
     "For the configuration the radar-trap instance must be started": "Für die Konfiguration muss die radar-trap Instanz gestartet werden.",
     "only_new_traps": "nur neue Hindernisse",
-    "title": "Titel"
+    "title": "Titel",
+    "cluster_text_color": "Cluster-Textfarbe",
+    "symbol_new_color": "Symbol-Farbe neu",
+    "speed_trap_stroke_color": "Rand-Farbe teilstationär",
+    "speed_trap_stroke_new_color": "Rand-Farbe teilstationär neu",
+    "symbol_text_color": "Symbol-Textfarbe",
+    "symbol_text_new_color": "Symbol-Textfarbe neu"
 }

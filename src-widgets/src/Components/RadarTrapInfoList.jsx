@@ -75,9 +75,9 @@ const RadarTrapInfoList = ({
                             >
                                 <ListItemAvatar>
                                     <Avatar
+                                        imgProps={{ style: { filter: `drop-shadow(0px 1000px 0 ${data.symbolColor})`, transform: 'translateY(-1000px)' } }}
                                         sx={{
                                             '&.MuiAvatar-rounded': { py: 1 },
-                                            filter: `opacity(.5) drop-shadow(0 0 0 ${data.symbolColor})`,
                                             bgcolor: 'inherit',
                                             width: 32,
                                             height: 32,

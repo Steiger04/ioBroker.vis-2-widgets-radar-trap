@@ -46,6 +46,12 @@ class RadarTrapRouteWidget extends Generic {
                             type: 'checkbox',
                         },
                         {
+                            name: 'fitButton',
+                            label: 'fit_button',
+                            type: 'checkbox',
+                            default: true,
+                        },
+                        {
                             name: 'oid',
                             label: 'title',
                             type: 'id',
@@ -80,6 +86,12 @@ class RadarTrapRouteWidget extends Generic {
                             options: mapStyles,
                         },
                         {
+                            name: 'showCluster',
+                            label: 'show_cluster',
+                            type: 'checkbox',
+                            default: true,
+                        },
+                        {
                             name: 'routeColor',
                             label: 'route_color',
                             type: 'color',
@@ -95,28 +107,52 @@ class RadarTrapRouteWidget extends Generic {
                             step: 0.5,
                         },
                         {
-                            name: 'showCluster',
-                            label: 'show_cluster',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
                             name: 'clusterColor',
                             label: 'cluster_color',
                             type: 'color',
-                            default: '#d502f9',
+                            default: 'rgba(197,14,228,0.4)',
+                        },
+                        {
+                            name: 'clusterTextColor',
+                            label: 'cluster_text_color',
+                            type: 'color',
+                            default: 'rgba(52,27,57,0.95)',
                         },
                         {
                             name: 'symbolColor',
                             label: 'symbol_color',
                             type: 'color',
-                            default: '#263238',
+                            default: 'rgba(13,77,133,0.8)',
                         },
                         {
-                            name: 'fitButton',
-                            label: 'fit_button',
-                            type: 'checkbox',
-                            default: true,
+                            name: 'symbolTextColor',
+                            label: 'symbol_text_color',
+                            type: 'color',
+                            default: 'rgba(10,34,55,0.95)',
+                        },
+                        {
+                            name: 'symbolNewColor',
+                            label: 'symbol_new_color',
+                            type: 'color',
+                            default: 'rgba(232,10,10,0.7)',
+                        },
+                        {
+                            name: 'symbolTextNewColor',
+                            label: 'symbol_text_new_color',
+                            type: 'color',
+                            default: 'rgba(123,25,25,0.95)',
+                        },
+                        {
+                            name: 'speedTrapStrokeColor',
+                            label: 'speed_trap_stroke_color',
+                            type: 'color',
+                            default: 'rgba(13,77,133,0.4)',
+                        },
+                        {
+                            name: 'speedTrapStrokeNewColor',
+                            label: 'speed_trap_stroke_new_color',
+                            type: 'color',
+                            default: 'rgba(232,10,10,0.4)',
                         },
                     ],
                 },
@@ -124,6 +160,12 @@ class RadarTrapRouteWidget extends Generic {
                     name: 'traps',
                     label: 'group_traps',
                     fields: [
+                        {
+                            name: 'onlyNewTraps',
+                            label: 'only_new_traps',
+                            type: 'checkbox',
+                            default: false,
+                        },
                         {
                             name: 'fixedTrap',
                             label: 'fixed_trap',

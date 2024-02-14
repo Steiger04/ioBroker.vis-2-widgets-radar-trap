@@ -4,7 +4,6 @@
     "area_id": "области",
     "style_select": "стиль",
     "show_polygon": "показать многоугольник",
-    "polygon_opacity": "непрозрачность полигона",
     "polygon_border": "граница многоугольника",
     "polygon_color": "цвет многоугольника",
     "polygon_border_color": "цвет границы многоугольника",
@@ -72,5 +71,11 @@
     "confirmDate": "подтвержденный",
     "For the configuration the radar-trap instance must be started": "Для настройки необходимо запустить экземпляр радара-ловушки.",
     "only_new_traps": "только новые ловушки",
-    "title": "заголовок"
+    "title": "заголовок",
+    "cluster_text_color": "цвет текста кластера",
+    "symbol_new_color": "символ нового цвета",
+    "speed_trap_stroke_color": "Цвет обводки скоростной ловушки",
+    "speed_trap_stroke_new_color": "скоростная ловушка, новый цвет",
+    "symbol_text_color": "цвет текста символа",
+    "symbol_text_new_color": "символ текст новый цвет"
 }

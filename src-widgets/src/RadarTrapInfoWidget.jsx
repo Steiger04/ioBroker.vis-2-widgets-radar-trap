@@ -69,7 +69,7 @@ class RadarTrapInfoWidget extends Generic {
                             name: 'symbolColor',
                             label: 'symbol_color',
                             type: 'color',
-                            default: '#263238',
+                            default: 'rgba(100,100,100,0.8)',
                         },
                         {
                             name: 'groupHeadline',

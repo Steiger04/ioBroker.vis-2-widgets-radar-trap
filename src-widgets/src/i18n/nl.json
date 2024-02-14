@@ -4,7 +4,6 @@
     "area_id": "gebieden",
     "style_select": "stijl",
     "show_polygon": "veelhoek weergeven",
-    "polygon_opacity": "veelhoek dekking",
     "polygon_border": "veelhoek grens",
     "polygon_color": "veelhoek kleur",
     "polygon_border_color": "randkleur van de veelhoek",
@@ -72,5 +71,11 @@
     "confirmDate": "bevestigd",
     "For the configuration the radar-trap instance must be started": "Voor de configuratie moet de radartrapinstantie worden gestart.",
     "only_new_traps": "alleen nieuwe vallen",
-    "title": "titel"
+    "title": "titel",
+    "cluster_text_color": "tekstkleur van cluster",
+    "symbol_new_color": "symbool nieuwe kleur",
+    "speed_trap_stroke_color": "snelheidscontrole streekkleur",
+    "speed_trap_stroke_new_color": "snelheidscontrole nieuwe kleur",
+    "symbol_text_color": "symbool tekstkleur",
+    "symbol_text_new_color": "symbooltekst nieuwe kleur"
 }

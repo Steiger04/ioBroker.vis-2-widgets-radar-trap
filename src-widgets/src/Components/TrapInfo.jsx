@@ -10,9 +10,15 @@ const TrapInfo = ({ info }) => {
     if (!isEmpty(info.vmax)) {
         switch (info.vmax) {
             case 'V':
-                vmax = 'unknown';
+                vmax = I18n.t('unknown');
                 break;
-            case '/' || false:
+            case 'v':
+                vmax = I18n.t('unknown');
+                break;
+            case '/':
+                vmax = false;
+                break;
+            case false:
                 vmax = false;
                 break;
             default:
@@ -42,7 +48,7 @@ const TrapInfo = ({ info }) => {
                 <CardContent sx={{ mt: -1, mb: -2 }}>
                     {info.typeText && (
                         <Typography variant="subtitle2">
-                            <b>{`${I18n.t('Art')}: `}</b>
+                            <b>{`${I18n.t('kind')}: `}</b>
                             {I18n.t(info.typeText)}
                         </Typography>
                     )}

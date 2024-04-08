@@ -5,6 +5,8 @@ import Generic from './Generic';
 import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
 import { Message } from './Components/Message';
 import { RadarTrapMap } from './Components/RadarTrapMap';
+import { VisTraps } from './Components/VisTraps';
+import visTrapsDefault from './Components/visTrapsDefault';
 
 const mapStyles = [
     'satellite-v9',
@@ -164,79 +166,42 @@ class RadarTrapRouteWidget extends Generic {
                             name: 'onlyNewTraps',
                             label: 'only_new_traps',
                             type: 'checkbox',
+                            noBinding: true,
                             default: false,
-                        },
-                        {
-                            name: 'fixedTrap',
-                            label: 'fixed_trap',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'speedTrap',
-                            label: 'speed_trap',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'mobileTrap',
-                            label: 'mobile_trap',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'trafficJam',
-                            label: 'traffic_jam',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'accident',
-                            label: 'accident',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'roadWork',
-                            label: 'road_work',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'object',
-                            label: 'object',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'sleekness',
-                            label: 'sleekness',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'fog',
-                            label: 'fog',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'policeNews',
-                            label: 'police_news',
-                            type: 'checkbox',
-                            default: true,
                         },
                         {
                             name: 'closedCongestedRoad',
                             label: 'closed_congested_road',
                             type: 'checkbox',
+                            noBinding: true,
                             default: true,
                         },
                         {
                             name: 'animateClosedCongestedRoad',
                             label: 'animate_closed_congested_road',
                             type: 'checkbox',
+                            noBinding: true,
                             default: false,
+                        },
+                        {
+                            name: 'visTraps',
+                            // label: 'vis_traps',
+                            label: 'group_traps',
+                            noBinding: true,
+                            default: visTrapsDefault,
+                            type: 'custom',  // important
+                            component: (     // important
+                                field,       // field properties: {name, label, type, set, singleName, component,...}
+                                data,        // widget data
+                                onDataChange, // function to call, when data changed
+                                // props,       // additional properties : {socket, projectName, instance, adapterName, selectedView, selectedWidgets, project, widgetID}
+                                // widgetID: widget ID or widgets IDs. If selecteld more than one widget, it is array of IDs
+                                // project object: {VIEWS..., [view]: {widgets: {[widgetID]: {tpl, data, style}}, settings, parentId, rerender, filterList, activeWidgets}, ___settings: {}}
+                            ) => (<VisTraps
+                                fieldName={field.name}
+                                fieldValue={data[field.name] || field.default}
+                                onDataChange={onDataChange}
+                            />),
                         },
                     ],
                 },

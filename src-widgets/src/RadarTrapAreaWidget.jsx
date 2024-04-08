@@ -5,6 +5,8 @@ import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
 import { Message } from './Components/Message';
 import { RadarTrapMap } from './Components/RadarTrapMap';
 import Generic from './Generic';
+import { VisTraps } from './Components/VisTraps';
+import visTrapsDefault from './Components/visTrapsDefault';
 
 const mapStyles = [
     'satellite-v9',
@@ -177,69 +179,6 @@ class RadarTrapAreaWidget extends Generic {
                             default: false,
                         },
                         {
-                            name: 'constructionSite',
-                            label: 'construction site',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'trafficJamEnd',
-                            label: 'traffic jam end',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'dangerSpot',
-                            label: 'danger spot',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'fixedSpeedCamera',
-                            label: 'fixed speed camera',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'semiStationarySpeedCamera',
-                            label: 'semi-stationary speed camera',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'mobileSpeedCamera',
-                            label: 'mobile speed camera',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'mobileSpeedCameraHotspot',
-                            label: 'mobile speed camera hotspot',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'policeReport',
-                            label: 'police report',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
-                            name: 'policeReportArchive',
-                            label: 'police report, archive',
-                            type: 'checkbox',
-                            noBinding: true,
-                            default: true,
-                        },
-                        {
                             name: 'closedCongestedRoad',
                             label: 'closed_congested_road',
                             type: 'checkbox',
@@ -252,6 +191,26 @@ class RadarTrapAreaWidget extends Generic {
                             type: 'checkbox',
                             noBinding: true,
                             default: false,
+                        },
+                        {
+                            name: 'visTraps',
+                            // label: 'vis_traps',
+                            label: 'group_traps',
+                            noBinding: true,
+                            default: visTrapsDefault,
+                            type: 'custom',  // important
+                            component: (     // important
+                                field,       // field properties: {name, label, type, set, singleName, component,...}
+                                data,        // widget data
+                                onDataChange, // function to call, when data changed
+                                // props,       // additional properties : {socket, projectName, instance, adapterName, selectedView, selectedWidgets, project, widgetID}
+                                // widgetID: widget ID or widgets IDs. If selecteld more than one widget, it is array of IDs
+                                // project object: {VIEWS..., [view]: {widgets: {[widgetID]: {tpl, data, style}}, settings, parentId, rerender, filterList, activeWidgets}, ___settings: {}}
+                            ) => (<VisTraps
+                                fieldName={field.name}
+                                fieldValue={data[field.name] || field.default}
+                                onDataChange={onDataChange}
+                            />),
                         },
                     ],
                 },

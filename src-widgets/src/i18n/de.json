@@ -15,7 +15,7 @@
     "fixed_trap": "Blitzer fest",
     "speed_trap": "Blitzer teilstationär",
     "mobile_trap": "Blitzer mobil",
-    "traffic_jam": "Staus",    
+    "traffic_jam": "Staus",
     "road_work": "Baustellen",
     "object": "Gegenstände",
     "sleekness": "Glätte",
@@ -112,5 +112,6 @@
     "section control end": "Section Control Ende",
     "speed camera in tunnel": "Blitzer im Tunnel",
     "no overtaking": "Überholverbot",
-    "speed camera, semi-stationary": "Geschwindigkeitsblitzer, teilstationär"
+    "speed camera, semi-stationary": "Geschwindigkeitsblitzer, teilstationär",
+    "kind": "Art"
 }

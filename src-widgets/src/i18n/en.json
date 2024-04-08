@@ -111,5 +111,6 @@
 	"section control end": "section control end",
 	"speed camera in tunnel": "speed camera in tunnel",
 	"no overtaking": "no overtaking",
-	"speed camera, semi-stationary": "speed camera, semi-stationary"
+	"speed camera, semi-stationary": "speed camera, semi-stationary",
+  "kind": "kind"
 }

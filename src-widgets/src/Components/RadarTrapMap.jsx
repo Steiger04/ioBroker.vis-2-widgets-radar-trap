@@ -70,6 +70,8 @@ const RadarTrapMap = ({
             return;
         }
 
+        // console.log('feature', feature);
+
         const clusterId = feature.properties?.cluster_id;
         const sourceId = feature.source;
         const mapboxSource = mapRef.current.getSource(sourceId);
@@ -91,14 +93,6 @@ const RadarTrapMap = ({
                 break;
 
             case 'traps':
-                setTimeout(() => setTrapInfo({
-                    ...JSON.parse(feature.properties.trapInfo),
-                    longitude: event.lngLat.lng,
-                    latitude: event.lngLat.lat,
-                }), 0);
-                break;
-
-            case 'speed-traps':
                 setTimeout(() => setTrapInfo({
                     ...JSON.parse(feature.properties.trapInfo),
                     longitude: event.lngLat.lng,
@@ -141,27 +135,34 @@ const RadarTrapMap = ({
     useEffect(() => {
         if (sourceStatus !== 'success') return;
 
+        if (!data.visTraps) {
+            setFilterdedTrapsFeatureCollection(featureCollection([]));
+            return;
+        }
+
         const _filterdedTrapsFeatureCollection = featureCollection(trapsFeatureCollection.features.filter(trap => {
-            // console.log(trap.properties.type_desc, ':::', camelCase(trap.properties.type_desc));
+            if (trap.properties) {
+                /* if (['7', '11', '12', '201', '206'].includes(trap.properties.type)) {
+                    console.log(`PROPERTIES -> ${trap.properties.type}`, trap.properties);
+                } */
 
-            if (trap.properties && data.onlyNewTraps) {
-                if (trap.properties.status === 'NEW' && data[camelCase(trap.properties.type_desc)]) {
+                const typeDesc = camelCase(trap.properties.type_desc);
+                const typeText = camelCase(trap.properties.type_text);
+
+                if (data.onlyNewTraps) {
+                    if (trap.properties.status === 'NEW' && data.visTraps[typeDesc][typeText]) {
+                        return true;
+                    }
+                } else if (data.visTraps[typeDesc][typeText]) {
                     return true;
                 }
-                return false;
             }
-
-            if (trap.properties && !data.onlyNewTraps) {
-                if (data[camelCase(trap.properties.type_desc)]) {
-                    return true;
-                }
-                return false;
-            }
-
-            return true;
+            return false;
         }));
 
         setFilterdedTrapsFeatureCollection(_filterdedTrapsFeatureCollection);
+
+        // console.log('filterdedTrapsFeatureCollection', _filterdedTrapsFeatureCollection);
     }, [trapsFeatureCollection, sourceStatus, data]);
 
     return (

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { i18n as I18n } from '@iobroker/adapter-react-v5';
-import { RadarTrapInfoList } from './Components/RadarTrapInfoList';
+import { RadarTrapInfoList2 } from './Components/RadarTrapInfoList2';
 import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
 import { Message } from './Components/Message';
 import Generic from './Generic';
+import { VisTraps } from './Components/VisTraps';
+import visTrapsDefault from './Components/visTrapsDefault';
 
 class RadarTrapInfoWidget extends Generic {
     constructor(props) {
@@ -93,73 +95,28 @@ class RadarTrapInfoWidget extends Generic {
                             name: 'onlyNewTraps',
                             label: 'only_new_traps',
                             type: 'checkbox',
-                            default: true,
+                            noBinding: true,
+                            default: false,
                         },
                         {
-                            name: 'fixedTrap',
-                            label: 'fixed_trap',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'speedTrap',
-                            label: 'speed_trap',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'mobileTrap',
-                            label: 'mobile_trap',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'trafficJam',
-                            label: 'traffic_jam',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'accident',
-                            label: 'accident',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'roadWork',
-                            label: 'road_work',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'object',
-                            label: 'object',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'sleekness',
-                            label: 'sleekness',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'fog',
-                            label: 'fog',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'policeNews',
-                            label: 'police_news',
-                            type: 'checkbox',
-                            default: true,
-                        },
-                        {
-                            name: 'closedCongestedRoad',
-                            label: 'closed_congested_road',
-                            type: 'checkbox',
-                            default: true,
+                            name: 'visTraps',
+                            // label: 'vis_traps',
+                            label: 'group_traps',
+                            noBinding: true,
+                            default: visTrapsDefault,
+                            type: 'custom',  // important
+                            component: (     // important
+                                field,       // field properties: {name, label, type, set, singleName, component,...}
+                                data,        // widget data
+                                onDataChange, // function to call, when data changed
+                                // props,       // additional properties : {socket, projectName, instance, adapterName, selectedView, selectedWidgets, project, widgetID}
+                                // widgetID: widget ID or widgets IDs. If selecteld more than one widget, it is array of IDs
+                                // project object: {VIEWS..., [view]: {widgets: {[widgetID]: {tpl, data, style}}, settings, parentId, rerender, filterList, activeWidgets}, ___settings: {}}
+                            ) => (<VisTraps
+                                fieldName={field.name}
+                                fieldValue={data[field.name] || field.default}
+                                onDataChange={onDataChange}
+                            />),
                         },
                     ],
                 },
@@ -219,7 +176,7 @@ class RadarTrapInfoWidget extends Generic {
         super.renderWidgetBody(props);
 
         const content =  this.state.radarTrapEnabled ? (
-            <RadarTrapInfoList
+            <RadarTrapInfoList2
                 feathersClient={this.state.feathersClient}
                 routeOrAreaId={this.state.rxData.routeOrAreaId || null}
                 data={this.state.rxData}

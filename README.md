@@ -28,7 +28,7 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 2.0.0 (2024-04-10)
 - (steiger04) !!! Requires at least radar-trap version 2.0.0 !!!
 - (steiger04) Many optimizations and bug fixes
 

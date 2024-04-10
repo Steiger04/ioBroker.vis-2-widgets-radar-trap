@@ -224,7 +224,7 @@ const RadarTrapMap = ({
                      <Layer {...getMapStyle('route', data)} />
                  </Source>}
 
-                {type === 'area' && mapImageStatus === 'success' && sourceStatus === 'success' && data.closedCongestedRoad &&
+                {mapImageStatus === 'success' && sourceStatus === 'success' && data.closedCongestedRoad &&
                  <Source id="polys" type="geojson" data={polyLinesFeatureCollection}>
                      <Layer {...getMapStyle('lineBackground', data)} />
                      <Layer {...getMapStyle('lineDashed', data)} />

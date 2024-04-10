@@ -153,18 +153,6 @@ class RadarTrapAreaWidget extends Generic {
                             type: 'color',
                             default: 'rgba(123,25,25,0.95)',
                         },
-                        {
-                            name: 'speedTrapStrokeColor',
-                            label: 'speed_trap_stroke_color',
-                            type: 'color',
-                            default: 'rgba(13,77,133,0.4)',
-                        },
-                        {
-                            name: 'speedTrapStrokeNewColor',
-                            label: 'speed_trap_stroke_new_color',
-                            type: 'color',
-                            default: 'rgba(232,10,10,0.4)',
-                        },
                     ],
                 },
                 {

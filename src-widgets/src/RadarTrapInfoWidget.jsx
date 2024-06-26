@@ -1,7 +1,10 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import CustomTheme from '@iobroker/adapter-react-v5/Theme';
 import { i18n as I18n } from '@iobroker/adapter-react-v5';
-import { RadarTrapInfoList2 } from './Components/RadarTrapInfoList2';
+import { RadarTrapInfoList } from './Components/RadarTrapInfoList';
 import { VisRadarMapSelect } from './Components/VisRadarMapSelect';
 import { Message } from './Components/Message';
 import Generic from './Generic';
@@ -176,20 +179,33 @@ class RadarTrapInfoWidget extends Generic {
         super.renderWidgetBody(props);
 
         const content =  this.state.radarTrapEnabled ? (
-            <RadarTrapInfoList2
-                feathersClient={this.state.feathersClient}
-                routeOrAreaId={this.state.rxData.routeOrAreaId || null}
-                data={this.state.rxData}
-                style={this.state.rxStyle}
-            />
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={CustomTheme(this.props.context.themeType)}>
+                    <CssBaseline />
+                    <RadarTrapInfoList
+                        feathersClient={this.state.feathersClient}
+                        routeOrAreaId={this.state.rxData.routeOrAreaId || null}
+                        data={this.state.rxData}
+                        style={this.state.rxStyle}
+                    />
+                </ThemeProvider>
+            </StyledEngineProvider>
         ) : <Message message={`${I18n.t('For the configuration the radar-trap instance must be started')}`} />;
 
         const value = this.getValue();
         const contentHeader = this.state.radarTrapEnabled && value ?
             <Typography
                 variant="h6"
-                component="h3"
-                sx={{ fontWeight:'bold', pb: 1 }}
+                component="h5"
+                sx={{
+                    pb: 1,
+                    fontFamily: this.state.rxStyle['font-family'],
+                    fontWeight: this.state.rxStyle['font-weight'] ? this.state.rxStyle['font-weight'] : 'bold',
+                    fontSize: this.state.rxStyle['font-size'] ? this.state.rxStyle['font-size'] : 'large',
+                    lineHeight: this.state.rxStyle['line-height'],
+                    letterSpacing: this.state.rxStyle['letter-spacing'],
+                    wordSpacing: this.state.rxStyle['word-spacing'],
+                }}
             >
                 {value}
             </Typography> :

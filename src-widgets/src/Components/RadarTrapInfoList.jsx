@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import List from '@mui/material/List';
-import { camelCase } from 'lodash';
+import { camelCase, isEmpty } from 'lodash';
 import {
-    ListSubheader, ListItem, ListItemButton, Typography,
+    ListSubheader, ListItem, ListItemButton, Typography, lighten, darken,
 } from '@mui/material';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -11,6 +11,25 @@ import Box from '@mui/material/Box';
 import { i18n as I18n } from '@iobroker/adapter-react-v5';
 import { setJumpId, setCoordinates } from '../helpers/state';
 import { useRadarTrapSource } from '../hooks/useRadarTrapSource';
+
+import IconConstructionSite from '../assets/map-icons/icon-road-work-22-26-sdf.png';
+import IconTrafficJamEnd from '../assets/map-icons/icon-traffic-jam-20-sdf.png';
+import IconDangerSpot from '../assets/map-icons/icon-danger-spot-sdf.png';
+import IconSpeedCamera from '../assets/map-icons/icon-speed-camera-sdf.png';
+import IconMobileSpeedCameraHotspot from '../assets/map-icons/icon-mobile-speed-camera-hotspot-2015-sdf.png';
+import IconPoliceReport from '../assets/map-icons/icon-police-report-vwd-vwda-sdf.png';
+
+const images = {
+    constructionSite: IconConstructionSite,
+    trafficJamEnd: IconTrafficJamEnd,
+    dangerSpot: IconDangerSpot,
+    fixedSpeedCamera: IconSpeedCamera,
+    semiStationarySpeedCamera: IconSpeedCamera,
+    mobileSpeedCamera: IconSpeedCamera,
+    mobileSpeedCameraHotspot: IconMobileSpeedCameraHotspot,
+    policeReport: IconPoliceReport,
+    policeReportArchive: IconPoliceReport,
+};
 
 const RadarTrapInfoList = ({
     feathersClient, routeOrAreaId, data, style,
@@ -24,251 +43,334 @@ const RadarTrapInfoList = ({
     };
 
     useEffect(() => {
-        if (sourceStatus !== 'loading') {
-            const trapsFeature = trapsFeatureCollection.features.filter(
-                feature => feature.properties.trapInfo !== null,
-            );
+        if (sourceStatus !== 'success') return;
 
-            const _trapsFeatureGroup = trapsFeature.reduce(
-                (groups, trapFeature) => {
-                    groups[trapFeature.properties.type_name].push(trapFeature);
-                    return groups;
-                },
-                {
-                    'fixed-trap': [],
-                    'mobile-trap': [],
-                    'speed-trap': [],
-                    'road-work': [],
-                    'traffic-jam': [],
-                    sleekness: [],
-                    accident: [],
-                    fog: [],
-                    object: [],
-                    'police-news': [],
-                },
-            );
+        const _filterdedTrapsFeature = trapsFeatureCollection.features.filter(trap => {
+            if (trap.properties) {
+                /* if (['7', '11', '12', '201', '206'].includes(trap.properties.type)) {
+                    console.log(`PROPERTIES -> ${trap.properties.type}`, trap.properties);
+                } */
 
-            setTrapsFeatureGroup(_trapsFeatureGroup);
-        }
-    }, [sourceStatus, trapsFeatureCollection]);
+                const typeDesc = camelCase(trap.properties.type_desc);
+                const typeText = camelCase(trap.properties.type_text);
+
+                if (data.onlyNewTraps) {
+                    if (trap.properties.status === 'NEW' && data.visTraps[typeDesc][typeText]) {
+                        return true;
+                    }
+                } else if (data.visTraps[typeDesc][typeText]) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
+        const _trapsFeatureGroup = _filterdedTrapsFeature.reduce(
+            (groups, trapFeature) => {
+                groups[trapFeature.properties.type_desc].push(trapFeature);
+                return groups;
+            },
+            {
+                'construction site': [],
+                'traffic jam end': [],
+                'danger spot': [],
+                'fixed speed camera': [],
+                'semi-stationary speed camera': [],
+                'mobile speed camera': [],
+                'mobile speed camera hotspot': [],
+                'police report': [],
+                'police report, archive': [],
+            },
+        );
+
+        setTrapsFeatureGroup(_trapsFeatureGroup);
+    }, [sourceStatus, trapsFeatureCollection, data.visTraps, data.onlyNewTraps]);
 
     const listItems = Object.entries(trapsFeatureGroup).map(([trapGroupName, trapFeatures]) => [trapGroupName,
         trapFeatures.filter(feature => (!data.onlyNewTraps ? true : (feature.properties.trapInfo.status === 'NEW')))])
-        .map(([trapGroupName, trapFeatures], sectionId) => (data[camelCase(trapGroupName)] ?
+        .map(([trapGroupName, trapFeatures], sectionId) => (data.visTraps[camelCase(trapGroupName)] ?
             <li key={`section-${sectionId}`}>
                 { (data.nothingInfo || trapFeatures.length) ?
                     <ul style={{ 'list-style-position': 'inside' }}>
                         <ListSubheader
                             sx={{
-                                p: 0,
-                                color: 'inherit',
-                                bgcolor: style['background-color'],
+                                display: 'flex',
+                                justifyContent: 'space-around',
+                                alignItems: 'center',
+                                bgcolor: lighten(style['background-color'] ? style['background-color'] : 'rgb(0,0,0)', 0.2),
+                                color: lighten(style?.color ? style.color : '#ffffff', 0.2),
                             }}
                         >
-                            <Box
+
+                            <ListItemAvatar
                                 sx={{
-                                    px: 1,
+                                    flexGrow: !style['text-align'] || style['text-align'] === 'left' ? 0 : 1,
                                     display: 'flex',
-                                    alignItems: 'center',
-                                    backdropFilter: 'brightness(0.4)',
+                                    justifyContent: !style['text-align'] || style['text-align'] === 'left' ? 'left' : 'right',
                                 }}
                             >
-                                <ListItemAvatar>
-                                    <Avatar
-                                        imgProps={{ style: { filter: `drop-shadow(0px 1000px 0 ${data.symbolColor})`, transform: 'translateY(-1000px)' } }}
-                                        sx={{
-                                            '&.MuiAvatar-rounded': { py: 1 },
-                                            bgcolor: 'inherit',
-                                            width: 32,
-                                            height: 32,
-                                        }}
-                                        variant="rounded"
-                                        src={`widgets/vis-2-widgets-radar-trap/img/icon-${trapGroupName}.png`}
-                                    />
-                                </ListItemAvatar>
-                                {data.groupHeadline &&
-                            <Typography
-                                variant="h6"
-                                sx={{ p: 1 }}
-                            >
-                                { I18n.t(`${trapGroupName}`) }
-                            </Typography>}
-                            </Box>
-                        </ListSubheader>
-                        {trapFeatures.map(({ geometry: { coordinates }, properties: { trapInfo } }, itemId) => (
-                            <ListItem
-                                dense
-                                divider
-                                key={`item-${sectionId}-${itemId}`}
-                            >
-                                <ListItemButton
-                                    onClick={() => handleListItemClick({ routeOrAreaId, coordinates, trapInfo })}
-                                    sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+                                <Avatar
+                                    slotProps={{ img: { style: { filter: `drop-shadow(0px 1000px 0 ${data.symbolColor})`, transform: 'translateY(-1000px)' } } }}
+                                    sx={{
+                                        // '&.MuiAvatar-rounded': { py: 1 },
+                                        // bgcolor: 'inherit',
+                                        width: 32,
+                                        height: 32,
+                                    }}
+                                    variant="rounded"
+                                    src={images[camelCase(trapGroupName)]}
+                                />
+                            </ListItemAvatar>
+                            {data.groupHeadline &&
+                                <Typography
+                                    variant="h6"
+                                    component="h6"
+                                    sx={{
+                                        ml: style['text-align'] === 'right' || style['text-align'] === 'center' ? 2 : -1,
+                                        p: 1,
+                                        flexGrow: style['text-align'] === 'right' ? 0 : 1,
+                                        textAlign: 'left',
+                                        fontFamily: style['font-family'],
+                                        fontWeight: style['font-weight'],
+                                        fontSize: style['font-size'],
+                                        lineHeight: style['line-height'],
+                                        letterSpacing: style['letter-spacing'],
+                                        wordSpacing: style['word-spacing'],
+                                    }}
                                 >
-                                    {data.trapHeadline &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body1' }}
-                                        primary={<b>{trapInfo.typeText}</b>}
-                                    />}
-                                    {trapInfo.vmax &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('vmax') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>
-                                                {trapInfo.vmax}
-                                                &nbsp;km/h
-                                            </span>
-                                        </>}
-                                    />}
-                                    {trapInfo.reason &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                                            <b>
-                                                { I18n.t('reason') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>{trapInfo.reason}</span>
-                                        </Box>}
-                                    />}
-                                    {trapInfo.length &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('length') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>
-                                                {trapInfo.length}
-                                                &nbsp;km
-                                            </span>
-                                        </>}
-                                    />}
-                                    {trapInfo.duration &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('duration') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>
-                                                {trapInfo.duration}
-                                                &nbsp;min.
-                                            </span>
-                                        </>}
-                                    />}
-                                    {trapInfo.delay &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('delay') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>
-                                                {trapInfo.delay}
-                                                &nbsp;min.
-                                            </span>
-                                        </>}
-                                    />}
-                                    {trapInfo.createDate &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('createDate') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>{trapInfo.createDate}</span>
-                                        </>}
-                                    />}
-                                    {trapInfo.confirmDate &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('confirmDate') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>{trapInfo.confirmDate}</span>
-                                        </>}
-                                    />}
-                                    {trapInfo.state &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('state') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>{trapInfo.state}</span>
-                                        </>}
-                                    />}
-                                    {trapInfo.street &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('street') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>{trapInfo.street}</span>
-                                        </>}
-                                    />}
-                                    {trapInfo.zipCode && trapInfo.city &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('city') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>
-                                                {trapInfo.zipCode}
-                                                &nbsp;
-                                                {trapInfo.city}
-                                            </span>
-                                        </>}
-                                    />}
-                                    {trapInfo.cityDistrict &&
-                                    <ListItemText
-                                        sx={{ my: '2px' }}
-                                        primaryTypographyProps={{ variant: 'body2' }}
-                                        primary={<>
-                                            <b>
-                                                { I18n.t('cityDistrict') }
-                                                :&nbsp;
-                                            </b>
-                                            <span>{trapInfo.cityDistrict}</span>
-                                        </>}
-                                    />}
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
+                                    <b>{I18n.t(`${trapGroupName}`)}</b>
+                                </Typography>}
+                        </ListSubheader>
+                        {trapFeatures.map(({ geometry: { coordinates }, properties: { trapInfo } }, itemId) => {
+                            let vmax;
+
+                            if (!isEmpty(trapInfo.vmax)) {
+                                switch (trapInfo.vmax) {
+                                    case 'V':
+                                        vmax = I18n.t('unknown');
+                                        break;
+                                    case 'v':
+                                        vmax = I18n.t('unknown');
+                                        break;
+                                    case '/':
+                                        vmax = false;
+                                        break;
+                                    case false:
+                                        vmax = false;
+                                        break;
+                                    default:
+                                        vmax = `${trapInfo.vmax} km/h`;
+                                }
+                            } else {
+                                vmax = false;
+                            }
+
+                            return (
+                                <ListItem
+                                    dense
+                                    divider
+                                    key={`item-${sectionId}-${itemId}`}
+                                >
+                                    <ListItemButton
+                                        onClick={() => handleListItemClick({ routeOrAreaId, coordinates, trapInfo })}
+                                        sx={{ display: 'flex', justifyContent: style['text-align'] }}
+                                    >
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                color: lighten(style?.color ? style.color : '#ffffff', 0.4),
+                                            }}
+                                        >
+                                            {data.trapHeadline &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body1', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<b>{I18n.t(trapInfo.typeText)}</b>}
+                                            />}
+                                            {vmax &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('vmax') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>
+                                                        {vmax}
+                                                    </span>
+                                                </>}
+                                            />}
+                                            {trapInfo.reason &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                                                    <b>
+                                                        { I18n.t('reason') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>{trapInfo.reason}</span>
+                                                </Box>}
+                                            />}
+                                            {trapInfo.length &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('length') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>
+                                                        {trapInfo.length}
+                                                        &nbsp;km
+                                                    </span>
+                                                </>}
+                                            />}
+                                            {trapInfo.duration &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('duration') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>
+                                                        {trapInfo.duration}
+                                                        &nbsp;min.
+                                                    </span>
+                                                </>}
+                                            />}
+                                            {trapInfo.delay &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('delay') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>
+                                                        {trapInfo.delay}
+                                                        &nbsp;min.
+                                                    </span>
+                                                </>}
+                                            />}
+                                            {trapInfo.createDate &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('createDate') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>{trapInfo.createDate}</span>
+                                                </>}
+                                            />}
+                                            {trapInfo.confirmDate &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('confirmDate') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>{trapInfo.confirmDate}</span>
+                                                </>}
+                                            />}
+                                            {trapInfo.state &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('state') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>{trapInfo.state}</span>
+                                                </>}
+                                            />}
+                                            {trapInfo.street &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('street') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>{trapInfo.street}</span>
+                                                </>}
+                                            />}
+                                            {trapInfo.zipCode && trapInfo.city &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('city') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>
+                                                        {trapInfo.zipCode}
+                                                        &nbsp;
+                                                        {trapInfo.city}
+                                                    </span>
+                                                </>}
+                                            />}
+                                            {trapInfo.cityDistrict &&
+                                            <ListItemText
+                                                sx={{ my: '2px' }}
+                                                primaryTypographyProps={{
+                                                    variant: 'body2', fontFamily: style['font-family'], fontWeight: style['font-weight'], fontSize: style['font-size'], letterSpacing: style['letter-spacing'], wordSpacing: style['word-spacing'],
+                                                }}
+                                                primary={<>
+                                                    <b>
+                                                        { I18n.t('cityDistrict') }
+                                                        :&nbsp;
+                                                    </b>
+                                                    <span>{trapInfo.cityDistrict}</span>
+                                                </>}
+                                            />}
+                                        </Box>
+
+                                    </ListItemButton>
+                                </ListItem>
+                            );
+                        })}
                     </ul> : null}
             </li> : null));
 
     return (
         <Box sx={{
             overflow: 'auto',
-            bgcolor: style['background-color'],
             height: '100%',
             width: '100%',
             position: 'relative',
@@ -285,7 +387,7 @@ const RadarTrapInfoList = ({
                 <List
                     sx={{
                         listStylePosition: 'inside',
-                        backdropFilter: 'brightness(0.5)',
+                        bgcolor: darken(style['background-color'] ? style['background-color'] : 'rgb(0,0,0)', 0.4),
                     }}
                     subheader={<li />}
                 >

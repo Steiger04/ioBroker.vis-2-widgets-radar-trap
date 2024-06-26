@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Fab from '@mui/material/Fab';
 import ZoomOutMap from '@mui/icons-material/ZoomOutMap';
+import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Map, {
     Source, Layer, ScaleControl, Popup,
@@ -33,7 +34,8 @@ const RadarTrapMap = ({
     const [trapInfo, setTrapInfo] = useState(false);
     const [cursor, setCursor] = useState('');
     const [filterdedTrapsFeatureCollection, setFilterdedTrapsFeatureCollection] = useState(featureCollection([]));
-    const upSmall = useMediaQuery(theme => theme.breakpoints.up('sm'));
+    const theme = useTheme();
+    const upSmall = useMediaQuery < theme > (_theme => _theme.breakpoints.up('sm'));
 
     const {
         mapRef, loadMapImages, status: mapImageStatus,

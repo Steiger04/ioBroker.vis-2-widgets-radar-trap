@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "news": {
+      "2.1.0": {
+        "en": "Dependencies updated\nAll widget attributes are now available",
+        "de": "Ausgaben aktualisiert\nAlle Widget-Attribute sind jetzt verfügbar",
+        "ru": "Обновленные данные о зависимостях\nВсе атрибуты виджета теперь доступны",
+        "pt": "Dependências atualizadas\nTodos os atributos do widget estão agora disponíveis",
+        "nl": "Afhankelijkheden bijgewerkt\nAlle widget attributen zijn nu beschikbaar",
+        "fr": "Dépendances actualisées\nTous les attributs du widget sont maintenant disponibles",
+        "it": "Dipendenze aggiornate\nTutti gli attributi dei widget sono ora disponibili",
+        "es": "Actualización de las dependencias\nTodos los atributos widget están disponibles ahora",
+        "pl": "Aktualizacja zależności\nWszystkie atrybuty widget są teraz dostępne",
+        "uk": "Залежність оновлено\nВсі атрибути віджету тепер доступні",
+        "zh-cn": "更新的依赖关系\n所有部件属性现已可用"
+      },
       "2.0.0": {
         "en": "!!! Requires at least radar-trap version 2.0.0 !!!\nMany optimizations and bug fixes",
         "de": "! Erfordert mindestens Radar-Trap Version 2.0.0 !!!\nViele Optimierungen und Fehlerbehebungen",
@@ -80,19 +93,6 @@
         "pl": "niektóre błędy na widgetach",
         "uk": "деякі виправлення помилок на віджетах",
         "zh-cn": "某些阴残障者"
-      },
-      "1.0.4": {
-        "en": "widgets updated",
-        "de": "widgets aktualisiert",
-        "ru": "виджеты обновлены",
-        "pt": "widgets atualizados",
-        "nl": "widgets",
-        "fr": "widgets mis à jour",
-        "it": "widget aggiornati",
-        "es": "widgets actualizados",
-        "pl": "widget",
-        "uk": "віджети оновлені",
-        "zh-cn": "最新目标"
       }
     },
     "titleLang": {

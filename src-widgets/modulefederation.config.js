@@ -7,5 +7,5 @@ module.exports = makeFederation(
         "./RadarTrapRouteWidget": "./src/RadarTrapRouteWidget",
         "./RadarTrapInfoWidget": "./src/RadarTrapInfoWidget",
         "./translations": "./src/translations",
-    },
+    }    
 );

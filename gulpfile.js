@@ -33,10 +33,10 @@ gulp.task('widget-3-copy', () => Promise.all([
     gulp.src([
         ...gulpHelper.copyFiles(SRC),
         ...[    
-                `${SRC}build/static/js/*babel*.*`,            
+                `${SRC}build/static/js/*babel*.*`,
                 `${SRC}build/static/js/*mui*.*`,
                 `${SRC}build/static/js/*mapbox*.*`,
-                `${SRC}build/static/js/*feathersjs*.*`,                
+                `${SRC}build/static/js/*feathersjs*.*`,
            ],
            /* ...[`!${SRC}build/static/js/*.map`, `!${SRC}build/static/js/*.txt`], */
     ]).pipe(gulp.dest(`widgets/${adapterName}/static/js`)),

@@ -28,7 +28,7 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 2.2.0 (2024-07-04)
 - (steiger04) Added refresh button to area widget and route widget
 - (steiger04) Dependencies updated
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "news": {
+      "2.2.0": {
+        "en": "Added refresh button to area widget and route widget\nDependencies updated",
+        "de": "Hinzugefügt Refresh-Taste zu Bereich Widget und Route Widget\nAusgaben aktualisiert",
+        "ru": "Добавить кнопку обновления в виджет области и виджет маршрута\nОбновленные данные о зависимостях",
+        "pt": "Adicionado botão de atualização para widget de área e widget de rota\nDependências atualizadas",
+        "nl": "Vernieuwknop toegevoegd aan widget en route widget\nAfhankelijkheden bijgewerkt",
+        "fr": "Ajout du bouton de rafraîchissement pour le widget de zone et le widget de route\nDépendances actualisées",
+        "it": "Pulsante di aggiornamento aggiunto per widget di area e widget di percorso\nDipendenze aggiornate",
+        "es": "Botón de actualización añadido al widget de área y el widget de ruta\nActualización de las dependencias",
+        "pl": "Dodano przycisk odświeżania do obszaru widget i widget trasy\nAktualizacja zależności",
+        "uk": "Додана кнопка оновлення до області віджет і маршрут віджет\nЗалежність оновлено",
+        "zh-cn": "添加到区域部件和路由部件的刷新按钮\n更新的依赖关系"
+      },
       "2.1.1": {
         "en": "Dependencies updated",
         "de": "Ausgaben aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "optymalizacja",
         "uk": "оптимізація",
         "zh-cn": "优化"
-      },
-      "1.0.6": {
-        "en": "io-package changed",
-        "de": "io-paket geändert",
-        "ru": "io-package изменился",
-        "pt": "io-package alterado",
-        "nl": "io-package veranderde",
-        "fr": "io-package changed",
-        "it": "io-pacchetto cambiato",
-        "es": "io-paquete cambiado",
-        "pl": "wersja io",
-        "uk": "io-package змінено",
-        "zh-cn": "碘剂的改变"
       }
     },
     "titleLang": {

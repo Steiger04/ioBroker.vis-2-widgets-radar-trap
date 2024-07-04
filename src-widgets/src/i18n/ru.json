@@ -112,5 +112,6 @@
     "speed camera in tunnel": "камера контроля скорости в туннеле",
     "no overtaking": "Обгон запрещен",
     "speed camera, semi-stationary": "камера контроля скорости, полустационарная",
-    "kind": "добрый"
+    "kind": "добрый",
+    "refresh_button": "кнопка обновления"
 }

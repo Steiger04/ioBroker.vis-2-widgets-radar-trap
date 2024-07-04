@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Fab from '@mui/material/Fab';
 import ZoomOutMap from '@mui/icons-material/ZoomOutMap';
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Map, {
@@ -25,6 +26,8 @@ const RadarTrapMap = ({
     routeOrAreaId,
     settings,
     editMode,
+    socket,
+    instanceId,
     data,
     width,
     height,
@@ -64,6 +67,13 @@ const RadarTrapMap = ({
 
     const mouseEnterHandler = useCallback(() => setCursor('pointer'), []);
     const mouseLeaveHandler = useCallback(() => setCursor(''), []);
+
+    const refreshHander = useCallback(() => {
+        socket.setState(`${instanceId.split('.').splice(2, 2).join('.')}.${routeOrAreaId}.cron-job.run`,  {
+            val: true,
+            ack: false,
+        });
+    }, [socket, instanceId, routeOrAreaId]);
 
     const clickHandler = useCallback(event => {
         const feature = event.features && event.features[0];
@@ -182,6 +192,17 @@ const RadarTrapMap = ({
                 onMouseEnter={mouseEnterHandler}
                 onMouseLeave={mouseLeaveHandler}
             >
+                {data.refreshButton && routeOrAreaId && <Fab
+                    sx={{
+                        position: 'absolute', left: 0, top: 0, opacity: 0.7, m: 1,
+                    }}
+                    size={upSmall ? 'medium' : 'small'}
+                    color="primary"
+                    onClick={refreshHander}
+                >
+                    <AutorenewOutlinedIcon />
+                </Fab>}
+
                 {data.fitButton && <Fab
                     sx={{
                         position: 'absolute', right: 0, top: 0, opacity: 0.7, m: 1,

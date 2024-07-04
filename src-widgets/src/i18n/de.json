@@ -113,5 +113,6 @@
     "speed camera in tunnel": "Blitzer im Tunnel",
     "no overtaking": "Überholverbot",
     "speed camera, semi-stationary": "Geschwindigkeitsblitzer, teilstationär",
-    "kind": "Art"
+    "kind": "Art",
+    "refresh_button": "Refresh-Button"
 }

@@ -54,6 +54,12 @@ class RadarTrapAreaWidget extends Generic {
                             default: true,
                         },
                         {
+                            name: 'refreshButton',
+                            label: 'refresh_button',
+                            type: 'checkbox',
+                            default: true,
+                        },
+                        {
                             name: 'oid',
                             label: 'title',
                             type: 'id',
@@ -233,7 +239,6 @@ class RadarTrapAreaWidget extends Generic {
 
     componentDidMount() {
         super.componentDidMount();
-
         // Update data
         this.propertiesUpdate();
     }
@@ -270,6 +275,8 @@ class RadarTrapAreaWidget extends Generic {
                         routeOrAreaId={this.state.rxData.areaId || null}
                         settings={this.state.settings}
                         editMode={this.props.editMode}
+                        socket={this.props.context.socket}
+                        instanceId={this.instanceId}
                         data={this.state.rxData}
                         width={this.state.rxStyle.width}
                         height={this.state.rxStyle.height}

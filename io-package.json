@@ -127,7 +127,10 @@
     "keywords": [
       "vis-2-widgets-radar-trap"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+			"license": "MIT",
+			"type": "free"
+		},
     "platform": "Javascript/Node.js",
     "icon": "vis-2-widgets-radar-trap.png",
     "extIcon": "https://raw.githubusercontent.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/main/admin/vis-2-widgets-radar-trap.png",
@@ -138,7 +141,6 @@
     "nogit": true,
     "singleton": true,
     "onlyWWW": true,
-    "noConfig": true,
     "adminUI": {
       "config": "none"
     },

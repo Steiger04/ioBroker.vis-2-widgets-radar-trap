@@ -46,7 +46,7 @@
         "build": "craco build",
         "i18n": "node node_modules/@iobroker/vis-2-widgets-react-dev/searchI18n vis-2-widgets-radar-trap",
         "update-browsers": "npx browserslist@latest --update-db",
-        "translate": "translate-adapter"
+        "translate": "translate-adapter -a ../src-widgets -p ../io-package.json"
     },
     "eslintConfig": {
         "extends": "react-app"

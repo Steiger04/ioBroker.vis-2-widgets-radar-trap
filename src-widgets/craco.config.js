@@ -1,19 +1,32 @@
 const craco = require("@iobroker/vis-2-widgets-react-dev/craco.config.js");
-// const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-    ...craco,    
-    reactScriptsVersion: "react-scripts",
-    webpack: {            
-        mode: "extends",
-        configure: (webpackConfig) => {            
-            webpackConfig.module.rules.push({
-                test: /\.js$/,
-                enforce: "pre",
-                use: ["source-map-loader"],
-            });
-            webpackConfig.ignoreWarnings = [/Failed to parse source map/];
-            return webpackConfig;
-        },  
-    },
+	...craco,
+	webpack: {
+		mode: "extends",
+		configure: (webpackConfig) => {
+			webpackConfig.ignoreWarnings = [/Failed to parse source map/];
+			return webpackConfig;
+		},
+		devServer: {
+			setupMiddlewares: (middlewares, devServer) => {
+				if (fs.existsSync(paths.proxySetup)) {
+					require(paths.proxySetup)(devServer.app);
+				}
+
+				middlewares.push(
+					evalSourceMapMiddleware(devServer),
+					redirectServedPath(paths.publicUrlOrPath),
+					noopServiceWorkerMiddleware(paths.publicUrlOrPath),
+				);
+
+				return middlewares;
+			},
+		},
+	},
+	devServer: (devServerConfig, { env, paths, proxy, allowedHost }) => {
+		devServerConfig.onBeforeSetupMiddleware = undefined;
+		devServerConfig.onAfterSetupMiddleware = undefined;
+		return devServerConfig;
+	},
 };

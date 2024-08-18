@@ -117,13 +117,10 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 									display: "flex",
 									justifyContent: "space-around",
 									alignItems: "center",
-									bgcolor: lighten(
-										style["background-color"]
-											? style["background-color"]
-											: "rgb(0,0,0)",
-										0.2,
-									),
-									color: lighten(style?.color ? style.color : "#ffffff", 0.2),
+									bgcolor: style["background-color"]
+										? lighten(style["background-color"], 0.15)
+										: null,
+									color: style?.color ? style.color : null,
 								}}
 							>
 								<ListItemAvatar
@@ -150,7 +147,6 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 										}}
 										sx={{
 											// '&.MuiAvatar-rounded': { py: 1 },
-											// bgcolor: 'inherit',
 											width: 32,
 											height: 32,
 										}}
@@ -231,10 +227,6 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													sx={{
 														display: "flex",
 														flexDirection: "column",
-														color: lighten(
-															style?.color ? style.color : "#ffffff",
-															0.4,
-														),
 													}}
 												>
 													{data.trapHeadline && (
@@ -543,12 +535,9 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 				<List
 					sx={{
 						listStylePosition: "inside",
-						bgcolor: darken(
-							style["background-color"]
-								? style["background-color"]
-								: "rgb(0,0,0)",
-							0.4,
-						),
+						bgcolor: style["background-color"]
+							? darken(style["background-color"], 0.2)
+							: null,
 					}}
 					subheader={<li />}
 				>

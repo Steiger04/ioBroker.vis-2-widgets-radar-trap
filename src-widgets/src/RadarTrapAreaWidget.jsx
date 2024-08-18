@@ -1,15 +1,13 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
-import CustomTheme from "@iobroker/adapter-react-v5/Theme";
 import { i18n as I18n } from "@iobroker/adapter-react-v5";
-import { VisRadarMapSelect } from "./Components/VisRadarMapSelect";
+import { Box, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import React from "react";
 import { Message } from "./Components/Message";
 import { RadarTrapMap } from "./Components/RadarTrapMap";
-import Generic from "./Generic";
+import { VisRadarMapSelect } from "./Components/VisRadarMapSelect";
 import { VisTraps } from "./Components/VisTraps";
 import visTrapsDefault from "./Components/visTrapsDefault";
+import Generic from "./Generic";
 
 const mapStyles = [
 	"satellite-v9",
@@ -272,23 +270,20 @@ class RadarTrapAreaWidget extends Generic {
 		super.renderWidgetBody(props);
 
 		const content = this.state.radarTrapEnabled ? (
-			<StyledEngineProvider injectFirst>
-				<ThemeProvider theme={CustomTheme(this.props.context.themeType)}>
-					<CssBaseline />
-					<RadarTrapMap
-						type="area"
-						feathersClient={this.state.feathersClient}
-						routeOrAreaId={this.state.rxData.areaId || null}
-						settings={this.state.settings}
-						editMode={this.props.editMode}
-						socket={this.props.context.socket}
-						instanceId={this.instanceId}
-						data={this.state.rxData}
-						width={this.state.rxStyle.width}
-						height={this.state.rxStyle.height}
-					/>
-				</ThemeProvider>
-			</StyledEngineProvider>
+			<ThemeProvider theme={this.props.context.theme}>
+				<RadarTrapMap
+					type="area"
+					feathersClient={this.state.feathersClient}
+					routeOrAreaId={this.state.rxData.areaId || null}
+					settings={this.state.settings}
+					editMode={this.props.editMode}
+					socket={this.props.context.socket}
+					instanceId={this.instanceId}
+					data={this.state.rxData}
+					width={this.state.rxStyle.width}
+					height={this.state.rxStyle.height}
+				/>
+			</ThemeProvider>
 		) : (
 			<Message
 				message={`${I18n.t("For the configuration the radar-trap instance must be started")}`}

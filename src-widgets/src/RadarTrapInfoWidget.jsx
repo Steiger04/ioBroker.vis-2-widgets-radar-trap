@@ -1,15 +1,13 @@
-import React from "react";
-import { Typography } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
-import CustomTheme from "@iobroker/adapter-react-v5/Theme";
 import { i18n as I18n } from "@iobroker/adapter-react-v5";
+import { Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import React from "react";
+import { Message } from "./Components/Message";
 import { RadarTrapInfoList } from "./Components/RadarTrapInfoList";
 import { VisRadarMapSelect } from "./Components/VisRadarMapSelect";
-import { Message } from "./Components/Message";
-import Generic from "./Generic";
 import { VisTraps } from "./Components/VisTraps";
 import visTrapsDefault from "./Components/visTrapsDefault";
+import Generic from "./Generic";
 
 class RadarTrapInfoWidget extends Generic {
 	constructor(props) {
@@ -184,18 +182,17 @@ class RadarTrapInfoWidget extends Generic {
 	renderWidgetBody(props) {
 		super.renderWidgetBody(props);
 
+		console.log("RadarTrapInfoWidget renderWidgetBody -> this", this);
+
 		const content = this.state.radarTrapEnabled ? (
-			<StyledEngineProvider injectFirst>
-				<ThemeProvider theme={CustomTheme(this.props.context.themeType)}>
-					<CssBaseline />
-					<RadarTrapInfoList
-						feathersClient={this.state.feathersClient}
-						routeOrAreaId={this.state.rxData.routeOrAreaId || null}
-						data={this.state.rxData}
-						style={this.state.rxStyle}
-					/>
-				</ThemeProvider>
-			</StyledEngineProvider>
+			<ThemeProvider theme={this.props.context.theme}>
+				<RadarTrapInfoList
+					feathersClient={this.state.feathersClient}
+					routeOrAreaId={this.state.rxData.routeOrAreaId || null}
+					data={this.state.rxData}
+					style={this.state.rxStyle}
+				/>
+			</ThemeProvider>
 		) : (
 			<Message
 				message={`${I18n.t("For the configuration the radar-trap instance must be started")}`}

@@ -5,7 +5,7 @@ import mapboxgl from "!mapbox-gl";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import ZoomOutMap from "@mui/icons-material/ZoomOutMap";
 import Fab from "@mui/material/Fab";
-// import { useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { featureCollection } from "@turf/helpers";
 import { camelCase } from "lodash";
@@ -37,8 +37,10 @@ const RadarTrapMap = ({
 	const [cursor, setCursor] = useState("");
 	const [filterdedTrapsFeatureCollection, setFilterdedTrapsFeatureCollection] =
 		useState(featureCollection([]));
-	// const theme = useTheme();
-	const upSmall = useMediaQuery((_theme) => _theme.breakpoints.up("sm"));
+	const theme = useTheme();
+	const upSmall =
+		// eslint-disable-next-line
+		useMediaQuery < theme > ((_theme) => _theme.breakpoints.up("sm"));
 
 	const {
 		mapRef,
@@ -159,7 +161,7 @@ const RadarTrapMap = ({
 		if (!mapRef.current && !jumpId && !coordinates && !routeOrAreaId) return;
 
 		if (routeOrAreaId === jumpId) {
-			mapRef.current.jumpTo({
+			mapRef.current?.jumpTo({
 				center: coordinates,
 				zoom: 15,
 			});

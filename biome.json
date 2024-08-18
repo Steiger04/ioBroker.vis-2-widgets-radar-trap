@@ -1,0 +1,22 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"noNonNullAssertion": "off"
+			},
+			"complexity": {
+				"noForEach": "off"
+			}
+		}
+	},
+	"files": {
+		"include": ["src-widgets/**/*"],
+		"ignore": ["src-widgets/node_modules/**/*", "src-widgets/build/**/*"]
+	}
+}

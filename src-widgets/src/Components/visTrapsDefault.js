@@ -1,54 +1,55 @@
+// eslint-disable-next-line
 export default {
-    constructionSite: {
-        dayConstructionSite: false,
-        permanentConstructionSite: false,
-    },
-    trafficJamEnd: {
-        trafficJamEnd: false,
-    },
-    dangerSpot: {
-        accident: false,
-        obstacle: false,
-        riskOfSlipping: false,
-        visualObstruction: false,
-        defectiveVehicle: false,
-    },
-    fixedSpeedCamera: {
-        distanceControl: false,
-        dummy: false,
-        rampControl: false,
-        busLaneControl: false,
-        entryControl: false,
-        pedestrianCrossing: false,
-        speedCamera: false,
-        weightControl: false,
-        heightControl: false,
-        trafficLightAndSpeedCamera: false,
-        trafficLightCamera: false,
-        sectionControl: false,
-        sectionControlEnd: false,
-        speedCameraInTunnel: false,
-        noOvertaking: false,
-    },
-    semiStationarySpeedCamera: {
-        speedCameraSemiStationary: false,
-    },
-    mobileSpeedCamera: {
-        unknown: false,
-        speedCamera: false,
-        trafficLightCamera: false,
-        weightControl: false,
-        generalTrafficControl: false,
-        alcoholControl: false,
-        distanceControl: false,
-    },
-    mobileSpeedCameraHotspot: {
-        mobileSpeedCameraHotspot: false,
-    },
-    policeReport: {
-        policeReport: false,
-    },
-    policeReportArchive: {
-        policeReportArchive: false,
-    },
+	constructionSite: {
+		dayConstructionSite: true,
+		permanentConstructionSite: true,
+	},
+	trafficJamEnd: {
+		trafficJamEnd: true,
+	},
+	dangerSpot: {
+		accident: true,
+		obstacle: true,
+		riskOfSlipping: true,
+		visualObstruction: true,
+		defectiveVehicle: true,
+	},
+	fixedSpeedCamera: {
+		distanceControl: true,
+		dummy: true,
+		rampControl: true,
+		busLaneControl: true,
+		entryControl: true,
+		pedestrianCrossing: true,
+		speedCamera: true,
+		weightControl: true,
+		heightControl: true,
+		trafficLightAndSpeedCamera: true,
+		trafficLightCamera: true,
+		sectionControl: true,
+		sectionControlEnd: true,
+		speedCameraInTunnel: true,
+		noOvertaking: true,
+	},
+	semiStationarySpeedCamera: {
+		speedCameraSemiStationary: true,
+	},
+	mobileSpeedCamera: {
+		unknown: true,
+		speedCamera: true,
+		trafficLightCamera: true,
+		weightControl: true,
+		generalTrafficControl: true,
+		alcoholControl: true,
+		distanceControl: true,
+	},
+	mobileSpeedCameraHotspot: {
+		mobileSpeedCameraHotspot: false,
+	},
+	policeReport: {
+		policeReport: true,
+	},
+	policeReportArchive: {
+		policeReportArchive: false,
+	},
 };

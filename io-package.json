@@ -29,19 +29,6 @@
         "uk": "Залежність оновлено",
         "zh-cn": "更新的依赖关系"
       },
-      "2.1.0": {
-        "en": "Dependencies updated\nAll widget attributes are now available",
-        "de": "Ausgaben aktualisiert\nAlle Widget-Attribute sind jetzt verfügbar",
-        "ru": "Обновленные данные о зависимостях\nВсе атрибуты виджета теперь доступны",
-        "pt": "Dependências atualizadas\nTodos os atributos do widget estão agora disponíveis",
-        "nl": "Afhankelijkheden bijgewerkt\nAlle widget attributen zijn nu beschikbaar",
-        "fr": "Dépendances actualisées\nTous les attributs du widget sont maintenant disponibles",
-        "it": "Dipendenze aggiornate\nTutti gli attributi dei widget sono ora disponibili",
-        "es": "Actualización de las dependencias\nTodos los atributos widget están disponibles ahora",
-        "pl": "Aktualizacja zależności\nWszystkie atrybuty widget są teraz dostępne",
-        "uk": "Залежність оновлено\nВсі атрибути віджету тепер доступні",
-        "zh-cn": "更新的依赖关系\n所有部件属性现已可用"
-      },
       "2.0.0": {
         "en": "!!! Requires at least radar-trap version 2.0.0 !!!\nMany optimizations and bug fixes",
         "de": "! Erfordert mindestens Radar-Trap Version 2.0.0 !!!\nViele Optimierungen und Fehlerbehebungen",
@@ -67,19 +54,6 @@
         "pl": "zmieniony pakiet jo-",
         "uk": "іо-пакування змінено",
         "zh-cn": "i-包装改变"
-      },
-      "1.1.0": {
-        "en": "new features for widgets",
-        "de": "neue features für widgets",
-        "ru": "новые функции для виджетов",
-        "pt": "novos recursos para widgets",
-        "nl": "nieuwe functies voor widgets",
-        "fr": "nouvelles fonctionnalités pour les widgets",
-        "it": "nuove funzionalità per widget",
-        "es": "nuevas características para widgets",
-        "pl": "nowe funkcje dla widżetów",
-        "uk": "нові можливості для віджетів",
-        "zh-cn": "部件的新特性"
       },
       "1.0.7": {
         "en": "optimizations",
@@ -167,7 +141,7 @@
     ],
     "dependencies": [
       {
-        "js-controller": ">=5.0.17"
+        "js-controller": ">=5.0.19"
       }
     ]
   },

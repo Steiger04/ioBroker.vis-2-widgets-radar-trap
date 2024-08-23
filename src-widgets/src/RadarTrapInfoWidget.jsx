@@ -182,8 +182,6 @@ class RadarTrapInfoWidget extends Generic {
 	renderWidgetBody(props) {
 		super.renderWidgetBody(props);
 
-		console.log("RadarTrapInfoWidget renderWidgetBody -> this", this);
-
 		const content = this.state.radarTrapEnabled ? (
 			<ThemeProvider theme={this.props.context.theme}>
 				<RadarTrapInfoList

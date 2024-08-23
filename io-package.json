@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "news": {
+      "2.3.0": {
+        "en": "Added CircularProgress during refreshing traps\nUpdated packages",
+        "de": "Circular Fortschritt bei Erfrischungsfallen\nAktualisierte Pakete",
+        "ru": "Циркуляр Прогресс во время освежающих ловушек\nОбновленные пакеты",
+        "pt": "Circular Adicionado Progresso durante armadilhas refrescantes\nPacotes atualizados",
+        "nl": "Circulaire toegevoegd Voortgang tijdens verfrissende vallen\nBijgewerkte pakketten",
+        "fr": "Circulaire ajoutée Progrès durant les pièges rafraîchissants\nPaquets mis à jour",
+        "it": "Aggiunto Circular Progressi durante le trappole rinfrescanti\nPacchetti aggiornati",
+        "es": "Circular Progresos durante las trampas refrescante\nPaquetes actualizados",
+        "pl": "Dodano okólnik Postęp podczas odświeżania pułapek\nAktualizacja pakietów",
+        "uk": "Доданий Циркулярний Прогрес під час освіжувальних пасток\nОновлені пакети",
+        "zh-cn": "添加的循环 刷新陷阱中的进展\n更新软件包"
+      },
       "2.2.0": {
         "en": "Added refresh button to area widget and route widget\nDependencies updated",
         "de": "Hinzugefügt Refresh-Taste zu Bereich Widget und Route Widget\nAusgaben aktualisiert",
@@ -102,10 +115,10 @@
       "vis-2-widgets-radar-trap"
     ],
     "licenseInformation": {
-			"license": "MIT",
-			"type": "free"
-		},
-		"tier": 3,
+      "license": "MIT",
+      "type": "free"
+    },
+    "tier": 3,
     "platform": "Javascript/Node.js",
     "icon": "vis-2-widgets-radar-trap.png",
     "extIcon": "https://raw.githubusercontent.com/Steiger04/ioBroker.vis-2-widgets-radar-trap/main/admin/vis-2-widgets-radar-trap.png",
@@ -116,7 +129,7 @@
     "nogit": true,
     "singleton": true,
     "onlyWWW": true,
-		"noConfig": true,
+    "noConfig": true,
     "adminUI": {
       "config": "none"
     },

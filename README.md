@@ -28,7 +28,7 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 2.3.0 (2024-08-23)
 - (steiger04) Added CircularProgress during refreshing traps
 - (steiger04) Updated packages
 

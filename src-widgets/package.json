@@ -1,7 +1,7 @@
 {
     "name": "iobroker.vis-2-widgets-radar-trap",
     "private": true,
-    "version": "2.2.0",
+    "version": "2.3.0",
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@iobroker/adapter-dev": "^1.2.0"

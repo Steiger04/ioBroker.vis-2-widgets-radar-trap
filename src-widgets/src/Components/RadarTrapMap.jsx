@@ -4,6 +4,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "!mapbox-gl";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import ZoomOutMap from "@mui/icons-material/ZoomOutMap";
+import { Backdrop } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import Fab from "@mui/material/Fab";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -15,6 +17,7 @@ import { getMapStyle } from "../helpers/getMapStyle";
 import { useGlobalState } from "../helpers/state";
 import { useAnimationFrame } from "../hooks/useAnimationFrame";
 import { useMapImages } from "../hooks/useMapImages";
+import { usePatchOrCreateSourceStatus } from "../hooks/usePatchOrCreateSourceStatus";
 import { useRadarTrapSource } from "../hooks/useRadarTrapSource";
 import { useResizeMap } from "../hooks/useResizeMap";
 import { TrapInfo } from "./TrapInfo";
@@ -28,6 +31,7 @@ const RadarTrapMap = ({
 	socket,
 	instanceId,
 	data,
+	style,
 	width,
 	height,
 }) => {
@@ -66,6 +70,11 @@ const RadarTrapMap = ({
 		},
 		sourceStatus,
 	} = useRadarTrapSource(routeOrAreaId, feathersClient);
+
+	const patchOrCreateSourceStatus = usePatchOrCreateSourceStatus(
+		routeOrAreaId,
+		feathersClient,
+	);
 
 	useAnimationFrame(
 		editMode,
@@ -207,134 +216,152 @@ const RadarTrapMap = ({
 	}, [trapsFeatureCollection, sourceStatus, data]);
 
 	return settings ? (
-		<Map
-			mapboxAccessToken={settings.mbxAccessToken}
-			mapLib={mapboxgl}
-			ref={loadMapImages}
-			reuseMaps
-			attributionControl={false}
-			logoPosition="bottom-right"
-			interactiveLayerIds={["cluster-traps", "traps", "traffic-closure"]}
-			cursor={cursor}
-			onClick={clickHandler}
-			onMouseEnter={mouseEnterHandler}
-			onMouseLeave={mouseLeaveHandler}
-		>
-			{data.refreshButton && routeOrAreaId && (
-				<Fab
+		<>
+			<Backdrop
+				open={patchOrCreateSourceStatus.status === "loading"}
+				sx={{
+					position: "absolute",
+					zIndex: (theme) => theme.zIndex.drawer + 1,
+				}}
+			>
+				<CircularProgress
+					size={80}
 					sx={{
-						position: "absolute",
-						left: 0,
-						top: 0,
-						opacity: 0.7,
-						m: 1,
+						color: style["background-color"]
+							? style["background-color"]
+							: "white",
 					}}
-					size={upSmall ? "medium" : "small"}
-					color="primary"
-					onClick={refreshHander}
-				>
-					<AutorenewOutlinedIcon />
-				</Fab>
-			)}
-
-			{data.fitButton && (
-				<Fab
-					sx={{
-						position: "absolute",
-						right: 0,
-						top: 0,
-						opacity: 0.7,
-						m: 1,
-					}}
-					size={upSmall ? "medium" : "small"}
-					color="primary"
-					onClick={() => resizeMap(true)}
-				>
-					<ZoomOutMap />
-				</Fab>
-			)}
-
-			{trapInfo && (
-				<Popup
-					maxWidth="auto"
-					longitude={trapInfo.longitude}
-					latitude={trapInfo.latitude}
-					closeButton={false}
-					onClose={() => setTrapInfo(false)}
-				>
-					<TrapInfo info={trapInfo} />
-				</Popup>
-			)}
-
-			<ScaleControl style={{ p: 4 }} position="bottom-left" />
-
-			{type === "area" &&
-				mapImageStatus === "success" &&
-				sourceStatus === "success" &&
-				data?.showPolygon && (
-					<Source
-						id="areaPolygons"
-						type="geojson"
-						data={
-							areaPolygons
-								? featureCollection(Object.values(areaPolygons)).features[0]
-								: featureCollection([])
-						}
+				/>
+			</Backdrop>
+			<Map
+				mapboxAccessToken={settings.mbxAccessToken}
+				mapLib={mapboxgl}
+				ref={loadMapImages}
+				reuseMaps
+				attributionControl={false}
+				logoPosition="bottom-right"
+				interactiveLayerIds={["cluster-traps", "traps", "traffic-closure"]}
+				cursor={cursor}
+				onClick={clickHandler}
+				onMouseEnter={mouseEnterHandler}
+				onMouseLeave={mouseLeaveHandler}
+			>
+				{data.refreshButton && routeOrAreaId && (
+					<Fab
+						sx={{
+							position: "absolute",
+							left: 0,
+							top: 0,
+							opacity: 0.7,
+							m: 1,
+						}}
+						size={upSmall ? "medium" : "small"}
+						color="primary"
+						onClick={refreshHander}
 					>
-						<Layer {...getMapStyle("areaSurface", data)} />
-						<Layer {...getMapStyle("areaSurfaceBorder", data)} />
-					</Source>
+						<AutorenewOutlinedIcon />
+					</Fab>
 				)}
 
-			{type === "route" &&
-				mapImageStatus === "success" &&
-				sourceStatus === "success" && (
-					<Source
-						id="directions"
-						type="geojson"
-						data={directionsFeatureCollection}
+				{data.fitButton && (
+					<Fab
+						sx={{
+							position: "absolute",
+							right: 0,
+							top: 0,
+							opacity: 0.7,
+							m: 1,
+						}}
+						size={upSmall ? "medium" : "small"}
+						color="primary"
+						onClick={() => resizeMap(true)}
 					>
-						<Layer {...getMapStyle("route", data)} />
-					</Source>
+						<ZoomOutMap />
+					</Fab>
 				)}
 
-			{mapImageStatus === "success" &&
-				sourceStatus === "success" &&
-				data.closedCongestedRoad && (
-					<Source id="polys" type="geojson" data={polyLinesFeatureCollection}>
-						<Layer {...getMapStyle("lineBackground", data)} />
-						<Layer {...getMapStyle("lineDashed", data)} />
-						<Layer {...getMapStyle("trafficClosure", data)} />
-					</Source>
-				)}
-
-			{mapImageStatus === "success" &&
-				sourceStatus === "success" &&
-				!data.showCluster && (
-					<Source
-						id="traps"
-						type="geojson"
-						data={filterdedTrapsFeatureCollection}
+				{trapInfo && (
+					<Popup
+						maxWidth="auto"
+						longitude={trapInfo.longitude}
+						latitude={trapInfo.latitude}
+						closeButton={false}
+						onClose={() => setTrapInfo(false)}
 					>
-						<Layer {...getMapStyle("traps", data)} />
-					</Source>
+						<TrapInfo info={trapInfo} />
+					</Popup>
 				)}
 
-			{mapImageStatus === "success" &&
-				sourceStatus === "success" &&
-				data.showCluster && (
-					<Source
-						id="traps"
-						type="geojson"
-						data={filterdedTrapsFeatureCollection}
-						cluster
-					>
-						<Layer {...getMapStyle("traps", data)} />
-						<Layer {...getMapStyle("clusterTraps", data)} />
-						<Layer {...getMapStyle("clusterTrapsCount", data)} />
-					</Source>
-				)}
-		</Map>
+				<ScaleControl style={{ p: 4 }} position="bottom-left" />
+
+				{type === "area" &&
+					mapImageStatus === "success" &&
+					sourceStatus === "success" &&
+					data?.showPolygon && (
+						<Source
+							id="areaPolygons"
+							type="geojson"
+							data={
+								areaPolygons
+									? featureCollection(Object.values(areaPolygons)).features[0]
+									: featureCollection([])
+							}
+						>
+							<Layer {...getMapStyle("areaSurface", data)} />
+							<Layer {...getMapStyle("areaSurfaceBorder", data)} />
+						</Source>
+					)}
+
+				{type === "route" &&
+					mapImageStatus === "success" &&
+					sourceStatus === "success" && (
+						<Source
+							id="directions"
+							type="geojson"
+							data={directionsFeatureCollection}
+						>
+							<Layer {...getMapStyle("route", data)} />
+						</Source>
+					)}
+
+				{mapImageStatus === "success" &&
+					sourceStatus === "success" &&
+					data.closedCongestedRoad && (
+						<Source id="polys" type="geojson" data={polyLinesFeatureCollection}>
+							<Layer {...getMapStyle("lineBackground", data)} />
+							<Layer {...getMapStyle("lineDashed", data)} />
+							<Layer {...getMapStyle("trafficClosure", data)} />
+						</Source>
+					)}
+
+				{mapImageStatus === "success" &&
+					sourceStatus === "success" &&
+					!data.showCluster && (
+						<Source
+							id="traps"
+							type="geojson"
+							data={filterdedTrapsFeatureCollection}
+						>
+							<Layer {...getMapStyle("traps", data)} />
+						</Source>
+					)}
+
+				{mapImageStatus === "success" &&
+					sourceStatus === "success" &&
+					data.showCluster && (
+						<Source
+							id="traps"
+							type="geojson"
+							data={filterdedTrapsFeatureCollection}
+							cluster
+						>
+							<Layer {...getMapStyle("traps", data)} />
+							<Layer {...getMapStyle("clusterTraps", data)} />
+							<Layer {...getMapStyle("clusterTrapsCount", data)} />
+						</Source>
+					)}
+			</Map>
+		</>
 	) : null;
 };
 

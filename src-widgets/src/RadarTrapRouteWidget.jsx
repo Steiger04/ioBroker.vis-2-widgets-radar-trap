@@ -272,6 +272,7 @@ class RadarTrapRouteWidget extends Generic {
 					socket={this.props.context.socket}
 					instanceId={this.instanceId}
 					data={this.state.rxData}
+					style={this.state.rxStyle}
 					width={this.state.rxStyle.width}
 					height={this.state.rxStyle.height}
 				/>

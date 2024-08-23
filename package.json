@@ -28,7 +28,6 @@
     "gulp": "^4.0.2",
     "mocha": "^10.7.3"
   },
-  "main": "widgets/vis-2-widgets-radar-trap/customWidgets.js",
   "files": [
     "admin/",
     "img/",

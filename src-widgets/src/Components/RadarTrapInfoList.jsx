@@ -1,4 +1,3 @@
-import { i18n as I18n } from "@iobroker/adapter-react-v5";
 import {
 	ListItem,
 	ListItemButton,
@@ -14,6 +13,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import { camelCase, isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
+import Generic from "../Generic";
 import { setCoordinates, setJumpId } from "../helpers/state";
 import { useRadarTrapSource } from "../hooks/useRadarTrapSource";
 
@@ -175,7 +175,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 											wordSpacing: style["word-spacing"],
 										}}
 									>
-										<b>{I18n.t(`${trapGroupName}`)}</b>
+										<b>{Generic.t(`${trapGroupName}`)}</b>
 									</Typography>
 								)}
 							</ListSubheader>
@@ -189,10 +189,10 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 									if (!isEmpty(trapInfo.vmax)) {
 										switch (trapInfo.vmax) {
 											case "V":
-												vmax = I18n.t("unknown");
+												vmax = Generic.t("unknown");
 												break;
 											case "v":
-												vmax = I18n.t("unknown");
+												vmax = Generic.t("unknown");
 												break;
 											case "/":
 												vmax = false;
@@ -240,7 +240,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 																letterSpacing: style["letter-spacing"],
 																wordSpacing: style["word-spacing"],
 															}}
-															primary={<b>{I18n.t(trapInfo.typeText)}</b>}
+															primary={<b>{Generic.t(trapInfo.typeText)}</b>}
 														/>
 													)}
 													{vmax && (
@@ -257,7 +257,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("vmax")}
+																		{Generic.t("vmax")}
 																		:&nbsp;
 																	</b>
 																	<span>{vmax}</span>
@@ -284,7 +284,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 																	}}
 																>
 																	<b>
-																		{I18n.t("reason")}
+																		{Generic.t("reason")}
 																		:&nbsp;
 																	</b>
 																	<span>{trapInfo.reason}</span>
@@ -306,7 +306,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("length")}
+																		{Generic.t("length")}
 																		:&nbsp;
 																	</b>
 																	<span>
@@ -331,7 +331,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("duration")}
+																		{Generic.t("duration")}
 																		:&nbsp;
 																	</b>
 																	<span>
@@ -356,7 +356,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("delay")}
+																		{Generic.t("delay")}
 																		:&nbsp;
 																	</b>
 																	<span>
@@ -381,7 +381,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("createDate")}
+																		{Generic.t("createDate")}
 																		:&nbsp;
 																	</b>
 																	<span>{trapInfo.createDate}</span>
@@ -403,7 +403,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("confirmDate")}
+																		{Generic.t("confirmDate")}
 																		:&nbsp;
 																	</b>
 																	<span>{trapInfo.confirmDate}</span>
@@ -425,7 +425,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("state")}
+																		{Generic.t("state")}
 																		:&nbsp;
 																	</b>
 																	<span>{trapInfo.state}</span>
@@ -447,7 +447,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("street")}
+																		{Generic.t("street")}
 																		:&nbsp;
 																	</b>
 																	<span>{trapInfo.street}</span>
@@ -469,7 +469,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("city")}
+																		{Generic.t("city")}
 																		:&nbsp;
 																	</b>
 																	<span>
@@ -495,7 +495,7 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 															primary={
 																<>
 																	<b>
-																		{I18n.t("cityDistrict")}
+																		{Generic.t("cityDistrict")}
 																		:&nbsp;
 																	</b>
 																	<span>{trapInfo.cityDistrict}</span>

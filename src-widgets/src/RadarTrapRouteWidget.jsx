@@ -1,4 +1,3 @@
-import { i18n as I18n } from "@iobroker/adapter-react-v5";
 import { Box, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import React from "react";
@@ -261,6 +260,8 @@ class RadarTrapRouteWidget extends Generic {
 	renderWidgetBody(props) {
 		super.renderWidgetBody(props);
 
+		console.log("this", this);
+
 		const content = this.state.radarTrapEnabled ? (
 			<ThemeProvider theme={this.props.context.theme}>
 				<RadarTrapMap
@@ -279,7 +280,7 @@ class RadarTrapRouteWidget extends Generic {
 			</ThemeProvider>
 		) : (
 			<Message
-				message={`${I18n.t("For the configuration the radar-trap instance must be started")}`}
+				message={`${Generic.t("For the configuration the radar-trap instance must be started")}`}
 			/>
 		);
 

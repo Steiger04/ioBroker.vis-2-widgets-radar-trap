@@ -1,4 +1,3 @@
-import { i18n as I18n } from "@iobroker/adapter-react-v5";
 import { Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import React from "react";
@@ -193,7 +192,7 @@ class RadarTrapInfoWidget extends Generic {
 			</ThemeProvider>
 		) : (
 			<Message
-				message={`${I18n.t("For the configuration the radar-trap instance must be started")}`}
+				message={`${Generic.t("For the configuration the radar-trap instance must be started")}`}
 			/>
 		);
 

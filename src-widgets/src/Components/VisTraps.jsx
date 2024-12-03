@@ -1,9 +1,9 @@
-import { i18n as I18n } from "@iobroker/adapter-react-v5";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { camelCase } from "lodash";
 import React from "react";
+import Generic from "../Generic";
 
 const descriptions = {
 	"22,26": "construction site", // Baustelle
@@ -62,7 +62,7 @@ const _children = {
 
 const VisTraps = ({ fieldName, fieldValue, onDataChange }) => {
 	const parents = Object.entries(descriptions)
-		.sort((a, b) => I18n.t(a[1]).localeCompare(I18n.t(b[1])))
+		.sort((a, b) => Generic.t(a[1]).localeCompare(Generic.t(b[1])))
 		.map(([index, description], idx1) => (
 			// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 			<Box key={idx1}>
@@ -70,7 +70,7 @@ const VisTraps = ({ fieldName, fieldValue, onDataChange }) => {
 					sx={{
 						"& .MuiTypography-root": { p: 0, fontSize: 16, fontWeight: "bold" },
 					}}
-					label={I18n.t(description)}
+					label={Generic.t(description)}
 					/* label={description} */
 					control={
 						<Checkbox
@@ -109,7 +109,7 @@ const VisTraps = ({ fieldName, fieldValue, onDataChange }) => {
 				/>
 				<Box sx={{ display: "flex", flexDirection: "column", ml: 3 }}>
 					{Object.entries(_children)
-						.sort((a, b) => I18n.t(a[1]).localeCompare(I18n.t(b[1])))
+						.sort((a, b) => Generic.t(a[1]).localeCompare(Generic.t(b[1])))
 						.map(([key, value], idx2) => {
 							if (index.split(",").includes(key)) {
 								return (
@@ -119,7 +119,7 @@ const VisTraps = ({ fieldName, fieldValue, onDataChange }) => {
 										}}
 										// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 										key={idx2}
-										label={I18n.t(value)}
+										label={Generic.t(value)}
 										/* label={value} */
 										control={
 											<Checkbox

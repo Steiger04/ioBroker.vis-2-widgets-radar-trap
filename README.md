@@ -28,6 +28,9 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
+### __WORK IN PROGRESS__
+- (steiger04) Changed test-and-release
+
 ### 2.3.1 (2024-12-03)
 - (steiger04) Changed translation function to Generic.t
 

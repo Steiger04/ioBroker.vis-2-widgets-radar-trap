@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "news": {
+      "2.3.3": {
+        "en": "added radar-trap for testing",
+        "de": "zusätzlich radar-trap zum testen",
+        "ru": "добавленная радиолокационная ловушка для тестирования",
+        "pt": "adicionado radar-trap para testes",
+        "nl": "toegevoegde radarval voor testen",
+        "fr": "radar-trap ajouté pour les essais",
+        "it": "aggiunto radar-trap per test",
+        "es": "radar añadido para pruebas",
+        "pl": "dodany radar- trap do testowania",
+        "uk": "додано радар-треп для тестування",
+        "zh-cn": "增加用于测试的雷达装置"
+      },
       "2.3.2": {
         "en": "Changed test-and-release",
         "de": "Geänderte Test-und-Release",
@@ -80,19 +93,6 @@
         "pl": "! Wymaga co najmniej radar- pułapka wersja 2.0.0!!!\nWiele optymalizacji i poprawek błędów",
         "uk": "Про нас Вимагає принаймні радіолокаційної версії 2.0.0 !!!\nБагато оптимізація і виправлення помилок",
         "zh-cn": "快点! 至少需要雷达陷阱版2.0!\n许多优化和错误修正"
-      },
-      "1.1.1": {
-        "en": "io-package changed",
-        "de": "io-paket geändert",
-        "ru": "io-package изменен",
-        "pt": "io-package alterado",
-        "nl": "jo-pakket gewijzigd",
-        "fr": "io-emballage modifié",
-        "it": "io-pacchetto cambiato",
-        "es": "io-paquete cambiado",
-        "pl": "zmieniony pakiet jo-",
-        "uk": "іо-пакування змінено",
-        "zh-cn": "i-包装改变"
       }
     },
     "titleLang": {

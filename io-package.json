@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "news": {
+      "2.3.1": {
+        "en": "Changed translation function to Generic.t",
+        "de": "Geänderte Übersetzungsfunktion zu Generic.t",
+        "ru": "Изменение функции перевода на Generic.t",
+        "pt": "Função de tradução alterada para Generic.t",
+        "nl": "Vertaalfunctie veranderd in Generic.t",
+        "fr": "Fonction de traduction modifiée vers Generic.t",
+        "it": "Modificata la funzione di traduzione a Generic.t",
+        "es": "Función de traducción modificada a Generic.t",
+        "pl": "Zmieniona funkcja tłumaczenia na Generic.t",
+        "uk": "Змінена функція перекладу для Generic.t",
+        "zh-cn": "将翻译功能更改为通用. t"
+      },
       "2.3.0": {
         "en": "Added CircularProgress during refreshing traps\nUpdated packages",
         "de": "Circular Fortschritt bei Erfrischungsfallen\nAktualisierte Pakete",

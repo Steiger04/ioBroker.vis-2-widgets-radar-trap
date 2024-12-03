@@ -28,7 +28,7 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
-### __WORK IN PROGRESS__
+### 2.3.1 (2024-12-03)
 - (steiger04) Changed translation function to Generic.t
 
 ### 2.3.0 (2024-08-23)

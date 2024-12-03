@@ -5,7 +5,7 @@ describe('vis-2-widgets-radar-trap', () => {
     before(async function (){
         this.timeout(180000);
         // install js-controller, web and vis-2-beta
-        await helper.startIoBroker();
+        await helper.startIoBroker({additionalAdapters: ['vis-2', 'web' , 'radar-trap']});
         await helper.startBrowser(process.env.CI === 'true' ? 'new' : false);
         await helper.createProject();
 

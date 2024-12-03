@@ -260,8 +260,6 @@ class RadarTrapRouteWidget extends Generic {
 	renderWidgetBody(props) {
 		super.renderWidgetBody(props);
 
-		console.log("this", this);
-
 		const content = this.state.radarTrapEnabled ? (
 			<ThemeProvider theme={this.props.context.theme}>
 				<RadarTrapMap

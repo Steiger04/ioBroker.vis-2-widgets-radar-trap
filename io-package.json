@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "vis-2-widgets-radar-trap",
-    "version": "2.3.1",
+    "version": "2.3.2",
     "news": {
+      "2.3.2": {
+        "en": "Changed test-and-release",
+        "de": "Geänderte Test-und-Release",
+        "ru": "Измененный тест-и-релиз",
+        "pt": "Teste e lançamento alterados",
+        "nl": "Gewijzigde test-and-release",
+        "fr": "Essai et libération modifiés",
+        "it": "Cambiato test-e-release",
+        "es": "Cambio de prueba y liberación",
+        "pl": "Zmieniono test- i-wydanie",
+        "uk": "Змінений тест-і-випуск",
+        "zh-cn": "更改测试和释放"
+      },
       "2.3.1": {
         "en": "Changed translation function to Generic.t",
         "de": "Geänderte Übersetzungsfunktion zu Generic.t",
@@ -80,19 +93,6 @@
         "pl": "zmieniony pakiet jo-",
         "uk": "іо-пакування змінено",
         "zh-cn": "i-包装改变"
-      },
-      "1.0.7": {
-        "en": "optimizations",
-        "de": "optimierungen",
-        "ru": "оптимизация",
-        "pt": "otimizações",
-        "nl": "optimisatie",
-        "fr": "optimisations",
-        "it": "ottimizzazioni",
-        "es": "optimizaciones",
-        "pl": "optymalizacja",
-        "uk": "оптимізація",
-        "zh-cn": "优化"
       }
     },
     "titleLang": {

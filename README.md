@@ -86,6 +86,8 @@
 ### 1.0.0 (2023-12-10)
 - (steiger04) Initial commit
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 The MIT License (MIT)

@@ -2,38 +2,42 @@
     "name": "iobroker.vis-2-widgets-radar-trap",
     "private": true,
     "version": "2.3.3",
+    "type": "module",
     "devDependencies": {
-        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@iobroker/adapter-dev": "^1.2.0"
     },
     "dependencies": {
-        "@craco/craco": "^7.1.0",
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.1",
         "@feathersjs/client": "^4.5.15",
         "@feathersjs/socketio-client": "^4.5.15",
-        "@iobroker/adapter-react-v5": "^7.4.3",
-        "@iobroker/vis-2-widgets-react-dev": "^4.0.4",
-        "@mui/icons-material": "^5.16.7",
-        "@mui/material": "^5.16.7",
+        "@iobroker/types-vis-2": "~2.20.5",
+        "@module-federation/vite": "^1.23.6",
+        "@mui/icons-material": "^9.5.0",
+        "@mui/material": "^9.5.0",
         "@turf/turf": "^6.5.0",
         "@types/mapbox-gl": "^2.7.17",
+        "@vitejs/plugin-react": "^6.1.2",
         "mapbox-gl": "^2.15.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
         "react-hooks-global-state": "^2.1.0",
         "react-map-gl": "^7.1.7",
-        "react-scripts": "^5.0.1",
-        "socket.io-client": "^2.3.1"
+        "socket.io-client": "^2.3.1",
+        "vite": "^8.3.5",
+        "vite-plugin-top-level-await": "^1.6.0"
+    },
+    "overrides": {
+        "@swc/core": "~1.15.47",
+        "@swc/wasm": "~1.15.47",
+        "use-sync-external-store": "^1.7.0"
     },
     "scripts": {
-        "start": "set PORT=4173 && craco start",
-        "lint": "eslint --fix --ext .js,.jsx src",
-        "build": "craco build",
-        "i18n": "node node_modules/@iobroker/vis-2-widgets-react-dev/searchI18n vis-2-widgets-radar-trap",
+        "start": "vite --port 4173",
+        "build": "vite build",
+        "preview": "vite preview",
         "update-browsers": "npx browserslist@latest --update-db",
         "translate": "translate-adapter -a ../src-widgets -p ../io-package.json"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
     },
     "homepage": ".",
     "browserslist": [

@@ -1,10 +1,9 @@
 import feathers from "@feathersjs/client";
 import socketio from "@feathersjs/socketio-client";
-import { VisRxWidget } from "@iobroker/vis-2-widgets-react-dev";
 import { Card, CardContent } from "@mui/material";
 import io from "socket.io-client";
 
-class Generic extends (window.visRxWidget || VisRxWidget) {
+class Generic extends window.visRxWidget {
 	constructor(props) {
 		super(props);
 

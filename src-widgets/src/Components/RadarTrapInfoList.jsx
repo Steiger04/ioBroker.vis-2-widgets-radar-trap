@@ -232,13 +232,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{data.trapHeadline && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body1",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body1",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={<b>{Generic.t(trapInfo.typeText)}</b>}
 														/>
@@ -246,13 +250,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{vmax && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -268,13 +276,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.reason && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<Box
@@ -295,13 +307,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.length && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -320,13 +336,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.duration && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -345,13 +365,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.delay && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -370,13 +394,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.createDate && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -392,13 +420,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.confirmDate && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -414,13 +446,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.state && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -436,13 +472,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.street && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -458,13 +498,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.zipCode && trapInfo.city && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>
@@ -484,13 +528,17 @@ const RadarTrapInfoList = ({ feathersClient, routeOrAreaId, data, style }) => {
 													{trapInfo.cityDistrict && (
 														<ListItemText
 															sx={{ my: "2px" }}
-															primaryTypographyProps={{
-																variant: "body2",
-																fontFamily: style["font-family"],
-																fontWeight: style["font-weight"],
-																fontSize: style["font-size"],
-																letterSpacing: style["letter-spacing"],
-																wordSpacing: style["word-spacing"],
+															slotProps={{
+																primary: {
+																	variant: "body2",
+																	sx: {
+																		fontFamily: style["font-family"],
+																		fontWeight: style["font-weight"],
+																		fontSize: style["font-size"],
+																		letterSpacing: style["letter-spacing"],
+																		wordSpacing: style["word-spacing"],
+																	},
+																},
 															}}
 															primary={
 																<>

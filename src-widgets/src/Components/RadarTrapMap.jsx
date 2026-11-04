@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
-// eslint-disable-next-line import/no-unresolved, import/no-webpack-loader-syntax
-import mapboxgl from "!mapbox-gl";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import ZoomOutMap from "@mui/icons-material/ZoomOutMap";
 import { Backdrop } from "@mui/material";
@@ -11,6 +9,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { featureCollection } from "@turf/helpers";
 import { camelCase } from "lodash";
+import mapboxgl from "mapbox-gl";
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import Map, { Source, Layer, ScaleControl, Popup } from "react-map-gl";
 import { getMapStyle } from "../helpers/getMapStyle";

@@ -28,6 +28,9 @@
 	Placeholder for next versions:
 	### __WORK IN PROGRESS__
 -->
+### **WORK IN PROGRESS**
+- (@GermanBluefox) vis-2 widgets moved to Vite and rebuilt for React 19 and MUI 9 (vis-2 >= 2.20.2 needed), see ioBroker/ioBroker.vis-2#689
+
 ### 2.3.3 (2024-12-03)
 - (steiger04) added radar-trap for testing
 

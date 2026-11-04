@@ -1,14 +1,25 @@
+import de from "./i18n/de.json";
+import en from "./i18n/en.json";
+import es from "./i18n/es.json";
+import fr from "./i18n/fr.json";
+import it from "./i18n/it.json";
+import nl from "./i18n/nl.json";
+import pl from "./i18n/pl.json";
+import pt from "./i18n/pt.json";
+import ru from "./i18n/ru.json";
+import zhCn from "./i18n/zh-cn.json";
+
 const translations = {
-	en: require("./i18n/en.json"),
-	de: require("./i18n/de.json"),
-	ru: require("./i18n/ru.json"),
-	pt: require("./i18n/pt.json"),
-	nl: require("./i18n/nl.json"),
-	fr: require("./i18n/fr.json"),
-	it: require("./i18n/it.json"),
-	es: require("./i18n/es.json"),
-	pl: require("./i18n/pl.json"),
-	"zh-cn": require("./i18n/zh-cn.json"),
+	en,
+	de,
+	ru,
+	pt,
+	nl,
+	fr,
+	it,
+	es,
+	pl,
+	"zh-cn": zhCn,
 };
 
 export default translations;
